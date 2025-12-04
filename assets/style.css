@@ -55,7 +55,7 @@ body {
   border-bottom: 1px solid rgba(234, 223, 214, 0.9);
 }
 
-/* logo wrapper (image + optional text) */
+/* logo wrapper (image + text) */
 .logo {
   display: flex;
   align-items: center;
@@ -64,18 +64,22 @@ body {
 
 /* logo image */
 .logo-img {
-  height: 52px;         /* tweak this if still too big/small */
+  height: 52px;      /* change this if you want it bigger/smaller */
   width: auto;
   display: block;
   object-fit: contain;
 }
 
-/* if you ever add text next to the logo */
-.logo span {
+/* logo text */
+.logo-text {
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.logo-text span {
+  color: var(--accent);
 }
 
 /* nav links */
@@ -219,6 +223,13 @@ body {
 .btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* small variation for basket buttons */
+.btn.small {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
 }
 
 /* hero visual card */
@@ -372,6 +383,55 @@ body {
 .contact-card ul {
   margin: 0.6rem 0 0;
   padding-left: 1.1rem;
+}
+
+/* ========== BASKET ========== */
+
+.basket-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft-sm);
+  padding: 1.4rem 1.6rem;
+  max-width: 620px;
+}
+
+.basket-items {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.basket-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(234, 223, 214, 0.8);
+  font-size: 0.95rem;
+}
+
+.basket-item-row:last-child {
+  border-bottom: none;
+}
+
+.basket-remove {
+  border: none;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.basket-remove:hover {
+  background: rgba(214, 123, 107, 0.22);
+}
+
+.basket-summary {
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* ========== FOOTER ========== */
