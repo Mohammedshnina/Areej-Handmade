@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order sent | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <div class="logo-text">
+        Areej<span>Handmade</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <button type="button" class="nav-basket-btn" disabled>
+        Basket (0)
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h1 class="section-title">Thank you!</h1>
+      <p class="section-subtitle">
+        Your order details have been recorded in this demo. In a real version, this page
+        would appear after Areej receives your message on WhatsApp or email.
+      </p>
+
+      <div class="basket-card">
+        <p>
+          Your basket has been cleared. You can go back to the home page or keep browsing.
+        </p>
+        <a href="index.html" class="btn primary">Back to home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Areej Handmade
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    // clear basket on success page
+    localStorage.removeItem("areejBasket");
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
