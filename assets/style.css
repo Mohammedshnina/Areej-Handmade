@@ -70,6 +70,13 @@ body {
   border-bottom-color: var(--accent);
 }
 
+.logo-img {
+  height: 50px;       /* Change size here */
+  width: auto;
+  display: block;
+}
+
+
 /* LAYOUT */
 
 .section {
@@ -270,3 +277,4 @@ body {
     flex-wrap: wrap;
   }
 }
+
