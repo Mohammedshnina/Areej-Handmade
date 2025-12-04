@@ -20,7 +20,6 @@
       <a href="#gallery">Gallery</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <!-- basket button in nav -->
       <button type="button" class="nav-basket-btn" id="openBasket">
         Basket (<span id="basketCountNav">0</span>)
       </button>
@@ -158,116 +157,10 @@
     © <span id="year"></span> Areej Handmade
   </footer>
 
+  <script src="cart.js"></script>
   <script>
-    // Footer year
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // ---- Basket state shared via localStorage ----
-    const STORAGE_KEY = "areejBasket";
-
-    let basket = [];
-
-    function loadBasket() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) {
-          basket = [];
-          return;
-        }
-        basket = JSON.parse(raw) || [];
-        if (!Array.isArray(basket)) basket = [];
-      } catch {
-        basket = [];
-      }
-    }
-
-    function saveBasket() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(basket));
-    }
-
-    // Elements
-    const navCountEl = document.getElementById("basketCountNav");
-    const drawer = document.getElementById("basketDrawer");
-    const overlay = document.getElementById("basketOverlay");
-    const openBtn = document.getElementById("openBasket");
-    const closeBtn = document.getElementById("closeBasket");
-    const drawerItemsEl = document.getElementById("drawerItems");
-    const drawerEmptyEl = document.getElementById("drawerEmpty");
-    const drawerCountEl = document.getElementById("drawerCount");
-    const addButtons = document.querySelectorAll(".add-to-basket");
-
-    function renderBasketUI() {
-      // nav count
-      if (navCountEl) {
-        navCountEl.textContent = basket.length;
-      }
-
-      // drawer list
-      if (!drawerItemsEl || !drawerEmptyEl || !drawerCountEl) return;
-
-      drawerItemsEl.innerHTML = "";
-      if (basket.length === 0) {
-        drawerEmptyEl.style.display = "block";
-      } else {
-        drawerEmptyEl.style.display = "none";
-        basket.forEach((item, index) => {
-          const li = document.createElement("li");
-          li.className = "drawer-item-row";
-
-          const nameSpan = document.createElement("span");
-          nameSpan.textContent = item.name || "Item";
-
-          const removeBtn = document.createElement("button");
-          removeBtn.type = "button";
-          removeBtn.textContent = "Remove";
-          removeBtn.className = "basket-remove";
-          removeBtn.addEventListener("click", () => {
-            basket.splice(index, 1);
-            saveBasket();
-            renderBasketUI();
-          });
-
-          li.appendChild(nameSpan);
-          li.appendChild(removeBtn);
-          drawerItemsEl.appendChild(li);
-        });
-      }
-
-      drawerCountEl.textContent = basket.length;
-    }
-
-    function openDrawer() {
-      if (!drawer || !overlay) return;
-      drawer.classList.add("open");
-      overlay.classList.add("show");
-      renderBasketUI();
-    }
-
-    function closeDrawer() {
-      if (!drawer || !overlay) return;
-      drawer.classList.remove("open");
-      overlay.classList.remove("show");
-    }
-
-    // Add item buttons
-    addButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const name = btn.getAttribute("data-name") || "Item";
-        basket.push({ name });
-        saveBasket();
-        renderBasketUI();
-      });
-    });
-
-    // Open / close drawer
-    if (openBtn) openBtn.addEventListener("click", openDrawer);
-    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
-    if (overlay) overlay.addEventListener("click", closeDrawer);
-
-    // Init
-    loadBasket();
-    renderBasketUI();
   </script>
 </body>
 </html>
