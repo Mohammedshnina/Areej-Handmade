@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <div class="logo-text">
+        Areej<span>Handmade</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <button type="button" class="nav-basket-btn" id="openBasket">
+        Basket (<span id="basketCountNav">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <!-- drawer -->
+  <div class="basket-overlay" id="basketOverlay"></div>
+  <aside class="basket-drawer" id="basketDrawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button type="button" class="basket-close" id="closeBasket">×</button>
+    </div>
+    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
+    <ul id="drawerItems" class="drawer-items"></ul>
+    <p class="basket-summary">
+      Total items: <span id="drawerCount">0</span>
+    </p>
+    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
+  </aside>
+
+  <main>
+    <section class="section">
+      <h1 class="section-title">Checkout</h1>
+      <p class="section-subtitle">
+        This is a simple, non‑payment checkout. It helps your mum get all the order details.
+      </p>
+
+      <div class="basket-page-grid">
+        <div class="basket-card">
+          <h2>Items in your order</h2>
+          <p id="checkoutEmpty">Your basket is currently empty.</p>
+          <ul id="checkoutItems" class="basket-items"></ul>
+          <p class="basket-summary">
+            Total items: <span id="checkoutCount">0</span>
+          </p>
+        </div>
+
+        <div class="basket-checkout">
+          <h2>Your details</h2>
+          <form id="checkoutForm" class="checkout-form">
+            <label>
+              Your name
+              <input type="text" id="checkoutName" placeholder="Enter your name" required>
+            </label>
+            <label>
+              Contact (email or WhatsApp)
+              <input type="text" id="checkoutContact" placeholder="How should Areej contact you?" required>
+            </label>
+            <label>
+              Notes about your order
+              <textarea id="orderNotes" rows="4" placeholder="Colours, names to include, deadlines..."></textarea>
+            </label>
+            <p class="checkout-hint">
+              This doesn’t collect payments – it’s just a way to prepare an order summary Areej can reply to.
+            </p>
+            <button type="submit" class="btn primary">
+              Send order (demo)
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Areej Handmade
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
