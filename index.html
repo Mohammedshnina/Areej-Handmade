@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,17 +10,18 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
-  <img src="assets/logo.png" alt="Areej Handmade Logo" class="logo-img">
-</div>
-
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <div class="logo-text">
+        Areej<span>Handmade</span>
+      </div>
+    </div>
     <nav>
-  <a href="#hero">Home</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#basket">Basket</a>
-</nav>
-
+      <a href="#hero">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#basket">Basket</a>
+    </nav>
   </header>
 
   <main>
@@ -39,19 +40,18 @@
         </div>
       </div>
       <div class="hero-image-card">
-        <!-- later we can swap this with a real product photo -->
         <div class="hero-placeholder">
-          Your mum’s work will go here<br />
-          (photo or collage)
+          A photo or collage of Areej’s handmade work will go here.<br>
+          You can replace this box with a real image later.
         </div>
       </div>
     </section>
 
-    <!-- GALLERY PREVIEW -->
+    <!-- GALLERY -->
     <section id="gallery" class="section">
       <h2 class="section-title">Featured creations</h2>
       <p class="section-subtitle">
-        A small selection of handmade pieces. We can swap these with real photos later.
+        A small selection of handmade pieces. You can swap these with real photos and product names later.
       </p>
 
       <div class="gallery-grid">
@@ -59,18 +59,27 @@
           <h3>Embroidered hoop art</h3>
           <p>Delicate embroidery on fabric, perfect for wall decor or gifts.</p>
           <p class="product-tag">Custom text available</p>
+          <button class="btn small add-to-basket" data-name="Embroidered hoop art">
+            Add to basket
+          </button>
         </article>
 
         <article class="product-card">
           <h3>Personalised name piece</h3>
           <p>Embroidered names or quotes in your chosen colours.</p>
           <p class="product-tag">Great for baby gifts</p>
+          <button class="btn small add-to-basket" data-name="Personalised name piece">
+            Add to basket
+          </button>
         </article>
 
         <article class="product-card">
           <h3>Home decor designs</h3>
           <p>Floral patterns and geometric designs to brighten any room.</p>
           <p class="product-tag">One‑of‑a‑kind</p>
+          <button class="btn small add-to-basket" data-name="Home decor designs">
+            Add to basket
+          </button>
         </article>
       </div>
     </section>
@@ -89,7 +98,7 @@
             made pieces. Every stitch is done by hand, with time and care.
           </p>
           <p>
-            This space is for you to tell your mum’s story – when she started, what she loves
+            This space is for you to tell Areej’s story – when she started, what she loves
             making, and how people can support her work.
           </p>
         </div>
@@ -113,13 +122,29 @@
 
       <div class="contact-card">
         <p>
-          You can replace this text with real contact details, like:
+          You can replace this text with real contact details, for example:
         </p>
         <ul>
           <li>Instagram: <strong>@areej.handmade</strong> (example)</li>
           <li>Email: <strong>areej@example.com</strong></li>
           <li>WhatsApp for orders and custom requests</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- BASKET -->
+    <section id="basket" class="section section-soft">
+      <h2 class="section-title">Your basket</h2>
+      <p class="section-subtitle">
+        Items you’ve added will appear here. This is a simple demo basket to show what an order list might look like.
+      </p>
+
+      <div class="basket-card">
+        <p id="basket-empty">Your basket is empty.</p>
+        <ul id="basket-items" class="basket-items"></ul>
+        <p class="basket-summary">
+          Total items: <span id="basket-count">0</span>
+        </p>
       </div>
     </section>
   </main>
@@ -129,10 +154,56 @@
   </footer>
 
   <script>
+    // Footer year
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Simple basket logic
+    const addButtons = document.querySelectorAll(".add-to-basket");
+    const basketItemsEl = document.getElementById("basket-items");
+    const basketEmptyEl = document.getElementById("basket-empty");
+    const basketCountEl = document.getElementById("basket-count");
+
+    let basket = [];
+
+    function renderBasket() {
+      basketItemsEl.innerHTML = "";
+
+      if (basket.length === 0) {
+        basketEmptyEl.style.display = "block";
+      } else {
+        basketEmptyEl.style.display = "none";
+
+        basket.forEach((item, index) => {
+          const li = document.createElement("li");
+          li.className = "basket-item-row";
+          li.textContent = item;
+
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "Remove";
+          removeBtn.className = "basket-remove";
+          removeBtn.addEventListener("click", () => {
+            basket.splice(index, 1);
+            renderBasket();
+          });
+
+          li.appendChild(removeBtn);
+          basketItemsEl.appendChild(li);
+        });
+      }
+
+      basketCountEl.textContent = basket.length;
+    }
+
+    addButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const name = btn.getAttribute("data-name") || "Item";
+        basket.push(name);
+        renderBasket();
+      });
+    });
+
+    renderBasket();
   </script>
 </body>
 </html>
-
-
