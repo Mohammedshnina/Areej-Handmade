@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Areej Handmade | Handcrafted with love</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <!-- if you have Areej Handmade logo later, we can use an <img> here -->
+      Areej<span>Handmade</span>
+    </div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="hero-text">
+        <p class="tagline">Hand‑stitched • Hand‑crafted • Heart‑made</p>
+        <h1>Beautiful handmade pieces for your home & gifts</h1>
+        <p class="hero-subtitle">
+          Areej creates unique handcrafted items – each piece carefully made, never mass‑produced.
+          Perfect for gifts, decor, or something special just for you.
+        </p>
+        <div class="hero-actions">
+          <a href="#gallery" class="btn primary">View featured pieces</a>
+          <a href="#contact" class="btn ghost">Order / custom request</a>
+        </div>
+      </div>
+      <div class="hero-image-card">
+        <!-- later we can swap this with a real product photo -->
+        <div class="hero-placeholder">
+          Your mum’s work will go here<br />
+          (photo or collage)
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY PREVIEW -->
+    <section id="gallery" class="section">
+      <h2 class="section-title">Featured creations</h2>
+      <p class="section-subtitle">
+        A small selection of handmade pieces. We can swap these with real photos later.
+      </p>
+
+      <div class="gallery-grid">
+        <article class="product-card">
+          <h3>Embroidered hoop art</h3>
+          <p>Delicate embroidery on fabric, perfect for wall decor or gifts.</p>
+          <p class="product-tag">Custom text available</p>
+        </article>
+
+        <article class="product-card">
+          <h3>Personalised name piece</h3>
+          <p>Embroidered names or quotes in your chosen colours.</p>
+          <p class="product-tag">Great for baby gifts</p>
+        </article>
+
+        <article class="product-card">
+          <h3>Home decor designs</h3>
+          <p>Floral patterns and geometric designs to brighten any room.</p>
+          <p class="product-tag">One‑of‑a‑kind</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section section-soft">
+      <h2 class="section-title">About Areej Handmade</h2>
+      <p class="section-subtitle">
+        A short story about your mum, why she started this, and what makes her work special.
+      </p>
+
+      <div class="about-grid">
+        <div>
+          <p>
+            Areej Handmade is a small, home‑grown brand focused on thoughtful, carefully
+            made pieces. Every stitch is done by hand, with time and care.
+          </p>
+          <p>
+            This space is for you to tell your mum’s story – when she started, what she loves
+            making, and how people can support her work.
+          </p>
+        </div>
+        <div class="about-highlight">
+          <h3>Values</h3>
+          <ul>
+            <li>Handcrafted, not mass‑produced.</li>
+            <li>Attention to detail in every piece.</li>
+            <li>Custom, personal designs made with care.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Get in touch</h2>
+      <p class="section-subtitle">
+        Use this section to explain how people can order: WhatsApp, Instagram, email, etc.
+      </p>
+
+      <div class="contact-card">
+        <p>
+          You can replace this text with real contact details, like:
+        </p>
+        <ul>
+          <li>Instagram: <strong>@areej.handmade</strong> (example)</li>
+          <li>Email: <strong>areej@example.com</strong></li>
+          <li>WhatsApp for orders and custom requests</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Areej Handmade
+  </footer>
+
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
