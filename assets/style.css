@@ -695,4 +695,26 @@ body {
   justify-content: space-between;
 }
 
+.toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--accent);
+  color: white;
+  padding: 0.9rem 1.3rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 0.3s ease;
+  z-index: 1100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
 
