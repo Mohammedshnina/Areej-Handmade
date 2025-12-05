@@ -48,6 +48,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  background: radial-gradient(circle at top left,
+    #ffe5f1 0%,
+    #fdf7fa 45%,
+    #fbeaf1 100%);
+}
+
 /* ========== NAVBAR ========== */
 
 .navbar {
@@ -743,5 +750,6 @@ body {
 }
 
 }
+
 
 
