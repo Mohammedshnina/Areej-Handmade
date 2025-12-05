@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Items | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <div class="logo-text">
+        Areej<span>Handmade</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="items.html">Items</a>
+      <a href="index.html#contact">Contact</a>
+      <button type="button" class="nav-basket-btn" id="openBasket">
+        Basket (<span id="basketCountNav">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <!-- BASKET OVERLAY + DRAWER (same as other pages) -->
+  <div class="basket-overlay" id="basketOverlay"></div>
+  <aside class="basket-drawer" id="basketDrawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button type="button" class="basket-close" id="closeBasket">×</button>
+    </div>
+    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
+    <ul id="drawerItems" class="drawer-items"></ul>
+    <p class="basket-summary">
+      Total items: <span id="drawerCount">0</span>
+    </p>
+    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
+  </aside>
+
+  <main>
+    <section class="section">
+      <h1 class="section-title">All items</h1>
+      <p class="section-subtitle">
+        A fuller list of Areej’s handmade pieces. Later you can replace the text with
+        real product names, prices and photos.
+      </p>
+
+      <div class="gallery-grid">
+        <article class="product-card">
+          <h3>Floral hoop (medium)</h3>
+          <p>Hand‑embroidered floral design on a medium hoop.</p>
+          <p class="product-tag">Made to order</p>
+          <button class="btn small add-to-basket"
+                  data-name="Floral hoop (medium)">
+            Add to basket
+          </button>
+        </article>
+
+        <article class="product-card">
+          <h3>Baby name hoop</h3>
+          <p>Personalised hoop with baby name and soft colours.</p>
+          <p class="product-tag">Perfect gift</p>
+          <button class="btn small add-to-basket"
+                  data-name="Baby name hoop">
+            Add to basket
+          </button>
+        </article>
+
+        <article class="product-card">
+          <h3>Family name frame</h3>
+          <p>Framed embroidery with your family name and date.</p>
+          <p class="product-tag">Customisable</p>
+          <button class="btn small add-to-basket"
+                  data-name="Family name frame">
+            Add to basket
+          </button>
+        </article>
+
+        <article class="product-card">
+          <h3>Housewarming piece</h3>
+          <p>“Welcome home” style design for new homes.</p>
+          <p class="product-tag">One‑of‑a‑kind</p>
+          <button class="btn small add-to-basket"
+                  data-name="Housewarming piece">
+            Add to basket
+          </button>
+        </article>
+
+        <article class="product-card">
+          <h3>Quran quote hoop</h3>
+          <p>Elegant calligraphy‑style embroidery with a verse.</p>
+          <p class="product-tag">Custom ayah available</p>
+          <button class="btn small add-to-basket"
+                  data-name="Quran quote hoop">
+            Add to basket
+          </button>
+        </article>
+
+        <article class="product-card">
+          <h3>Mini gift set</h3>
+          <p>Small hoop + card combo, ideal as a simple gift.</p>
+          <p class="product-tag">Gift‑ready</p>
+          <button class="btn small add-to-basket"
+                  data-name="Mini gift set">
+            Add to basket
+          </button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Areej Handmade
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
