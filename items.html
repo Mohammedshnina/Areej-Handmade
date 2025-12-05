@@ -122,31 +122,56 @@
   <div class="item-popup-overlay" id="popupOverlay"></div>
 
   <div class="item-popup" id="popup">
-    <h2>Add custom details</h2>
+    <div class="item-popup-grid">
+      <!-- LEFT: big image area -->
+      <div class="popup-image-col">
+        <div class="popup-image-frame">
+          <div class="popup-main-image">
+            Main item image<br>
+            (replace with real photo later)
+          </div>
+          <div class="popup-thumb-row">
+            <div class="popup-thumb-box"></div>
+            <div class="popup-thumb-box"></div>
+            <div class="popup-thumb-box"></div>
+            <div class="popup-thumb-box"></div>
+          </div>
+        </div>
+      </div>
 
-    <p class="colour-label">Choose a colour:</p>
-    <div class="colour-options">
-      <button type="button" class="colour-pill" data-colour="Pink">Pink</button>
-      <button type="button" class="colour-pill" data-colour="Cream">Cream</button>
-      <button type="button" class="colour-pill" data-colour="White">White</button>
-      <button type="button" class="colour-pill" data-colour="Gold">Gold</button>
-      <button type="button" class="colour-pill" data-colour="Black">Black</button>
-    </div>
+      <!-- RIGHT: options -->
+      <div class="popup-content-col">
+        <h2>Customise your piece</h2>
+        <p class="popup-item-name" id="popupItemName">Item name</p>
 
-    <label>Other / custom colour (if not listed):</label>
-    <input type="text" id="popupColorCustom" placeholder="Describe the colour…">
+        <p class="colour-label">Colour:</p>
+        <div class="colour-swatches">
+          <button type="button" class="colour-swatch"
+                  data-colour="Black" aria-label="Black"
+                  style="--swatch:#111111;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="White" aria-label="White"
+                  style="--swatch:#f7f7f7;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Cream" aria-label="Cream"
+                  style="--swatch:#f3e4cc;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Gold" aria-label="Gold"
+                  style="--swatch:#d8a840;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Pink" aria-label="Pink"
+                  style="--swatch:#e9a0b7;"></button>
+        </div>
 
-    <label>Description / notes:</label>
-    <textarea id="popupDesc" placeholder="Describe your custom piece..."></textarea>
+        <label>Description / notes (optional):</label>
+        <textarea id="popupDesc"
+          placeholder="Anything special to mention about this piece..."></textarea>
 
-    <label>Reference image (optional):</label>
-    <div class="image-placeholder">
-      Image goes here (you can replace this with a real upload or preview later)
-    </div>
-
-    <div class="popup-buttons">
-      <button class="btn ghost" id="popupCancel">Cancel</button>
-      <button class="btn primary" id="popupAdd">Add to basket</button>
+        <div class="popup-buttons">
+          <button class="btn ghost" id="popupCancel">Cancel</button>
+          <button class="btn primary" id="popupAdd">Add to basket</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -160,5 +185,3 @@
   </script>
 </body>
 </html>
-
-
