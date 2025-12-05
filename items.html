@@ -46,69 +46,123 @@
     <section class="section">
       <h1 class="section-title">All items</h1>
       <p class="section-subtitle">
-        A fuller list of Areej’s handmade pieces. You can replace the text with
-        real product names, prices and photos later.
+        A fuller list of Areej’s handmade pieces. You can replace the text and
+        picture placeholders with real photos and prices later.
       </p>
 
       <div class="gallery-grid">
+        <!-- 1. Floral hoop -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Floral hoop image<br>(replace with real photo)
+            </div>
+          </div>
           <h3>Floral hoop (medium)</h3>
           <p>Hand‑embroidered floral design on a medium hoop.</p>
           <p class="product-tag">Made to order</p>
-         <a class="btn small" href="product.html">View details</a>
-
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Floral hoop (medium)">
+              Quick add
+            </button>
+          </div>
         </article>
 
+        <!-- 2. Baby name hoop -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Baby name hoop image<br>(replace later)
+            </div>
+          </div>
           <h3>Baby name hoop</h3>
           <p>Personalised hoop with baby name and soft colours.</p>
           <p class="product-tag">Perfect gift</p>
-          <button class="btn small add-to-basket"
-                  data-name="Baby name hoop">
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-baby.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Baby name hoop">
+              Quick add
+            </button>
+          </div>
         </article>
 
+        <!-- 3. Family name frame -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Family name frame image<br>(replace later)
+            </div>
+          </div>
           <h3>Family name frame</h3>
           <p>Framed embroidery with your family name and date.</p>
           <p class="product-tag">Customisable</p>
-          <button class="btn small add-to-basket"
-                  data-name="Family name frame">
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-family.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Family name frame">
+              Quick add
+            </button>
+          </div>
         </article>
 
+        <!-- 4. Housewarming piece -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Housewarming piece image<br>(replace later)
+            </div>
+          </div>
           <h3>Housewarming piece</h3>
-          <p>“Welcome home” design for new homes.</p>
+          <p>“Welcome home” style design for new homes.</p>
           <p class="product-tag">One‑of‑a‑kind</p>
-          <button class="btn small add-to-basket"
-                  data-name="Housewarming piece">
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-housewarming.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Housewarming piece">
+              Quick add
+            </button>
+          </div>
         </article>
 
+        <!-- 5. Quran quote hoop -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Quran quote hoop image<br>(replace later)
+            </div>
+          </div>
           <h3>Quran quote hoop</h3>
           <p>Elegant embroidery with a Quran verse.</p>
           <p class="product-tag">Custom ayah available</p>
-          <button class="btn small add-to-basket"
-                  data-name="Quran quote hoop">
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-quran.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Quran quote hoop">
+              Quick add
+            </button>
+          </div>
         </article>
 
+        <!-- 6. Mini gift set -->
         <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Mini gift set image<br>(replace later)
+            </div>
+          </div>
           <h3>Mini gift set</h3>
           <p>Small hoop + card combo, ready to gift.</p>
           <p class="product-tag">Gift‑ready</p>
-          <button class="btn small add-to-basket"
-                  data-name="Mini gift set">
-            Add to basket
-          </button>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-mini.html">View details</a>
+            <button class="btn small primary add-to-basket"
+                    data-name="Mini gift set">
+              Quick add
+            </button>
+          </div>
         </article>
       </div>
     </section>
@@ -118,12 +172,11 @@
     © <span id="year"></span> Areej Handmade
   </footer>
 
-  <!-- ADD ITEM POPUP -->
+  <!-- POPUP (optional quick-add details) -->
   <div class="item-popup-overlay" id="popupOverlay"></div>
 
   <div class="item-popup" id="popup">
     <div class="item-popup-grid">
-      <!-- LEFT: big image area -->
       <div class="popup-image-col">
         <div class="popup-image-frame">
           <div class="popup-main-image">
@@ -139,7 +192,6 @@
         </div>
       </div>
 
-      <!-- RIGHT: options -->
       <div class="popup-content-col">
         <h2>Customise your piece</h2>
         <p class="popup-item-name" id="popupItemName">Item name</p>
@@ -175,7 +227,6 @@
     </div>
   </div>
 
-  <!-- TOAST MESSAGE -->
   <div id="toast" class="toast">Added successfully!</div>
 
   <script src="cart.js"></script>
@@ -185,4 +236,3 @@
   </script>
 </body>
 </html>
-
