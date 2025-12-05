@@ -643,3 +643,56 @@ body {
     padding: 2rem 1.2rem;
   }
 }
+
+.item-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  z-index: 900;
+}
+
+.item-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 380px;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  display: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.item-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.item-popup-overlay.show {
+  display: block;
+}
+
+.item-popup input,
+.item-popup textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  font-size: 0.9rem;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
