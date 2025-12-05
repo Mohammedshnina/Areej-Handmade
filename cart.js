@@ -1,7 +1,7 @@
 // Storage key for localStorage
 const STORAGE_KEY = "areejBasket";
 
-/* ========== Helpers: load/save basket ========== */
+/* ===== Helpers: load / save ===== */
 
 function loadBasket() {
   try {
@@ -18,7 +18,7 @@ function saveBasket(basket) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(basket));
 }
 
-/* ========== Global UI refresh ========== */
+/* ===== Global UI refresh ===== */
 
 function refreshAllBasketUI() {
   updateNavCount();
@@ -27,7 +27,7 @@ function refreshAllBasketUI() {
   renderCheckoutPage();
 }
 
-/* ========== Nav basket count ========== */
+/* ===== Nav count ===== */
 
 function updateNavCount() {
   const el = document.getElementById("basketCountNav");
@@ -36,7 +36,7 @@ function updateNavCount() {
   el.textContent = basket.length;
 }
 
-/* ========== Basket drawer (side panel) ========== */
+/* ===== Drawer ===== */
 
 function renderDrawer() {
   const itemsEl = document.getElementById("drawerItems");
@@ -105,7 +105,7 @@ function setupDrawerTriggers() {
   overlay.addEventListener("click", closeDrawer);
 }
 
-/* ========== Toast (bottom‑right message) ========== */
+/* ===== Toast ===== */
 
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -118,7 +118,6 @@ function showToast(message) {
   }, 2500);
 }
 
-// On items.html#added → show toast once
 function checkAddedHashToast() {
   if (window.location.hash === "#added") {
     showToast("Item added to basket");
@@ -126,26 +125,21 @@ function checkAddedHashToast() {
   }
 }
 
-/* ========== Popup for colours + description ========== */
+/* ===== Popup + Add to basket ===== */
 
 function setupAddButtons() {
   const buttons = document.querySelectorAll(".add-to-basket");
 
   const overlay = document.getElementById("popupOverlay");
   const popup = document.getElementById("popup");
-  const colourButtons = document.querySelectorAll(".colour-pill");
-  const customColourInput = document.getElementById("popupColorCustom");
+  const colourButtons = document.querySelectorAll(".colour-swatch");
   const descInput = document.getElementById("popupDesc");
   const popupCancel = document.getElementById("popupCancel");
   const popupAdd = document.getElementById("popupAdd");
+  const popupItemName = document.getElementById("popupItemName");
 
   const popupAvailable =
-    overlay &&
-    popup &&
-    customColourInput &&
-    descInput &&
-    popupCancel &&
-    popupAdd;
+    overlay && popup && descInput && popupCancel && popupAdd;
 
   let pendingItem = null;
   let selectedColour = null;
@@ -157,13 +151,13 @@ function setupAddButtons() {
 
   function selectColour(btn) {
     clearColourSelection();
-    selectedColour = btn.getAttribute("data-colour") || btn.textContent.trim();
+    selectedColour = btn.getAttribute("data-colour") || "";
     btn.classList.add("active");
   }
 
   function openPopup(name) {
     if (!popupAvailable) {
-      // Fallback: if popup not on this page, just add straight away
+      // Fallback if popup isn't on this page
       const basket = loadBasket();
       basket.push({ name });
       saveBasket(basket);
@@ -173,8 +167,8 @@ function setupAddButtons() {
     }
 
     pendingItem = name;
+    if (popupItemName) popupItemName.textContent = name;
     clearColourSelection();
-    customColourInput.value = "";
     descInput.value = "";
 
     overlay.classList.add("show");
@@ -200,10 +194,7 @@ function setupAddButtons() {
     popupAdd.addEventListener("click", () => {
       if (!pendingItem) return;
 
-      const colour =
-        (selectedColour && selectedColour.trim()) ||
-        customColourInput.value.trim();
-
+      const colour = selectedColour || "";
       const description = descInput.value.trim();
 
       const basket = loadBasket();
@@ -229,8 +220,7 @@ function setupAddButtons() {
   });
 }
 
-
-/* ========== Basket page (basket.html) ========== */
+/* ===== Basket page (basket.html) ===== */
 
 function renderBasketPage() {
   const itemsEl = document.getElementById("basketPageItems");
@@ -283,7 +273,7 @@ function renderBasketPage() {
   }
 }
 
-/* ========== Checkout page (checkout.html) ========== */
+/* ===== Checkout page (checkout.html) ===== */
 
 function renderCheckoutPage() {
   const itemsEl = document.getElementById("checkoutItems");
@@ -326,7 +316,7 @@ function setupCheckoutForm() {
   });
 }
 
-/* ========== Init ========== */
+/* ===== Init ===== */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupDrawerTriggers();
@@ -335,4 +325,3 @@ document.addEventListener("DOMContentLoaded", () => {
   refreshAllBasketUI();
   checkAddedHashToast();
 });
-
