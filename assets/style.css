@@ -1,21 +1,29 @@
 /* ========== THEME ========== */
 
 :root {
-  --bg: #faf7f4;
-  --bg-soft: #f3ece6;
-  --text: #241c19;
-  --muted: #6f5c52;
-  --accent: #d67b6b;
-  --accent-soft: rgba(214, 123, 107, 0.12);
-  --accent-strong: #c45b47;
+  /* MAIN BRAND COLOURS */
+  --bg: #fdf7fa;              /* very soft pink background */
+  --bg-soft: #fbeaf1;         /* light pink panels */
   --card-bg: #ffffff;
-  --border-soft: #eadfd6;
-  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.08);
-  --shadow-soft-sm: 0 10px 25px rgba(0, 0, 0, 0.06);
+  --text: #3d2c34;            /* deep mauve/brown */
+  --muted: #8b6f7a;           /* muted mauve */
+  
+  /* ACCENT PINKS */
+  --accent: #ff6fa8;          /* main pink */
+  --accent-soft: rgba(255, 111, 168, 0.12);
+  --accent-strong: #ff408d;
+
+  /* BORDERS + SHADOWS */
+  --border-soft: #f3d6e2;
+  --shadow-soft: 0 18px 45px rgba(255, 100, 150, 0.18);
+  --shadow-soft-sm: 0 10px 25px rgba(255, 100, 150, 0.14);
+
+  /* RADII */
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-pill: 999px;
 }
+
 
 /* ========== RESET ========== */
 
@@ -735,4 +743,5 @@ body {
 }
 
 }
+
 
