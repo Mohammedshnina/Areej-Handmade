@@ -6,27 +6,6 @@
   <title>Items | Areej Handmade</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
-  <!-- ADD ITEM POPUP -->
-<div class="item-popup-overlay" id="popupOverlay"></div>
-
-<div class="item-popup" id="popup">
-  <h2>Add custom details</h2>
-
-  <label>Colours:</label>
-  <input type="text" id="popupColor" placeholder="e.g. pink, gold, white">
-
-  <label>Description:</label>
-  <textarea id="popupDesc" placeholder="Describe your custom piece..."></textarea>
-
-  <div class="popup-buttons">
-    <button class="btn ghost" id="popupCancel">Cancel</button>
-    <button class="btn primary" id="popupAdd">Add to basket</button>
-  </div>
-</div>
-
-<!-- TOAST MESSAGE -->
-<div id="toast" class="toast">Added successfully!</div>
-
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
@@ -48,7 +27,7 @@
     </nav>
   </header>
 
-  <!-- BASKET OVERLAY + DRAWER (same as other pages) -->
+  <!-- BASKET OVERLAY + DRAWER -->
   <div class="basket-overlay" id="basketOverlay"></div>
   <aside class="basket-drawer" id="basketDrawer">
     <div class="basket-drawer-header">
@@ -67,8 +46,8 @@
     <section class="section">
       <h1 class="section-title">All items</h1>
       <p class="section-subtitle">
-        A fuller list of Areej’s handmade pieces. Later you can replace the text with
-        real product names, prices and photos.
+        A fuller list of Areej’s handmade pieces. You can replace the text with
+        real product names, prices and photos later.
       </p>
 
       <div class="gallery-grid">
@@ -104,7 +83,7 @@
 
         <article class="product-card">
           <h3>Housewarming piece</h3>
-          <p>“Welcome home” style design for new homes.</p>
+          <p>“Welcome home” design for new homes.</p>
           <p class="product-tag">One‑of‑a‑kind</p>
           <button class="btn small add-to-basket"
                   data-name="Housewarming piece">
@@ -114,7 +93,7 @@
 
         <article class="product-card">
           <h3>Quran quote hoop</h3>
-          <p>Elegant calligraphy‑style embroidery with a verse.</p>
+          <p>Elegant embroidery with a Quran verse.</p>
           <p class="product-tag">Custom ayah available</p>
           <button class="btn small add-to-basket"
                   data-name="Quran quote hoop">
@@ -124,7 +103,7 @@
 
         <article class="product-card">
           <h3>Mini gift set</h3>
-          <p>Small hoop + card combo, ideal as a simple gift.</p>
+          <p>Small hoop + card combo, ready to gift.</p>
           <p class="product-tag">Gift‑ready</p>
           <button class="btn small add-to-basket"
                   data-name="Mini gift set">
@@ -139,6 +118,27 @@
     © <span id="year"></span> Areej Handmade
   </footer>
 
+  <!-- ADD ITEM POPUP -->
+  <div class="item-popup-overlay" id="popupOverlay"></div>
+
+  <div class="item-popup" id="popup">
+    <h2>Add custom details</h2>
+
+    <label>Colours:</label>
+    <input type="text" id="popupColor" placeholder="e.g. pink, gold, white">
+
+    <label>Description:</label>
+    <textarea id="popupDesc" placeholder="Describe your custom piece..."></textarea>
+
+    <div class="popup-buttons">
+      <button class="btn ghost" id="popupCancel">Cancel</button>
+      <button class="btn primary" id="popupAdd">Add to basket</button>
+    </div>
+  </div>
+
+  <!-- TOAST MESSAGE -->
+  <div id="toast" class="toast">Added successfully!</div>
+
   <script src="cart.js"></script>
   <script>
     const yearEl = document.getElementById("year");
@@ -146,4 +146,3 @@
   </script>
 </body>
 </html>
-
