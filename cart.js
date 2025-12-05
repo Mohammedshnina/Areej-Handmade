@@ -1,4 +1,7 @@
+// Key used for localStorage
 const STORAGE_KEY = "areejBasket";
+
+/* ---------- helpers: load/save basket ---------- */
 
 function loadBasket() {
   try {
@@ -15,6 +18,8 @@ function saveBasket(basket) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(basket));
 }
 
+/* ---------- global UI refresh ---------- */
+
 function refreshAllBasketUI() {
   updateNavCount();
   renderDrawer();
@@ -22,7 +27,7 @@ function refreshAllBasketUI() {
   renderCheckoutPage();
 }
 
-/* ---------- Nav count ---------- */
+/* ---------- nav basket count ---------- */
 
 function updateNavCount() {
   const el = document.getElementById("basketCountNav");
@@ -31,7 +36,7 @@ function updateNavCount() {
   el.textContent = basket.length;
 }
 
-/* ---------- Drawer (side panel) ---------- */
+/* ---------- drawer (side basket) ---------- */
 
 function renderDrawer() {
   const itemsEl = document.getElementById("drawerItems");
@@ -52,7 +57,9 @@ function renderDrawer() {
       li.className = "drawer-item-row";
 
       const nameSpan = document.createElement("span");
-      nameSpan.textContent = item.name || "Item";
+      let label = item.name || "Item";
+      if (item.color) label += ` (${item.color})`;
+      nameSpan.textContent = label;
 
       const removeBtn = document.createElement("button");
       removeBtn.type = "button";
@@ -98,7 +105,106 @@ function setupDrawerTriggers() {
   overlay.addEventListener("click", closeDrawer);
 }
 
-/* ---------- Basket page (basket.html) ---------- */
+/* ---------- toast (bottom‑right message) ---------- */
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+// When we land on items.html#added -> show toast
+function checkAddedHashToast() {
+  if (window.location.hash === "#added") {
+    showToast("Item added to basket");
+    // clean the hash so refreshing doesn’t show again
+    history.replaceState(null, "", window.location.pathname);
+  }
+}
+
+/* ---------- popup for colours + description ---------- */
+
+function setupAddButtons() {
+  const buttons = document.querySelectorAll(".add-to-basket");
+
+  // popup elements (only exist on pages where you added them)
+  const overlay = document.getElementById("popupOverlay");
+  const popup = document.getElementById("popup");
+  const popupColor = document.getElementById("popupColor");
+  const popupDesc = document.getElementById("popupDesc");
+  const popupCancel = document.getElementById("popupCancel");
+  const popupAdd = document.getElementById("popupAdd");
+
+  // if popup doesn't exist, fallback to simple behaviour (no popup)
+  const popupAvailable =
+    overlay && popup && popupColor && popupDesc && popupCancel && popupAdd;
+
+  let pendingItem = null;
+
+  function openPopup(name) {
+    if (!popupAvailable) {
+      // fallback: just add straight away
+      const basket = loadBasket();
+      basket.push({ name });
+      saveBasket(basket);
+      refreshAllBasketUI();
+      showToast("Item added to basket");
+      return;
+    }
+
+    pendingItem = name;
+    popupColor.value = "";
+    popupDesc.value = "";
+
+    overlay.classList.add("show");
+    popup.classList.add("show");
+  }
+
+  function closePopup() {
+    if (!popupAvailable) return;
+    overlay.classList.remove("show");
+    popup.classList.remove("show");
+    pendingItem = null;
+  }
+
+  if (popupAvailable) {
+    popupCancel.addEventListener("click", closePopup);
+    overlay.addEventListener("click", closePopup);
+
+    popupAdd.addEventListener("click", () => {
+      if (!pendingItem) return;
+
+      const basket = loadBasket();
+      basket.push({
+        name: pendingItem,
+        color: popupColor.value.trim(),
+        description: popupDesc.value.trim(),
+      });
+
+      saveBasket(basket);
+      refreshAllBasketUI();
+      closePopup();
+
+      // redirect to items with flag so toast appears
+      window.location.href = "items.html#added";
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const name = btn.getAttribute("data-name") || "Item";
+      openPopup(name);
+    });
+  });
+}
+
+/* ---------- basket page (basket.html) ---------- */
 
 function renderBasketPage() {
   const itemsEl = document.getElementById("basketPageItems");
@@ -120,7 +226,9 @@ function renderBasketPage() {
       li.className = "basket-item-row";
 
       const nameSpan = document.createElement("span");
-      nameSpan.textContent = item.name || "Item";
+      let label = item.name || "Item";
+      if (item.color) label += ` (${item.color})`;
+      nameSpan.textContent = label;
 
       const removeBtn = document.createElement("button");
       removeBtn.type = "button";
@@ -149,7 +257,7 @@ function renderBasketPage() {
   }
 }
 
-/* ---------- Checkout page (checkout.html) ---------- */
+/* ---------- checkout page (checkout.html) ---------- */
 
 function renderCheckoutPage() {
   const itemsEl = document.getElementById("checkoutItems");
@@ -170,7 +278,9 @@ function renderCheckoutPage() {
       li.className = "basket-item-row";
 
       const nameSpan = document.createElement("span");
-      nameSpan.textContent = item.name || "Item";
+      let label = item.name || "Item";
+      if (item.color) label += ` (${item.color})`;
+      nameSpan.textContent = label;
 
       li.appendChild(nameSpan);
       itemsEl.appendChild(li);
@@ -190,28 +300,12 @@ function setupCheckoutForm() {
   });
 }
 
-/* ---------- Add‑to‑basket buttons ---------- */
-
-function setupAddButtons() {
-  const buttons = document.querySelectorAll(".add-to-basket");
-  if (!buttons.length) return;
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const name = btn.getAttribute("data-name") || "Item";
-      const basket = loadBasket();
-      basket.push({ name });
-      saveBasket(basket);
-      refreshAllBasketUI();
-    });
-  });
-}
-
-/* ---------- INIT ---------- */
+/* ---------- init ---------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupDrawerTriggers();
   setupAddButtons();
   setupCheckoutForm();
   refreshAllBasketUI();
+  checkAddedHashToast();
 });
