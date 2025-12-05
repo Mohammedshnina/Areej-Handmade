@@ -124,11 +124,25 @@
   <div class="item-popup" id="popup">
     <h2>Add custom details</h2>
 
-    <label>Colours:</label>
-    <input type="text" id="popupColor" placeholder="e.g. pink, gold, white">
+    <p class="colour-label">Choose a colour:</p>
+    <div class="colour-options">
+      <button type="button" class="colour-pill" data-colour="Pink">Pink</button>
+      <button type="button" class="colour-pill" data-colour="Cream">Cream</button>
+      <button type="button" class="colour-pill" data-colour="White">White</button>
+      <button type="button" class="colour-pill" data-colour="Gold">Gold</button>
+      <button type="button" class="colour-pill" data-colour="Black">Black</button>
+    </div>
 
-    <label>Description:</label>
+    <label>Other / custom colour (if not listed):</label>
+    <input type="text" id="popupColorCustom" placeholder="Describe the colour…">
+
+    <label>Description / notes:</label>
     <textarea id="popupDesc" placeholder="Describe your custom piece..."></textarea>
+
+    <label>Reference image (optional):</label>
+    <div class="image-placeholder">
+      Image goes here (you can replace this with a real upload or preview later)
+    </div>
 
     <div class="popup-buttons">
       <button class="btn ghost" id="popupCancel">Cancel</button>
