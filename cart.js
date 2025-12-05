@@ -131,7 +131,6 @@ function checkAddedHashToast() {
 function setupAddButtons() {
   const buttons = document.querySelectorAll(".add-to-basket");
 
-  // popup elements (only exist on pages where you added them)
   const overlay = document.getElementById("popupOverlay");
   const popup = document.getElementById("popup");
   const colourButtons = document.querySelectorAll(".colour-pill");
@@ -191,16 +190,13 @@ function setupAddButtons() {
   }
 
   if (popupAvailable) {
-    // Colour button clicks
     colourButtons.forEach((btn) => {
       btn.addEventListener("click", () => selectColour(btn));
     });
 
-    // Cancel / clicking overlay closes popup
     popupCancel.addEventListener("click", closePopup);
     overlay.addEventListener("click", closePopup);
 
-    // Confirm add
     popupAdd.addEventListener("click", () => {
       if (!pendingItem) return;
 
@@ -221,12 +217,10 @@ function setupAddButtons() {
       refreshAllBasketUI();
       closePopup();
 
-      // Redirect to items page with flag for toast
       window.location.href = "items.html#added";
     });
   }
 
-  // Attach click on all "Add to basket" buttons
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const name = btn.getAttribute("data-name") || "Item";
@@ -234,6 +228,7 @@ function setupAddButtons() {
     });
   });
 }
+
 
 /* ========== Basket page (basket.html) ========== */
 
@@ -340,3 +335,4 @@ document.addEventListener("DOMContentLoaded", () => {
   refreshAllBasketUI();
   checkAddedHashToast();
 });
+
