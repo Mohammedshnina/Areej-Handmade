@@ -55,14 +55,12 @@ body {
   border-bottom: 1px solid rgba(234, 223, 214, 0.9);
 }
 
-/* logo wrapper (image + text) */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-/* logo image */
 .logo-img {
   height: 52px;
   width: auto;
@@ -70,7 +68,6 @@ body {
   object-fit: contain;
 }
 
-/* logo text */
 .logo-text {
   font-weight: 800;
   font-size: 1.05rem;
@@ -81,8 +78,6 @@ body {
 .logo-text span {
   color: var(--accent);
 }
-
-/* nav links */
 
 .navbar nav {
   display: flex;
@@ -118,8 +113,6 @@ body {
 .navbar a:hover::after {
   width: 100%;
 }
-
-/* basket button in nav styled like a link */
 
 .nav-basket-btn {
   border: none;
@@ -183,45 +176,7 @@ body {
   color: var(--muted);
 }
 
-/* ========== HERO (used on index, safe to keep) ========== */
-
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: 2.6rem;
-  align-items: center;
-}
-
-.hero-text {
-  position: relative;
-}
-
-.tagline {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.78rem;
-  color: var(--accent);
-  margin-bottom: 0.7rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.2rem, 3.5vw, 2.8rem);
-  margin: 0 0 0.75rem;
-}
-
-.hero-subtitle {
-  max-width: 540px;
-  color: var(--muted);
-  margin: 0 0 1.6rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-/* buttons */
+/* ========== BUTTONS ========== */
 
 .btn {
   display: inline-flex;
@@ -258,47 +213,13 @@ body {
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.14);
 }
 
-/* small variation for basket buttons */
 .btn.small {
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
   margin-top: 0.4rem;
 }
 
-/* hero visual card */
-
-.hero-image-card {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(234, 223, 214, 0.9);
-  box-shadow: var(--shadow-soft);
-  padding: 1.5rem;
-  min-height: 230px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-image-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right,
-      rgba(214, 123, 107, 0.2),
-      transparent 55%);
-  pointer-events: none;
-}
-
-.hero-placeholder {
-  border-radius: var(--radius-md);
-  border: 1px dashed rgba(214, 123, 107, 0.7);
-  padding: 2.6rem 1.7rem;
-  text-align: center;
-  font-size: 0.96rem;
-  color: var(--muted);
-  background: rgba(250, 247, 244, 0.9);
-}
-
-/* ========== GALLERY / ITEMS GRID ========== */
+/* ========== ITEMS GRID ========== */
 
 .gallery-grid {
   display: grid;
@@ -361,61 +282,6 @@ body {
   color: var(--accent-strong);
   font-size: 0.8rem;
   font-weight: 500;
-}
-
-/* ========== ABOUT (used on index) ========== */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-grid p {
-  margin-top: 0;
-  margin-bottom: 0.9rem;
-  color: var(--muted);
-}
-
-.about-highlight {
-  background: var(--card-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft-sm);
-  padding: 1.3rem 1.5rem;
-}
-
-.about-highlight h3 {
-  margin-top: 0;
-  margin-bottom: 0.4rem;
-}
-
-.about-highlight ul {
-  padding-left: 1.1rem;
-  margin: 0.4rem 0 0;
-  color: var(--muted);
-}
-
-/* ========== CONTACT CARD ========== */
-
-.contact-card {
-  background: var(--card-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft-sm);
-  padding: 1.4rem 1.6rem;
-  max-width: 520px;
-}
-
-.contact-card p {
-  margin-top: 0;
-  color: var(--muted);
-}
-
-.contact-card ul {
-  margin: 0.6rem 0 0;
-  padding-left: 1.1rem;
 }
 
 /* ========== SIDE BASKET DRAWER ========== */
@@ -521,79 +387,6 @@ body {
   justify-content: center;
 }
 
-/* ========== BASKET PAGE LAYOUT ========== */
-
-.basket-page-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.basket-card {
-  background: var(--card-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft-sm);
-  padding: 1.4rem 1.6rem;
-}
-
-.basket-items {
-  list-style: none;
-  padding-left: 0;
-  margin: 0.6rem 0 0.8rem;
-}
-
-.basket-item-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.45rem 0;
-  border-bottom: 1px solid rgba(234, 223, 214, 0.8);
-  font-size: 0.95rem;
-}
-
-.basket-item-row:last-child {
-  border-bottom: none;
-}
-
-.basket-checkout {
-  background: var(--card-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft-sm);
-  padding: 1.4rem 1.6rem;
-}
-
-/* checkout form */
-
-.checkout-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  margin-top: 0.8rem;
-}
-
-.checkout-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.9rem;
-}
-
-.checkout-form input,
-.checkout-form textarea {
-  border-radius: 10px;
-  border: 1px solid var(--border-soft);
-  padding: 0.6rem 0.7rem;
-  font: inherit;
-}
-
-.checkout-hint {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
 /* ========== FOOTER ========== */
 
 .footer {
@@ -602,7 +395,7 @@ body {
   color: var(--muted);
 }
 
-/* ========== ITEM POPUP ========== */
+/* ========== ITEM POPUP (big image + colour circles) ========== */
 
 .item-popup-overlay {
   position: fixed;
@@ -616,17 +409,17 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 90%;
-  max-width: 380px;
-  transform: translate(-50%, -50%) scale(0.8);
+  width: 96%;
+  max-width: 720px;
+  transform: translate(-50%, -50%) scale(0.9);
   background: var(--card-bg);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 1.6rem;
   box-shadow: var(--shadow-soft);
   display: none;
   z-index: 1000;
   opacity: 0;
-  transition: 0.25s ease;
+  transition: 0.23s ease;
 }
 
 .item-popup.show {
@@ -639,23 +432,119 @@ body {
   display: block;
 }
 
+.item-popup-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+  gap: 1.6rem;
+  align-items: flex-start;
+}
+
+/* left image side */
+
+.popup-image-col {
+  min-width: 0;
+}
+
+.popup-image-frame {
+  background: var(--bg-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  padding: 0.9rem;
+}
+
+.popup-main-image {
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  background: #fff;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.popup-thumb-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.popup-thumb-box {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  background: #fff;
+}
+
+/* right content side */
+
+.popup-content-col h2 {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+}
+
+.popup-item-name {
+  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.colour-label {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.35rem;
+}
+
+/* colour swatches */
+
+.colour-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.colour-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px var(--border-soft);
+  background: var(--swatch, #ccc);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition:
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.colour-swatch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.colour-swatch.active {
+  box-shadow: 0 0 0 2px var(--accent-strong);
+}
+
+/* description */
+
 .item-popup label {
   font-size: 0.9rem;
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
   margin-bottom: 0.25rem;
 }
 
-.item-popup input,
 .item-popup textarea {
   width: 100%;
   padding: 0.6rem;
-  margin-top: 0.1rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-soft);
   font-size: 0.9rem;
-}
-
-.item-popup textarea {
   resize: vertical;
   min-height: 80px;
 }
@@ -665,53 +554,6 @@ body {
   justify-content: flex-end;
   gap: 0.6rem;
   margin-top: 1.1rem;
-}
-
-/* Colour options in popup */
-
-.colour-label {
-  font-size: 0.9rem;
-  margin-top: 0.4rem;
-  margin-bottom: 0.35rem;
-}
-
-.colour-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.colour-pill {
-  border: 1px solid var(--border-soft);
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.85rem;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.18s ease;
-}
-
-.colour-pill:hover {
-  border-color: var(--accent);
-}
-
-.colour-pill.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-/* Image placeholder box */
-
-.image-placeholder {
-  border: 1px dashed var(--border-soft);
-  border-radius: var(--radius-md);
-  padding: 0.8rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
 /* ========== TOAST ========== */
@@ -738,20 +580,6 @@ body {
 
 /* ========== RESPONSIVE ========== */
 
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-image-card {
-    padding: 1.2rem;
-  }
-
-  .basket-page-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 @media (max-width: 780px) {
   .navbar {
     flex-direction: column;
@@ -764,12 +592,19 @@ body {
   }
 }
 
+@media (max-width: 700px) {
+  .item-popup {
+    max-width: 96vw;
+    padding: 1.2rem;
+  }
+
+  .item-popup-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   .section {
     padding-inline: 5vw;
-  }
-
-  .hero-placeholder {
-    padding: 2rem 1.2rem;
   }
 }
