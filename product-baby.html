@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baby name hoop | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <div class="logo-text">
+        Areej<span>Handmade</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="items.html">Items</a>
+      <a href="index.html#contact">Contact</a>
+      <button type="button" class="nav-basket-btn" id="openBasket">
+        Basket (<span id="basketCountNav">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <div class="basket-overlay" id="basketOverlay"></div>
+  <aside class="basket-drawer" id="basketDrawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button type="button" class="basket-close" id="closeBasket">×</button>
+    </div>
+    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
+    <ul id="drawerItems" class="drawer-items"></ul>
+    <p>Total items: <span id="drawerCount">0</span></p>
+    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
+  </aside>
+
+  <main class="section">
+    <a href="items.html" class="back-link">← Back to all items</a>
+
+    <div class="product-layout">
+      <div class="product-photos">
+        <div class="product-main-photo">
+          Baby name hoop photo<br>(add real image later)
+        </div>
+        <div class="product-thumbs">
+          <div class="product-thumb-box"></div>
+          <div class="product-thumb-box"></div>
+          <div class="product-thumb-box"></div>
+          <div class="product-thumb-box"></div>
+        </div>
+      </div>
+
+      <div class="product-info">
+        <p class="product-eyebrow">Embroidery · Custom baby gift</p>
+        <h1 class="product-title">Baby name hoop</h1>
+        <p class="product-price">£28.00</p>
+
+        <p class="colour-label">Colour:</p>
+        <div class="colour-swatches">
+          <button type="button" class="colour-swatch"
+                  data-colour="Black" aria-label="Black"
+                  style="--swatch:#111111;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="White" aria-label="White"
+                  style="--swatch:#f7f7f7;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Cream" aria-label="Cream"
+                  style="--swatch:#f3e4cc;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Gold" aria-label="Gold"
+                  style="--swatch:#d8a840;"></button>
+          <button type="button" class="colour-swatch"
+                  data-colour="Pink" aria-label="Pink"
+                  style="--swatch:#e9a0b7;"></button>
+        </div>
+
+        <button class="btn primary product-add-btn"
+                data-name="Baby name hoop">
+          Add to basket
+        </button>
+
+        <div class="product-description">
+          <p>
+            A personalised hoop with baby’s name and soft colours. Perfect for
+            nurseries, baby showers and new arrival gifts.
+          </p>
+          <ul>
+            <li>Custom name and date included</li>
+            <li>Soft, baby‑friendly colour palette</li>
+            <li>Hand embroidered by Areej</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Areej Handmade
+  </footer>
+
+  <div id="toast" class="toast">Added successfully!</div>
+
+  <script src="cart.js"></script>
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const colourBtns = document.querySelectorAll(".colour-swatch");
+      const addBtn = document.querySelector(".product-add-btn");
+      let selectedColour = null;
+
+      function clearColours() {
+        selectedColour = null;
+        colourBtns.forEach(b => b.classList.remove("active"));
+      }
+
+      colourBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          clearColours();
+          selectedColour = btn.getAttribute("data-colour");
+          btn.classList.add("active");
+        });
+      });
+
+      if (addBtn) {
+        addBtn.addEventListener("click", () => {
+          const name = addBtn.getAttribute("data-name") || "Item";
+          const basket = loadBasket();
+          basket.push({
+            name,
+            color: selectedColour || "",
+            description: ""
+          });
+          saveBasket(basket);
+          refreshAllBasketUI();
+          showToast("Item added to basket");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
