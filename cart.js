@@ -1,4 +1,4 @@
-// --- Storage key for localStorage ---
+// Storage key for localStorage
 const STORAGE_KEY = "areejBasket";
 
 /* ========== Helpers: load/save basket ========== */
@@ -134,19 +134,37 @@ function setupAddButtons() {
   // popup elements (only exist on pages where you added them)
   const overlay = document.getElementById("popupOverlay");
   const popup = document.getElementById("popup");
-  const popupColor = document.getElementById("popupColor");
-  const popupDesc = document.getElementById("popupDesc");
+  const colourButtons = document.querySelectorAll(".colour-pill");
+  const customColourInput = document.getElementById("popupColorCustom");
+  const descInput = document.getElementById("popupDesc");
   const popupCancel = document.getElementById("popupCancel");
   const popupAdd = document.getElementById("popupAdd");
 
   const popupAvailable =
-    overlay && popup && popupColor && popupDesc && popupCancel && popupAdd;
+    overlay &&
+    popup &&
+    customColourInput &&
+    descInput &&
+    popupCancel &&
+    popupAdd;
 
   let pendingItem = null;
+  let selectedColour = null;
+
+  function clearColourSelection() {
+    selectedColour = null;
+    colourButtons.forEach((btn) => btn.classList.remove("active"));
+  }
+
+  function selectColour(btn) {
+    clearColourSelection();
+    selectedColour = btn.getAttribute("data-colour") || btn.textContent.trim();
+    btn.classList.add("active");
+  }
 
   function openPopup(name) {
     if (!popupAvailable) {
-      // Fallback: no popup on this page, just add quickly
+      // Fallback: if popup not on this page, just add straight away
       const basket = loadBasket();
       basket.push({ name });
       saveBasket(basket);
@@ -156,8 +174,9 @@ function setupAddButtons() {
     }
 
     pendingItem = name;
-    popupColor.value = "";
-    popupDesc.value = "";
+    clearColourSelection();
+    customColourInput.value = "";
+    descInput.value = "";
 
     overlay.classList.add("show");
     popup.classList.add("show");
@@ -168,20 +187,34 @@ function setupAddButtons() {
     overlay.classList.remove("show");
     popup.classList.remove("show");
     pendingItem = null;
+    clearColourSelection();
   }
 
   if (popupAvailable) {
+    // Colour button clicks
+    colourButtons.forEach((btn) => {
+      btn.addEventListener("click", () => selectColour(btn));
+    });
+
+    // Cancel / clicking overlay closes popup
     popupCancel.addEventListener("click", closePopup);
     overlay.addEventListener("click", closePopup);
 
+    // Confirm add
     popupAdd.addEventListener("click", () => {
       if (!pendingItem) return;
+
+      const colour =
+        (selectedColour && selectedColour.trim()) ||
+        customColourInput.value.trim();
+
+      const description = descInput.value.trim();
 
       const basket = loadBasket();
       basket.push({
         name: pendingItem,
-        color: popupColor.value.trim(),
-        description: popupDesc.value.trim(),
+        color: colour,
+        description,
       });
 
       saveBasket(basket);
@@ -193,6 +226,7 @@ function setupAddButtons() {
     });
   }
 
+  // Attach click on all "Add to basket" buttons
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const name = btn.getAttribute("data-name") || "Item";
