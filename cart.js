@@ -1,7 +1,7 @@
-// Key used for localStorage
+// --- Storage key for localStorage ---
 const STORAGE_KEY = "areejBasket";
 
-/* ---------- helpers: load/save basket ---------- */
+/* ========== Helpers: load/save basket ========== */
 
 function loadBasket() {
   try {
@@ -9,7 +9,7 @@ function loadBasket() {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
-  } catch (e) {
+  } catch {
     return [];
   }
 }
@@ -18,7 +18,7 @@ function saveBasket(basket) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(basket));
 }
 
-/* ---------- global UI refresh ---------- */
+/* ========== Global UI refresh ========== */
 
 function refreshAllBasketUI() {
   updateNavCount();
@@ -27,7 +27,7 @@ function refreshAllBasketUI() {
   renderCheckoutPage();
 }
 
-/* ---------- nav basket count ---------- */
+/* ========== Nav basket count ========== */
 
 function updateNavCount() {
   const el = document.getElementById("basketCountNav");
@@ -36,7 +36,7 @@ function updateNavCount() {
   el.textContent = basket.length;
 }
 
-/* ---------- drawer (side basket) ---------- */
+/* ========== Basket drawer (side panel) ========== */
 
 function renderDrawer() {
   const itemsEl = document.getElementById("drawerItems");
@@ -66,9 +66,9 @@ function renderDrawer() {
       removeBtn.textContent = "Remove";
       removeBtn.className = "basket-remove";
       removeBtn.addEventListener("click", () => {
-        const b = loadBasket();
-        b.splice(index, 1);
-        saveBasket(b);
+        const current = loadBasket();
+        current.splice(index, 1);
+        saveBasket(current);
         refreshAllBasketUI();
       });
 
@@ -105,7 +105,7 @@ function setupDrawerTriggers() {
   overlay.addEventListener("click", closeDrawer);
 }
 
-/* ---------- toast (bottom‑right message) ---------- */
+/* ========== Toast (bottom‑right message) ========== */
 
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -113,22 +113,20 @@ function showToast(message) {
 
   toast.textContent = message;
   toast.classList.add("show");
-
   setTimeout(() => {
     toast.classList.remove("show");
   }, 2500);
 }
 
-// When we land on items.html#added -> show toast
+// On items.html#added → show toast once
 function checkAddedHashToast() {
   if (window.location.hash === "#added") {
     showToast("Item added to basket");
-    // clean the hash so refreshing doesn’t show again
     history.replaceState(null, "", window.location.pathname);
   }
 }
 
-/* ---------- popup for colours + description ---------- */
+/* ========== Popup for colours + description ========== */
 
 function setupAddButtons() {
   const buttons = document.querySelectorAll(".add-to-basket");
@@ -141,7 +139,6 @@ function setupAddButtons() {
   const popupCancel = document.getElementById("popupCancel");
   const popupAdd = document.getElementById("popupAdd");
 
-  // if popup doesn't exist, fallback to simple behaviour (no popup)
   const popupAvailable =
     overlay && popup && popupColor && popupDesc && popupCancel && popupAdd;
 
@@ -149,7 +146,7 @@ function setupAddButtons() {
 
   function openPopup(name) {
     if (!popupAvailable) {
-      // fallback: just add straight away
+      // Fallback: no popup on this page, just add quickly
       const basket = loadBasket();
       basket.push({ name });
       saveBasket(basket);
@@ -191,7 +188,7 @@ function setupAddButtons() {
       refreshAllBasketUI();
       closePopup();
 
-      // redirect to items with flag so toast appears
+      // Redirect to items page with flag for toast
       window.location.href = "items.html#added";
     });
   }
@@ -204,7 +201,7 @@ function setupAddButtons() {
   });
 }
 
-/* ---------- basket page (basket.html) ---------- */
+/* ========== Basket page (basket.html) ========== */
 
 function renderBasketPage() {
   const itemsEl = document.getElementById("basketPageItems");
@@ -235,9 +232,9 @@ function renderBasketPage() {
       removeBtn.textContent = "Remove";
       removeBtn.className = "basket-remove";
       removeBtn.addEventListener("click", () => {
-        const b = loadBasket();
-        b.splice(index, 1);
-        saveBasket(b);
+        const current = loadBasket();
+        current.splice(index, 1);
+        saveBasket(current);
         refreshAllBasketUI();
       });
 
@@ -257,7 +254,7 @@ function renderBasketPage() {
   }
 }
 
-/* ---------- checkout page (checkout.html) ---------- */
+/* ========== Checkout page (checkout.html) ========== */
 
 function renderCheckoutPage() {
   const itemsEl = document.getElementById("checkoutItems");
@@ -300,7 +297,7 @@ function setupCheckoutForm() {
   });
 }
 
-/* ---------- init ---------- */
+/* ========== Init ========== */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupDrawerTriggers();
