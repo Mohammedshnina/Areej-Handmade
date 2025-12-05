@@ -6,6 +6,27 @@
   <title>Items | Areej Handmade</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+  <!-- ADD ITEM POPUP -->
+<div class="item-popup-overlay" id="popupOverlay"></div>
+
+<div class="item-popup" id="popup">
+  <h2>Add custom details</h2>
+
+  <label>Colours:</label>
+  <input type="text" id="popupColor" placeholder="e.g. pink, gold, white">
+
+  <label>Description:</label>
+  <textarea id="popupDesc" placeholder="Describe your custom piece..."></textarea>
+
+  <div class="popup-buttons">
+    <button class="btn ghost" id="popupCancel">Cancel</button>
+    <button class="btn primary" id="popupAdd">Add to basket</button>
+  </div>
+</div>
+
+<!-- TOAST MESSAGE -->
+<div id="toast" class="toast">Added successfully!</div>
+
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
@@ -125,3 +146,4 @@
   </script>
 </body>
 </html>
+
