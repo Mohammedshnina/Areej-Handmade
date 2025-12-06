@@ -5,30 +5,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout | Areej Handmade</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .checkout-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1.6rem 1.7rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checkout-card::before {
+      content: "";
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242, 180, 65, 0.35), transparent);
+      opacity: 0.7;
+    }
+
+    .checkout-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .checkout-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0.4rem 0 1rem;
+    }
+
+    .checkout-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .checkout-form-grid .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .checkout-label {
+      font-size: 0.86rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .checkout-input,
+    .checkout-textarea,
+    .checkout-select {
+      width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 0.55rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      background: #fff;
+    }
+
+    .checkout-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .checkout-input:focus,
+    .checkout-textarea:focus,
+    .checkout-select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(242, 180, 65, 0.6);
+    }
+
+    .checkout-summary-list {
+      margin: 0.6rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .checkout-summary-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(243, 214, 226, 0.8);
+    }
+
+    .checkout-summary-item:last-child {
+      border-bottom: none;
+    }
+
+    .checkout-summary-name {
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .checkout-summary-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .checkout-empty {
+      margin-top: 0.7rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .checkout-summary-footer {
+      margin-top: 1.4rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .checkout-complete {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--accent-soft);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .checkout-complete strong {
+      color: var(--accent-strong);
+    }
+
+    @media (max-width: 900px) {
+      .checkout-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
-      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
+      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
       <div class="logo-text">
         Areej<span>Handmade</span>
       </div>
     </div>
-<nav>
-  <a href="index.html#hero">Home</a>
-  <a href="index.html#gallery">Gallery</a>
-  <a href="index.html#about">About</a>
-  <a href="items.html">Items</a>
-  <a href="index.html#contact">Contact</a>
-  <button type="button" class="nav-basket-btn" id="openBasket">
-    Basket (<span id="basketCountNav">0</span>)
-  </button>
-</nav>
-
+    <nav>
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="items.html">Items</a>
+      <a href="index.html#contact">Contact</a>
+      <button type="button" class="nav-basket-btn" id="openBasket">
+        Basket (<span id="basketCountNav">0</span>)
+      </button>
+    </nav>
   </header>
 
-  <!-- drawer -->
+  <!-- SIDE BASKET DRAWER -->
   <div class="basket-overlay" id="basketOverlay"></div>
   <aside class="basket-drawer" id="basketDrawer">
     <div class="basket-drawer-header">
@@ -37,65 +180,189 @@
     </div>
     <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
     <ul id="drawerItems" class="drawer-items"></ul>
-    <p class="basket-summary">
-      Total items: <span id="drawerCount">0</span>
-    </p>
+    <p>Total items: <span id="drawerCount">0</span></p>
     <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
   </aside>
 
-  <main>
-    <section class="section">
-      <h1 class="section-title">Checkout</h1>
-      <p class="section-subtitle">
-        This is a simple, non‑payment checkout. It helps your mum get all the order details.
-      </p>
-
-      <div class="basket-page-grid">
-        <div class="basket-card">
-          <h2>Items in your order</h2>
-          <p id="checkoutEmpty">Your basket is currently empty.</p>
-          <ul id="checkoutItems" class="basket-items"></ul>
-          <p class="basket-summary">
-            Total items: <span id="checkoutCount">0</span>
+  <!-- MAIN CONTENT -->
+  <main class="section">
+    <div class="checkout-layout">
+      <!-- LEFT: FORM -->
+      <section class="checkout-card">
+        <div class="checkout-card-inner">
+          <h1 class="section-title">Checkout</h1>
+          <p class="checkout-tagline">
+            Share your details and how you’d like Areej to contact you. This
+            doesn’t take payment – it sends your order request so Areej can
+            confirm everything with you.
           </p>
-        </div>
 
-        <div class="basket-checkout">
-          <h2>Your details</h2>
-          <form id="checkoutForm" class="checkout-form">
-            <label>
-              Your name
-              <input type="text" id="checkoutName" placeholder="Enter your name" required>
-            </label>
-            <label>
-              Contact (email or WhatsApp)
-              <input type="text" id="checkoutContact" placeholder="How should Areej contact you?" required>
-            </label>
-            <label>
-              Notes about your order
-              <textarea id="orderNotes" rows="4" placeholder="Colours, names to include, deadlines..."></textarea>
-            </label>
-            <p class="checkout-hint">
-              This doesn’t collect payments – it’s just a way to prepare an order summary Areej can reply to.
-            </p>
-            <button type="submit" class="btn primary">
-              Send order (demo)
-            </button>
+          <form id="checkoutForm">
+            <div class="checkout-form-grid">
+              <div>
+                <label class="checkout-label" for="fullName">Full name</label>
+                <input
+                  id="fullName"
+                  class="checkout-input"
+                  type="text"
+                  required
+                  placeholder="e.g. Amina Khan"
+                />
+              </div>
+              <div>
+                <label class="checkout-label" for="email">Email</label>
+                <input
+                  id="email"
+                  class="checkout-input"
+                  type="email"
+                  required
+                  placeholder="e.g. you@example.com"
+                />
+              </div>
+              <div>
+                <label class="checkout-label" for="phone">Phone / WhatsApp</label>
+                <input
+                  id="phone"
+                  class="checkout-input"
+                  type="text"
+                  placeholder="Optional"
+                />
+              </div>
+              <div>
+                <label class="checkout-label" for="contactMethod">Preferred contact</label>
+                <select id="contactMethod" class="checkout-select">
+                  <option value="email">Email</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="instagram">Instagram DM</option>
+                </select>
+              </div>
+              <div class="full-width">
+                <label class="checkout-label" for="address">Delivery area / city</label>
+                <input
+                  id="address"
+                  class="checkout-input"
+                  type="text"
+                  placeholder="e.g. London, UK"
+                />
+              </div>
+              <div class="full-width">
+                <label class="checkout-label" for="extraNotes">
+                  Extra info for Areej (timing, occasion, etc.)
+                </label>
+                <textarea
+                  id="extraNotes"
+                  class="checkout-textarea"
+                  placeholder="Tell Areej if this is for a specific date, occasion or if you have any special requests."
+                ></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+              <a href="basket.html" class="btn ghost">Back to basket</a>
+              <button type="submit" class="btn primary">Send order request</button>
+            </div>
+
+            <div id="checkoutComplete" class="checkout-complete">
+              <strong>Thank you!</strong> Your order request has been recorded on
+              this device. Because this is a demo site, no real payment is taken
+              here – please send these details and a screenshot of your basket to
+              Areej using your chosen contact method.
+            </div>
           </form>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <aside class="checkout-card">
+        <div class="checkout-card-inner">
+          <h2>Your pieces</h2>
+          <p class="checkout-tagline">
+            A quick summary of what you’re asking Areej to make. You can still go
+            back and edit things on the basket page.
+          </p>
+
+          <div id="checkoutEmpty" class="checkout-empty" style="display: none;">
+            Your basket is empty. Go back to the
+            <a href="items.html">items page</a> to add some pieces first.
+          </div>
+
+          <ul id="checkoutList" class="checkout-summary-list"></ul>
+
+          <div class="checkout-summary-footer">
+            <p>
+              <strong>Reminder:</strong> all pieces are handmade. Final prices,
+              timing and exact colours are confirmed personally by Areej in
+              messages, not on this page.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
 
   <footer class="footer">
     © <span id="year"></span> Areej Handmade
   </footer>
 
+  <div id="toast" class="toast">Order details saved</div>
+
   <script src="cart.js"></script>
   <script>
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    function renderCheckoutSummary() {
+      const items = loadBasket();
+      const list = document.getElementById("checkoutList");
+      const empty = document.getElementById("checkoutEmpty");
+
+      if (!items || items.length === 0) {
+        if (list) list.innerHTML = "";
+        if (empty) empty.style.display = "block";
+        return;
+      }
+
+      if (empty) empty.style.display = "none";
+      if (!list) return;
+      list.innerHTML = "";
+
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "checkout-summary-item";
+
+        const name = document.createElement("div");
+        name.className = "checkout-summary-name";
+        name.textContent = item.name || "Custom item";
+
+        const meta = document.createElement("div");
+        meta.className = "checkout-summary-meta";
+        const colour = item.color ? `Colour: ${item.color}` : "Colour: not set";
+        const desc = item.description ? `Notes: ${item.description}` : "";
+        meta.textContent = desc ? `${colour} · ${desc}` : colour;
+
+        li.appendChild(name);
+        li.appendChild(meta);
+        list.appendChild(li);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCheckoutSummary();
+
+      const form = document.getElementById("checkoutForm");
+      const completeBox = document.getElementById("checkoutComplete");
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          // nothing is sent anywhere – just show confirmation
+          if (completeBox) {
+            completeBox.style.display = "block";
+          }
+          showToast("Order request captured (demo)");
+        });
+      }
+    });
   </script>
 </body>
 </html>
-
