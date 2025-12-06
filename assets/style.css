@@ -299,9 +299,12 @@ body {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.6rem;
+  max-width: 1040px;      /* NEW: limit how wide it can go */
+  margin-inline: auto;    /* NEW: center the grid */
 }
+
 
 .product-card {
   background: var(--card-bg);
@@ -908,5 +911,6 @@ body {
     padding-inline: 5vw;
   }
 }
+
 
 
