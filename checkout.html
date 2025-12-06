@@ -129,6 +129,40 @@
       color: var(--muted);
     }
 
+    .checkout-summary-totals {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .checkout-summary-totals p {
+      margin: 0.1rem 0;
+    }
+
+    .checkout-summary-totals .total-line {
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+
+    .checkout-discount-row {
+      margin-top: 0.9rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 0.86rem;
+    }
+
+    .checkout-discount-input {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .checkout-discount-help {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
     .checkout-complete {
       display: none;
       margin-top: 1rem;
@@ -281,7 +315,7 @@
         <div class="checkout-card-inner">
           <h2>Your pieces</h2>
           <p class="checkout-tagline">
-            A quick summary of what you’re asking Areej to make. You can still go
+            A summary of what you’re asking Areej to make. You can still go
             back and edit things on the basket page.
           </p>
 
@@ -292,11 +326,38 @@
 
           <ul id="checkoutList" class="checkout-summary-list"></ul>
 
+          <!-- TOTALS + DISCOUNT -->
+          <div class="checkout-summary-totals" id="checkoutTotals" style="display:none;">
+            <p><strong>Subtotal:</strong> £<span id="subtotalValue">0.00</span></p>
+            <p id="discountRow" style="display:none;">
+              <strong>Discount:</strong> −£<span id="discountValue">0.00</span>
+            </p>
+            <p class="total-line">
+              <strong>Estimated total:</strong> £<span id="totalValue">0.00</span>
+            </p>
+          </div>
+
+          <!-- DISCOUNT CODE INPUT -->
+          <div class="checkout-discount-row">
+            <input
+              id="discountCode"
+              class="checkout-input checkout-discount-input"
+              type="text"
+              placeholder="Discount code (optional)"
+            />
+            <button type="button" class="btn small ghost" id="applyDiscountBtn">
+              Apply code
+            </button>
+          </div>
+          <div class="checkout-discount-help">
+            Try: <code>AREEJ10</code> (10% off) or <code>WELCOME5</code> (£5 off).
+          </div>
+
           <div class="checkout-summary-footer">
             <p>
-              <strong>Reminder:</strong> all pieces are handmade. Final prices,
-              timing and exact colours are confirmed personally by Areej in
-              messages, not on this page.
+              <strong>Note about fees:</strong> a small transaction / payment
+              processing fee (for example from Stripe) may be added when you pay.
+              Areej will confirm the final total before you send any money.
             </p>
           </div>
         </div>
@@ -315,14 +376,70 @@
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // 🔹 price list for each product (change these numbers if you like)
+    const PRODUCT_PRICES = {
+      "Floral hoop (medium)": 25,
+      "Baby name hoop": 28,
+      "Family name frame": 35,
+      "Housewarming piece": 30,
+      "Quran quote hoop": 27,
+      "Mini gift set": 18
+    };
+
+    // 🔹 discount codes: percent or fixed £
+    const DISCOUNT_CODES = {
+      "AREEJ10": { type: "percent", value: 10 }, // 10% off
+      "WELCOME5": { type: "fixed", value: 5 }    // £5 off
+    };
+
+    let appliedDiscountCode = null;
+    let currentBasket = [];
+
+    function computeTotals(items, code) {
+      let subtotal = 0;
+
+      items.forEach((item) => {
+        const price = PRODUCT_PRICES[item.name] || 0;
+        subtotal += price;
+      });
+
+      let discountAmount = 0;
+
+      if (code && DISCOUNT_CODES[code]) {
+        const rule = DISCOUNT_CODES[code];
+        if (rule.type === "percent") {
+          discountAmount = subtotal * (rule.value / 100);
+        } else if (rule.type === "fixed") {
+          discountAmount = rule.value;
+        }
+      }
+
+      if (discountAmount > subtotal) discountAmount = subtotal;
+      const total = subtotal - discountAmount;
+
+      return {
+        subtotal,
+        discountAmount,
+        total
+      };
+    }
+
     function renderCheckoutSummary() {
       const items = loadBasket();
+      currentBasket = items || [];
+
       const list = document.getElementById("checkoutList");
       const empty = document.getElementById("checkoutEmpty");
+      const totalsBox = document.getElementById("checkoutTotals");
+      const subtotalEl = document.getElementById("subtotalValue");
+      const discountRow = document.getElementById("discountRow");
+      const discountValEl = document.getElementById("discountValue");
+      const totalEl = document.getElementById("totalValue");
 
       if (!items || items.length === 0) {
         if (list) list.innerHTML = "";
         if (empty) empty.style.display = "block";
+        if (totalsBox) totalsBox.style.display = "none";
         return;
       }
 
@@ -336,7 +453,10 @@
 
         const name = document.createElement("div");
         name.className = "checkout-summary-name";
-        name.textContent = item.name || "Custom item";
+        const price = PRODUCT_PRICES[item.name] || 0;
+        name.textContent = item.name
+          ? `${item.name} – £${price.toFixed(2)}`
+          : `Custom item – £${price.toFixed(2)}`;
 
         const meta = document.createElement("div");
         meta.className = "checkout-summary-meta";
@@ -348,6 +468,22 @@
         li.appendChild(meta);
         list.appendChild(li);
       });
+
+      // totals
+      const { subtotal, discountAmount, total } = computeTotals(items, appliedDiscountCode);
+
+      if (totalsBox) totalsBox.style.display = "block";
+      if (subtotalEl) subtotalEl.textContent = subtotal.toFixed(2);
+      if (totalEl) totalEl.textContent = total.toFixed(2);
+
+      if (discountRow && discountValEl) {
+        if (discountAmount > 0) {
+          discountRow.style.display = "block";
+          discountValEl.textContent = discountAmount.toFixed(2);
+        } else {
+          discountRow.style.display = "none";
+        }
+      }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -355,6 +491,8 @@
 
       const form = document.getElementById("checkoutForm");
       const completeBox = document.getElementById("checkoutComplete");
+      const discountInput = document.getElementById("discountCode");
+      const discountBtn = document.getElementById("applyDiscountBtn");
 
       if (form) {
         form.addEventListener("submit", (e) => {
@@ -363,6 +501,30 @@
             completeBox.style.display = "block";
           }
           showToast("Order details saved");
+        });
+      }
+
+      // apply discount
+      if (discountBtn && discountInput) {
+        discountBtn.addEventListener("click", () => {
+          const raw = discountInput.value.trim().toUpperCase();
+          if (!raw) {
+            appliedDiscountCode = null;
+            renderCheckoutSummary();
+            showToast("Discount cleared");
+            return;
+          }
+
+          if (!DISCOUNT_CODES[raw]) {
+            appliedDiscountCode = null;
+            renderCheckoutSummary();
+            alert("That discount code is not valid.");
+            return;
+          }
+
+          appliedDiscountCode = raw;
+          renderCheckoutSummary();
+          showToast("Discount applied");
         });
       }
 
@@ -391,12 +553,18 @@
             const itemName = item.name || "Custom item";
             const itemColour = item.color || "Not set";
             const itemNotes = item.description || "";
-            itemsText += `${lineNum}. ${itemName}\n   Colour: ${itemColour}`;
+            const price = PRODUCT_PRICES[item.name] || 0;
+            itemsText += `${lineNum}. ${itemName} – £${price.toFixed(2)}\n   Colour: ${itemColour}`;
             if (itemNotes) {
               itemsText += `\n   Notes: ${itemNotes}`;
             }
             itemsText += "\n\n";
           });
+
+          const { subtotal, discountAmount, total } = computeTotals(
+            items,
+            appliedDiscountCode
+          );
 
           // Full message
           let message = "🧵 New Areej Handmade order request\n\n";
@@ -410,7 +578,14 @@
           }
 
           message += `\nItems:\n${itemsText}`;
-          message += "— Sent from the Areej Handmade website";
+          message += `Subtotal: £${subtotal.toFixed(2)}\n`;
+          if (discountAmount > 0) {
+            message += `Discount: -£${discountAmount.toFixed(2)}\n`;
+          }
+          message += `Estimated total (before any payment/Stripe fees): £${total.toFixed(
+            2
+          )}\n`;
+          message += "\n— Sent from the Areej Handmade website";
 
           // 🔴 CHANGE THIS TO YOUR MUM'S REAL NUMBER
           // Format: country code + number, NO +, NO spaces, NO leading 0
@@ -425,4 +600,3 @@
   </script>
 </body>
 </html>
-
