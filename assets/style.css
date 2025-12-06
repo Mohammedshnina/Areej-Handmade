@@ -1,11 +1,13 @@
 /* ===============================
-   AREEJ HANDMADE – PINK THEME
+   AREEJ HANDMADE – PINK + GOLD THEME
    =============================== */
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 /* ---------- THEME ---------- */
 
 :root {
-  /* MAIN BRAND COLOURS */
   --bg: #fdf7fa;
   --bg-soft: #fbeaf1;
   --card-bg: #ffffff;
@@ -13,17 +15,19 @@
   --text: #3d2c34;
   --muted: #8b6f7a;
 
-  --accent: #ff6fa8;
-  --accent-soft: rgba(255, 111, 168, 0.12);
+  /* PINK + GOLD */
+  --accent: #ff6fa8;              /* main pink */
+  --accent-soft: rgba(255, 111, 168, 0.14);
   --accent-strong: #ff408d;
+  --gold: #f2b441;                /* gold accent */
 
   --border-soft: #f3d6e2;
 
   --shadow-soft: 0 18px 45px rgba(255, 100, 150, 0.18);
   --shadow-soft-sm: 0 10px 25px rgba(255, 100, 150, 0.14);
 
-  --radius-lg: 22px;
-  --radius-md: 16px;
+  --radius-lg: 26px;
+  --radius-md: 18px;
   --radius-pill: 999px;
 }
 
@@ -42,7 +46,7 @@ body {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   background: radial-gradient(circle at top left,
       #ffe5f1 0%,
@@ -61,7 +65,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.7rem 7vw;
+  padding: 0.8rem 7vw;
   background: rgba(253, 247, 250, 0.96);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(243, 214, 226, 0.9);
@@ -70,18 +74,23 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .logo-img {
-  height: 52px;
+  height: 54px;
   width: auto;
   object-fit: contain;
+  border-radius: 50%;
+  padding: 4px;
+  background: radial-gradient(circle at top, #fff, #ffe5f1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .logo-text {
-  font-weight: 800;
-  font-size: 1.05rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -92,7 +101,7 @@ body {
 
 .navbar nav {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
   font-size: 0.95rem;
   align-items: center;
 }
@@ -113,7 +122,7 @@ body {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--gold), var(--accent));
   transition: width 0.22s ease-out;
 }
 
@@ -143,7 +152,7 @@ body {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--gold), var(--accent));
   transition: width 0.22s ease-out;
 }
 
@@ -166,7 +175,8 @@ body {
 }
 
 .section-title {
-  font-size: clamp(1.9rem, 3vw, 2.3rem);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3.1vw, 2.5rem);
   margin: 0 0 0.4rem;
   letter-spacing: 0.02em;
 }
@@ -174,17 +184,18 @@ body {
 .section-title::after {
   content: "";
   display: block;
-  width: 64px;
+  width: 80px;
   height: 3px;
   border-radius: 999px;
   margin-top: 0.6rem;
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  background: linear-gradient(90deg, var(--gold), var(--accent));
 }
 
 .section-subtitle {
   max-width: 640px;
   margin: 0 0 1.9rem;
   color: var(--muted);
+  font-size: 0.98rem;
 }
 
 /* ---------- BUTTONS ---------- */
@@ -208,7 +219,7 @@ body {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   color: #ffffff;
   box-shadow: 0 10px 25px rgba(255, 111, 168, 0.25);
 }
@@ -219,7 +230,7 @@ body {
 }
 
 .btn.ghost {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border-color: var(--border-soft);
   color: var(--text);
 }
@@ -230,13 +241,61 @@ body {
 }
 
 .btn.small {
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 0.95rem;
   font-size: 0.85rem;
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+/* ---------- ITEMS SEARCH BAR ---------- */
+
+.items-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.7rem;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 25px rgba(255, 111, 168, 0.08);
+}
+
+.items-search-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid var(--muted);
+  position: relative;
+}
+
+.items-search-icon::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--muted);
+  transform: rotate(45deg);
+  right: -5px;
+  bottom: 0;
+}
+
+.items-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.items-search-input::placeholder {
+  color: var(--muted);
 }
 
 /* ---------- ITEMS GRID (items.html) ---------- */
-
 
 .gallery-grid {
   display: grid;
@@ -274,7 +333,7 @@ body {
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-soft);
-  border-color: rgba(255, 111, 168, 0.6);
+  border-color: rgba(242, 180, 65, 0.8); /* gold border */
 }
 
 .product-card:hover::before {
@@ -291,7 +350,7 @@ body {
 .product-card-image-placeholder {
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 14px;
+  border-radius: 16px;
   background: linear-gradient(135deg, #fff, #ffe5f1);
   border: 1px dashed var(--border-soft);
   display: flex;
@@ -307,6 +366,7 @@ body {
 .product-card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .product-card p {
@@ -332,8 +392,7 @@ body {
   flex-wrap: wrap;
 }
 
-
-/* ---------- PRODUCT PAGE (product.html) ---------- */
+/* ---------- PRODUCT PAGE (product.html etc.) ---------- */
 
 .back-link {
   display: inline-block;
@@ -361,8 +420,8 @@ body {
 }
 
 .product-main-photo {
-  border-radius: var(--radius-md);
-  background: #fff;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top left, #fff, #ffe5f1);
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-soft-sm);
   aspect-ratio: 3 / 4;
@@ -383,7 +442,7 @@ body {
 .product-thumb-box {
   flex: 1;
   aspect-ratio: 1 / 1;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--border-soft);
   background: #fff;
 }
@@ -404,7 +463,8 @@ body {
 
 .product-title {
   margin: 0 0 0.2rem;
-  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -413,7 +473,7 @@ body {
   margin: 0 0 1rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--accent-strong);
+  color: var(--gold);
 }
 
 /* colour circles (used on product.html + popup) */
@@ -453,21 +513,100 @@ body {
 
 .colour-swatch.active {
   box-shadow:
-    0 0 0 3px var(--accent-strong),
+    0 0 0 3px var(--gold),
     0 0 10px rgba(255, 111, 168, 0.5);
 }
 
-/* product description text */
+/* STYLISH DESCRIPTION CARD */
 
 .product-description {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  color: var(--muted);
+  margin-top: 1.7rem;
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-description::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 180, 65, 0.35), transparent);
+  opacity: 0.6;
+}
+
+.product-description p:first-child {
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 0.98rem;
 }
 
 .product-description ul {
-  margin-top: 0.6rem;
+  margin-top: 0.9rem;
   padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.product-description ul li + li {
+  margin-top: 0.2rem;
+}
+
+/* ---------- "YOU MAY ALSO LIKE" ---------- */
+
+.also-like {
+  margin-top: 2.4rem;
+}
+
+.also-like-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  margin: 0 0 0.9rem;
+}
+
+.also-like-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+.also-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 0.9rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  box-shadow: 0 10px 22px rgba(255, 111, 168, 0.12);
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.also-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(255, 111, 168, 0.25);
+  border-color: rgba(242, 180, 65, 0.9);
+}
+
+.also-card-name {
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.also-card-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 /* ---------- BASKET DRAWER ---------- */
@@ -703,7 +842,7 @@ body {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   color: white;
   padding: 0.9rem 1.3rem;
   border-radius: var(--radius-md);
@@ -744,4 +883,3 @@ body {
     padding-inline: 5vw;
   }
 }
-
