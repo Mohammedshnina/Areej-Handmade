@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
       <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
@@ -26,7 +27,7 @@
     </nav>
   </header>
 
-  <!-- Basket drawer -->
+  <!-- BASKET DRAWER -->
   <div class="basket-overlay" id="basketOverlay"></div>
   <aside class="basket-drawer" id="basketDrawer">
     <div class="basket-drawer-header">
@@ -42,8 +43,9 @@
   <main class="section">
     <a href="items.html" class="back-link">← Back to all items</a>
 
+    <!-- MAIN PRODUCT LAYOUT -->
     <div class="product-layout">
-      <!-- LEFT: IMAGES -->
+      <!-- LEFT: PHOTOS -->
       <div class="product-photos">
         <div class="product-main-photo">
           Floral hoop main photo<br>(add real image here later)
@@ -56,7 +58,7 @@
         </div>
       </div>
 
-      <!-- RIGHT: INFO + STORY -->
+      <!-- RIGHT: TITLE + PRICE + STORY -->
       <div class="product-info">
         <p class="product-eyebrow">Embroidery · Floral design</p>
         <h1 class="product-title">Floral hoop (medium)</h1>
@@ -86,43 +88,88 @@
           Add to basket
         </button>
 
-        <!-- STORY CARD -->
+        <!-- BIG STORY / DESCRIPTION FILLING THE RIGHT SIDE -->
         <div class="product-description">
           <p>
-            Every floral hoop starts as a blank circle of fabric on Areej’s
-            table. She chooses the colours first – soft pinks, creams and a hint
-            of gold – then slowly builds the flowers one stitch at a time.
-            No two hoops come out exactly the same, so each one feels like
-            a tiny garden made just for you.
+            Most floral hoops start with a quick photo on Areej’s phone – a bunch
+            of flowers on a table, a bouquet from a friend, or colours she spots
+            on a walk. She sketches the shapes lightly on the fabric, then spends
+            the evening layering petals, leaves and tiny details until the hoop
+            feels “full” but still soft.
+          </p>
+          <p>
+            The medium size is designed to be easy: big enough to notice on a
+            wall or shelf, but small enough to tuck into a gift bag or box. It
+            works beautifully in bedrooms, hallways, reading corners or as a
+            little highlight on a gallery wall.
           </p>
           <ul>
-            <li>Hand‑embroidered from scratch, not printed</li>
-            <li>Perfect size for a wall, shelf, or hanging by a ribbon</li>
-            <li>Choose a colour palette to match your room or gift theme</li>
-            <li>Arrives ready to gift – just add tissue paper or a box</li>
+            <li>Hand‑embroidered from scratch – every flower is stitched, not printed</li>
+            <li>Choose a colour palette to match your home or the person you’re gifting</li>
+            <li>Medium hoop size – simple to hang, lean or wrap as a present</li>
+            <li>Ideal for birthdays, Eid, housewarmings or “just because” gifts</li>
           </ul>
         </div>
-
-        <!-- YOU MAY ALSO LIKE (FLORAL-RELATED) -->
-        <section class="also-like">
-          <h2 class="also-like-title">You may also like</h2>
-          <div class="also-like-grid">
-            <a class="also-card" href="product-housewarming.html">
-              <div class="also-card-name">Housewarming piece</div>
-              <div class="also-card-tag">Welcome home · Cosy decor</div>
-            </a>
-            <a class="also-card" href="product-family.html">
-              <div class="also-card-name">Family name frame</div>
-              <div class="also-card-tag">Family wall · Statement piece</div>
-            </a>
-            <a class="also-card" href="product-mini.html">
-              <div class="also-card-name">Mini gift set</div>
-              <div class="also-card-tag">Small thank‑you · Ready to gift</div>
-            </a>
-          </div>
-        </section>
       </div>
     </div>
+
+    <!-- FULL-WIDTH "YOU MAY ALSO LIKE" WITH PRODUCT CARDS AT THE BOTTOM -->
+    <section class="also-like-full">
+      <h2 class="also-like-title">You may also like</h2>
+
+      <div class="also-like-grid-full">
+        <!-- Suggestion 1 -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Housewarming piece image<br>(add real image later)
+            </div>
+          </div>
+          <h3>Housewarming piece</h3>
+          <p>“Welcome home” style embroidery, perfect for new houses.</p>
+          <p class="product-tag">New home · Gift</p>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-housewarming.html">
+              View details
+            </a>
+          </div>
+        </article>
+
+        <!-- Suggestion 2 -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Family name frame image<br>(add real image later)
+            </div>
+          </div>
+          <h3>Family name frame</h3>
+          <p>Framed embroidery for your family name and special dates.</p>
+          <p class="product-tag">Family · Home decor</p>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-family.html">
+              View details
+            </a>
+          </div>
+        </article>
+
+        <!-- Suggestion 3 -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Mini gift set image<br>(add real image later)
+            </div>
+          </div>
+          <h3>Mini gift set</h3>
+          <p>Small hoop + card combo for quick, thoughtful gifts.</p>
+          <p class="product-tag">Mini · Gift set</p>
+          <div class="product-card-actions">
+            <a class="btn small ghost" href="product-mini.html">
+              View details
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
