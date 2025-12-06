@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Floral hoop | Areej Handmade</title>
+  <title>Floral hoop (medium) | Areej Handmade</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- same navbar as other pages -->
   <header class="navbar">
     <div class="logo">
       <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
@@ -27,7 +26,6 @@
     </nav>
   </header>
 
-  <!-- basket drawer reused -->
   <div class="basket-overlay" id="basketOverlay"></div>
   <aside class="basket-drawer" id="basketDrawer">
     <div class="basket-drawer-header">
@@ -44,11 +42,10 @@
     <a href="items.html" class="back-link">← Back to all items</a>
 
     <div class="product-layout">
-      <!-- LEFT: big image + thumbs -->
+      <!-- LEFT: IMAGES -->
       <div class="product-photos">
         <div class="product-main-photo">
-          Main photo here
-          <!-- later you’ll replace this text with an <img> -->
+          Floral hoop main photo<br>(add real image here later)
         </div>
         <div class="product-thumbs">
           <div class="product-thumb-box"></div>
@@ -58,9 +55,9 @@
         </div>
       </div>
 
-      <!-- RIGHT: details -->
+      <!-- RIGHT: INFO -->
       <div class="product-info">
-        <p class="product-eyebrow">Embroidery · Custom made</p>
+        <p class="product-eyebrow">Embroidery · Floral design</p>
         <h1 class="product-title">Floral hoop (medium)</h1>
         <p class="product-price">£25.00</p>
 
@@ -77,7 +74,7 @@
                   style="--swatch:#f3e4cc;"></button>
           <button type="button" class="colour-swatch"
                   data-colour="Gold" aria-label="Gold"
-                  style="--swatch:#d8a840;"></button>
+                  style="--swatch:#f2b441;"></button>
           <button type="button" class="colour-swatch"
                   data-colour="Pink" aria-label="Pink"
                   style="--swatch:#e9a0b7;"></button>
@@ -87,19 +84,42 @@
                 data-name="Floral hoop (medium)">
           Add to basket
         </button>
-<div class="product-description">
-  <p>
-    A delicate hand‑embroidered floral hoop, stitched carefully petal by petal.
-    This medium size works beautifully on a gallery wall, nursery, hallway or
-    shelf and adds a soft, handmade touch to any room.
-  </p>
-  <ul>
-    <li>Hand stitched by Areej using quality threads</li>
-    <li>Choose colours to match your room or theme</li>
-    <li>Medium hoop size – easy to hang or stand on a shelf</li>
-    <li>Lovely as a birthday, Eid or “just because” gift</li>
-  </ul>
-</div>
+
+        <!-- STYLISH DESCRIPTION CARD -->
+        <div class="product-description">
+          <p>
+            A delicate hand‑embroidered floral hoop, stitched flower by flower.
+            This medium size sits perfectly on a wall, shelf or as part of a
+            gallery corner, adding a soft, handmade touch to your space.
+          </p>
+          <ul>
+            <li>Hand stitched by Areej using high‑quality embroidery threads</li>
+            <li>Choose a custom colour palette to match your room or theme</li>
+            <li>Medium hoop size – easy to hang, lean or gift‑wrap</li>
+            <li>Lovely for birthdays, Eid, housewarmings or “just because” gifts</li>
+          </ul>
+        </div>
+
+        <!-- YOU MAY ALSO LIKE -->
+        <section class="also-like">
+          <h2 class="also-like-title">You may also like</h2>
+          <div class="also-like-grid">
+            <a class="also-card" href="product-baby.html">
+              <div class="also-card-name">Baby name hoop</div>
+              <div class="also-card-tag">Personalised · Nursery gift</div>
+            </a>
+            <a class="also-card" href="product-housewarming.html">
+              <div class="also-card-name">Housewarming piece</div>
+              <div class="also-card-tag">Welcome home · New house</div>
+            </a>
+            <a class="also-card" href="product-mini.html">
+              <div class="also-card-name">Mini gift set</div>
+              <div class="also-card-tag">Small hoop · Ready to gift</div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
   <footer class="footer">
@@ -110,11 +130,9 @@
 
   <script src="cart.js"></script>
   <script>
-    // year in footer
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // colour circles + add to basket (reuses cart.js helpers)
     document.addEventListener("DOMContentLoaded", () => {
       const colourBtns = document.querySelectorAll(".colour-swatch");
       const addBtn = document.querySelector(".product-add-btn");
@@ -136,7 +154,7 @@
       if (addBtn) {
         addBtn.addEventListener("click", () => {
           const name = addBtn.getAttribute("data-name") || "Item";
-          const basket = loadBasket();      // from cart.js
+          const basket = loadBasket();
           basket.push({
             name,
             color: selectedColour || "",
