@@ -608,6 +608,17 @@ body {
   font-size: 0.8rem;
   color: var(--muted);
 }
+/* full-width suggestions section under product page */
+.also-like-full {
+  margin-top: 3rem;
+}
+
+.also-like-grid-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
 
 /* ---------- BASKET DRAWER ---------- */
 
@@ -883,3 +894,4 @@ body {
     padding-inline: 5vw;
   }
 }
+
