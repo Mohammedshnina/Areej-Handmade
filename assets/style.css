@@ -632,9 +632,11 @@ body {
 
 .also-like-grid-full {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); /* max card width */
+  gap: 1.2rem;
+  justify-content: center;   /* keep them in the middle instead of stretching */
 }
+
 
 
 /* ---------- BASKET DRAWER ---------- */
@@ -911,6 +913,7 @@ body {
     padding-inline: 5vw;
   }
 }
+
 
 
 
