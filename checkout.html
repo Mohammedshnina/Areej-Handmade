@@ -299,12 +299,14 @@
               <button type="button" class="btn ghost" id="whatsappOrderBtn">
                 Send order via WhatsApp
               </button>
+              <button type="button" class="btn ghost" id="emailReceiptBtn">
+                Email me my receipt
+              </button>
             </div>
 
             <div id="checkoutComplete" class="checkout-complete">
               <strong>Details saved.</strong> You can now send your order to Areej
-              using the WhatsApp button, or wait for her to contact you using the
-              details you provided.
+              using the WhatsApp button, or email yourself a copy of your receipt.
             </div>
           </form>
         </div>
@@ -590,10 +592,77 @@
           // 🔴 CHANGE THIS TO YOUR MUM'S REAL NUMBER
           // Format: country code + number, NO +, NO spaces, NO leading 0
           // Example UK: +44 7700 900123  ==>  447700900123
-          const mumNumber = "447915678261";
+          const mumNumber = "447700900123";
 
           const url = "https://wa.me/" + mumNumber + "?text=" + encodeURIComponent(message);
           window.open(url, "_blank");
+        });
+      }
+
+      // 🔹 Email receipt button logic
+      const emailReceiptBtn = document.getElementById("emailReceiptBtn");
+      if (emailReceiptBtn) {
+        emailReceiptBtn.addEventListener("click", () => {
+          const items = loadBasket();
+          if (!items || items.length === 0) {
+            alert("Your basket is empty. Please add something first.");
+            return;
+          }
+
+          const email = document.getElementById("email")?.value || "";
+          const name = document.getElementById("fullName")?.value || "";
+
+          if (!email) {
+            alert("Please enter your email address first.");
+            return;
+          }
+
+          const { subtotal, discountAmount, total } = computeTotals(
+            items,
+            appliedDiscountCode
+          );
+
+          let itemsText = "";
+          items.forEach((item, index) => {
+            const lineNum = index + 1;
+            const itemName = item.name || "Custom item";
+            const itemColour = item.color || "Not set";
+            const itemNotes = item.description || "";
+            const price = PRODUCT_PRICES[item.name] || 0;
+            itemsText += `${lineNum}. ${itemName} – £${price.toFixed(2)}\n   Colour: ${itemColour}`;
+            if (itemNotes) {
+              itemsText += `\n   Notes: ${itemNotes}`;
+            }
+            itemsText += "\n\n";
+          });
+
+          let message = "";
+          if (name) {
+            message += `Hi ${name},\n\n`;
+          } else {
+            message += `Hi,\n\n`;
+          }
+          message += "Here is your Areej Handmade order summary:\n\n";
+          message += itemsText;
+          message += `Subtotal: £${subtotal.toFixed(2)}\n`;
+          if (discountAmount > 0) {
+            message += `Discount: -£${discountAmount.toFixed(2)}\n`;
+          }
+          message += `Estimated total (before any payment/Stripe fees): £${total.toFixed(2)}\n\n`;
+          message += "Areej will contact you to confirm final price, timing and payment details.\n\n";
+          message += "Thank you for supporting handmade 🧵\nAreej Handmade";
+
+          const subject = "Your Areej Handmade order summary";
+
+          const mailtoUrl =
+            "mailto:" +
+            encodeURIComponent(email) +
+            "?subject=" +
+            encodeURIComponent(subject) +
+            "&body=" +
+            encodeURIComponent(message);
+
+          window.location.href = mailtoUrl;
         });
       }
     });
