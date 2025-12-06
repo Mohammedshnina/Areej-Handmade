@@ -193,8 +193,8 @@
           <h1 class="section-title">Checkout</h1>
           <p class="checkout-tagline">
             Share your details and how you’d like Areej to contact you. This
-            doesn’t take payment – it sends your order request so Areej can
-            confirm everything with you.
+            doesn’t take payment – it collects your order so Areej can confirm
+            everything with you.
           </p>
 
           <form id="checkoutForm">
@@ -229,7 +229,9 @@
                 />
               </div>
               <div>
-                <label class="checkout-label" for="contactMethod">Preferred contact</label>
+                <label class="checkout-label" for="contactMethod">
+                  Preferred contact
+                </label>
                 <select id="contactMethod" class="checkout-select">
                   <option value="email">Email</option>
                   <option value="whatsapp">WhatsApp</option>
@@ -259,14 +261,16 @@
 
             <div style="margin-top: 1.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
               <a href="basket.html" class="btn ghost">Back to basket</a>
-              <button type="submit" class="btn primary">Send order request</button>
+              <button type="submit" class="btn primary">Save details</button>
+              <button type="button" class="btn ghost" id="whatsappOrderBtn">
+                Send order via WhatsApp
+              </button>
             </div>
 
             <div id="checkoutComplete" class="checkout-complete">
-              <strong>Thank you!</strong> Your order request has been recorded on
-              this device. Because this is a demo site, no real payment is taken
-              here – please send these details and a screenshot of your basket to
-              Areej using your chosen contact method.
+              <strong>Details saved.</strong> You can now send your order to Areej
+              using the WhatsApp button, or wait for her to contact you using the
+              details you provided.
             </div>
           </form>
         </div>
@@ -355,11 +359,66 @@
       if (form) {
         form.addEventListener("submit", (e) => {
           e.preventDefault();
-          // nothing is sent anywhere – just show confirmation
           if (completeBox) {
             completeBox.style.display = "block";
           }
-          showToast("Order request captured (demo)");
+          showToast("Order details saved");
+        });
+      }
+
+      // 🔹 WhatsApp button logic
+      const whatsappBtn = document.getElementById("whatsappOrderBtn");
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener("click", () => {
+          const items = loadBasket();
+          if (!items || items.length === 0) {
+            alert("Your basket is empty. Please add something first.");
+            return;
+          }
+
+          // Form fields
+          const name = document.getElementById("fullName")?.value || "";
+          const email = document.getElementById("email")?.value || "";
+          const phone = document.getElementById("phone")?.value || "";
+          const contactMethod = document.getElementById("contactMethod")?.value || "";
+          const address = document.getElementById("address")?.value || "";
+          const extraNotes = document.getElementById("extraNotes")?.value || "";
+
+          // Items text
+          let itemsText = "";
+          items.forEach((item, index) => {
+            const lineNum = index + 1;
+            const itemName = item.name || "Custom item";
+            const itemColour = item.color || "Not set";
+            const itemNotes = item.description || "";
+            itemsText += `${lineNum}. ${itemName}\n   Colour: ${itemColour}`;
+            if (itemNotes) {
+              itemsText += `\n   Notes: ${itemNotes}`;
+            }
+            itemsText += "\n\n";
+          });
+
+          // Full message
+          let message = "🧵 New Areej Handmade order request\n\n";
+          if (name) message += `Name: ${name}\n`;
+          if (email) message += `Email: ${email}\n`;
+          if (phone) message += `Phone/WhatsApp: ${phone}\n`;
+          if (contactMethod) message += `Preferred contact: ${contactMethod}\n`;
+          if (address) message += `Area / city: ${address}\n`;
+          if (extraNotes) {
+            message += `\nExtra info:\n${extraNotes}\n`;
+          }
+
+          message += `\nItems:\n${itemsText}`;
+          message += "— Sent from the Areej Handmade website";
+
+          // 🔴 CHANGE THIS TO YOUR MUM'S REAL NUMBER
+          // Format: country code + number, NO +, NO spaces, NO leading 0
+          // Example UK: +44 7700 900123  ==>  447700900123
+          const mumNumber = "447700900123";
+
+          const url = "https://wa.me/" + mumNumber + "?text=" + encodeURIComponent(message);
+          window.open(url, "_blank");
         });
       }
     });
