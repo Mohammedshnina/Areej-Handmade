@@ -46,10 +46,22 @@
     <section class="section">
       <h1 class="section-title">All items</h1>
       <p class="section-subtitle">
-        A fuller list of Areej’s handmade pieces. You can replace the text and
-        picture placeholders with real photos and prices later.
+        Browse a selection of Areej’s hand‑embroidered pieces. Use the search
+        below to quickly find what you’re looking for.
       </p>
 
+      <!-- SEARCH BAR -->
+      <div class="items-search-bar">
+        <div class="items-search-icon"></div>
+        <input
+          id="itemSearch"
+          class="items-search-input"
+          type="text"
+          placeholder="Search by name, type, occasion..."
+        />
+      </div>
+
+      <!-- CARDS GRID -->
       <div class="gallery-grid">
         <!-- 1. Floral hoop -->
         <article class="product-card">
@@ -59,8 +71,8 @@
             </div>
           </div>
           <h3>Floral hoop (medium)</h3>
-          <p>Hand‑embroidered floral design on a medium hoop.</p>
-          <p class="product-tag">Made to order</p>
+          <p>Hand‑embroidered floral hoop, perfect for walls and gift boxes.</p>
+          <p class="product-tag">Floral · Gift · Home decor</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -78,8 +90,8 @@
             </div>
           </div>
           <h3>Baby name hoop</h3>
-          <p>Personalised hoop with baby name and soft colours.</p>
-          <p class="product-tag">Perfect gift</p>
+          <p>Personalised baby name hoop, ideal for nurseries and baby gifts.</p>
+          <p class="product-tag">Baby · Nursery · Gift</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product-baby.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -97,8 +109,8 @@
             </div>
           </div>
           <h3>Family name frame</h3>
-          <p>Framed embroidery with your family name and date.</p>
-          <p class="product-tag">Customisable</p>
+          <p>Framed embroidery with your family name and established date.</p>
+          <p class="product-tag">Family · Home · Frame</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product-family.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -116,8 +128,8 @@
             </div>
           </div>
           <h3>Housewarming piece</h3>
-          <p>“Welcome home” style design for new homes.</p>
-          <p class="product-tag">One‑of‑a‑kind</p>
+          <p>“Welcome home” style embroidered piece for new houses.</p>
+          <p class="product-tag">New home · Gift</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product-housewarming.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -135,8 +147,8 @@
             </div>
           </div>
           <h3>Quran quote hoop</h3>
-          <p>Elegant embroidery with a Quran verse.</p>
-          <p class="product-tag">Custom ayah available</p>
+          <p>Elegant hoop featuring a Quran verse of your choice.</p>
+          <p class="product-tag">Islamic decor · Gift</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product-quran.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -154,8 +166,8 @@
             </div>
           </div>
           <h3>Mini gift set</h3>
-          <p>Small hoop + card combo, ready to gift.</p>
-          <p class="product-tag">Gift‑ready</p>
+          <p>Mini hoop and card combo, ready to give as a small thank‑you gift.</p>
+          <p class="product-tag">Mini · Gift set</p>
           <div class="product-card-actions">
             <a class="btn small ghost" href="product-mini.html">View details</a>
             <button class="btn small primary add-to-basket"
@@ -233,7 +245,21 @@
   <script>
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // search filter
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("itemSearch");
+      const cards = document.querySelectorAll(".product-card");
+      if (!input) return;
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase();
+        cards.forEach((card) => {
+          const text = card.innerText.toLowerCase();
+          card.style.display = text.includes(q) ? "" : "none";
+        });
+      });
+    });
   </script>
 </body>
 </html>
-
