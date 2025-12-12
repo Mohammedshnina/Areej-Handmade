@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Home Hoop | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
+</head>
+<body>
+  <header class="navbar">
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section product-page">
+      <a href="items.html" class="back-link">← Back to all items</a>
+
+      <div class="product-layout">
+        <!-- LEFT -->
+        <div class="product-photos">
+          <div class="product-main-photo">
+            <img src="assets/family-home-main.jpg" alt="Family home embroidered hoop" />
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb-box">
+              <img src="assets/family-home-detail1.jpg" alt="Surname detail" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/family-home-detail2.jpg" alt="Floral border detail" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/family-home-detail3.jpg" alt="Hoop in hallway" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/family-home-detail4.jpg" alt="Gift box" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <article class="product-info">
+          <p class="product-eyebrow">FAMILY · CUSTOM TEXT · 25CM</p>
+          <h1 class="product-title">Family Home Hoop</h1>
+          <p class="product-price">£40.00</p>
+
+          <div class="basket-chip" style="margin-bottom: 0.6rem;">
+            ✓ Custom family name &amp; year · Perfect for hallways
+          </div>
+
+          <p class="product-summary">
+            A statement hoop to celebrate your home. Personalise it with your family
+            name, date (e.g. “Est. 2015”) and a colour palette that suits your hallway
+            or living room.
+          </p>
+
+          <p class="colour-label">Colour direction</p>
+          <div class="colour-swatches" id="colour-swatches-family">
+            <button class="colour-swatch active" style="--swatch: #f2c46a;" data-colour="Gold & blush"></button>
+            <button class="colour-swatch" style="--swatch: #d0e6da;" data-colour="Green & cream"></button>
+            <button class="colour-swatch" style="--swatch: #f9f3cf;" data-colour="Neutral tones"></button>
+            <button class="colour-swatch" style="--swatch: #e3d5ff;" data-colour="Lilac accents"></button>
+          </div>
+          <p class="product-small-note">
+            Selected palette: <span id="selected-colour-family">Gold &amp; blush</span>.
+            We’ll match thread colours to this mood unless you request something specific.
+          </p>
+
+          <ul class="product-quick-list">
+            <li>25cm hoop – slightly larger statement size</li>
+            <li>Custom family name and optional “Est.” date</li>
+            <li>Hand‑drawn florals tailored to your palette</li>
+          </ul>
+
+          <div class="product-actions">
+            <button
+              class="btn primary full-width"
+              data-id="family-home-25"
+              data-name="Family Home Hoop"
+              data-price="40"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+            <button class="btn ghost full-width" onclick="openBasketDrawer()">
+              View basket
+            </button>
+          </div>
+
+          <p class="product-small-note">
+            In the notes you can tell us: the family name, which year to include,
+            and any small wording tweaks (e.g. “The Ahmed Family”, “Our Home”).
+          </p>
+        </article>
+      </div>
+
+      <!-- EXTRA INFO -->
+      <section class="product-extra-grid">
+        <article class="product-story-card">
+          <h2>For the heart of your home</h2>
+          <p>
+            This hoop is designed to sit by your front door, in your hallway or above
+            a console table – the kind of place people see as soon as they step inside.
+          </p>
+          <p>
+            We keep the design clean and classic so it doesn’t go out of style. The
+            focus is your name, framed by a soft floral or leafy border and little
+            stitched details in gold or coordinating colours.
+          </p>
+          <ul>
+            <li>Beautiful as a house‑warming or anniversary gift</li>
+            <li>Works well paired with framed photos on a wall</li>
+            <li>Each hoop is stitched one at a time in our home studio</li>
+          </ul>
+        </article>
+
+        <aside class="product-facts-card">
+          <h3>Processing &amp; shipping</h3>
+          <ul>
+            <li>⏱ Processing: 7–10 working days</li>
+            <li>🚚 UK shipping: 2–3 working days after dispatch</li>
+            <li>📦 Packed flat with protective tissue and card</li>
+          </ul>
+
+          <h3>Care</h3>
+          <ul>
+            <li>Hang away from strong direct sunlight</li>
+            <li>Dust occasionally with a soft cloth</li>
+            <li>Do not frame behind glass in very humid rooms</li>
+          </ul>
+
+          <h3>Custom requests</h3>
+          <p>
+            Want a different phrase or language? Send us a message before ordering and
+            we’ll let you know what’s possible.
+          </p>
+        </aside>
+      </section>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <section class="also-like-full">
+        <h2 class="also-like-title">You may also like</h2>
+        <div class="also-like-grid-full">
+          <a href="product-home-plants.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Home &amp; Plants hoop</div>
+            </div>
+            <h3>Home &amp; Plants – 20cm Hoop</h3>
+            <p>Soft plant‑inspired design for cosy corners.</p>
+            <div class="product-tag">BOTANICAL</div>
+          </a>
+
+          <a href="product-baby-name.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Baby name hoop</div>
+            </div>
+            <h3>Personalised Baby Name Hoop</h3>
+            <p>A special gift for the smallest member of the family.</p>
+            <div class="product-tag">BABY</div>
+          </a>
+
+          <a href="product-dua.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Dua / quote hoop</div>
+            </div>
+            <h3>Dua / Quote Hoop</h3>
+            <p>Meaningful stitched words to sit by your entrance.</p>
+            <div class="product-tag">MEANINGFUL</div>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
+  </footer>
+
+  <script src="assets/cart.js?v=20"></script>
+  <script>
+    const swatchesF = document.querySelectorAll("#colour-swatches-family .colour-swatch");
+    const selectedF = document.getElementById("selected-colour-family");
+    swatchesF.forEach(btn => {
+      btn.addEventListener("click", () => {
+        swatchesF.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedF.textContent = btn.dataset.colour || "Custom";
+      });
+    });
+  </script>
+</body>
+</html>
