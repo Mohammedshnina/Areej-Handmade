@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalised Baby Name Hoop | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
+</head>
+<body>
+  <header class="navbar">
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section product-page">
+      <a href="items.html" class="back-link">← Back to all items</a>
+
+      <div class="product-layout">
+        <!-- LEFT -->
+        <div class="product-photos">
+          <div class="product-main-photo">
+            <img src="assets/baby-name-main.jpg" alt="Personalised baby name hoop" />
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb-box">
+              <img src="assets/baby-name-detail1.jpg" alt="Name detail" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/baby-name-detail2.jpg" alt="Floral embroidery" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/baby-name-detail3.jpg" alt="Hoop in nursery" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/baby-name-detail4.jpg" alt="Gift wrap" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <article class="product-info">
+          <p class="product-eyebrow">PERSONALISED BABY GIFT · 20CM</p>
+          <h1 class="product-title">Personalised Baby Name Hoop</h1>
+          <p class="product-price">£35.00</p>
+
+          <div class="basket-chip" style="margin-bottom: 0.6rem;">
+            ✓ Made to order · Add baby’s name, date &amp; colours
+          </div>
+
+          <p class="product-summary">
+            A keepsake embroidered hoop to celebrate a new arrival. Customise it with
+            the baby’s name, date of birth and your choice of colours to suit their nursery.
+          </p>
+
+          <p class="colour-label">Choose a colour mood</p>
+          <div class="colour-swatches" id="colour-swatches-baby">
+            <button class="colour-swatch active" style="--swatch: #ffe0f0;" data-colour="Soft pinks"></button>
+            <button class="colour-swatch" style="--swatch: #d6ecff;" data-colour="Sky blue"></button>
+            <button class="colour-swatch" style="--swatch: #f9f3cf;" data-colour="Neutral cream"></button>
+            <button class="colour-swatch" style="--swatch: #dbe9d2;" data-colour="Sage & cream"></button>
+          </div>
+          <p class="product-small-note">
+            Selected palette: <span id="selected-colour-baby">Soft pinks</span>.  
+            You can also describe your own palette in the notes at checkout.
+          </p>
+
+          <ul class="product-quick-list">
+            <li>20cm wooden hoop with fully backed finish</li>
+            <li>Custom name and optional date of birth</li>
+            <li>Hand stitched florals and little details around the text</li>
+          </ul>
+
+          <div class="product-actions">
+            <button
+              class="btn primary full-width"
+              data-id="baby-name-20"
+              data-name="Personalised Baby Name Hoop"
+              data-price="35"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+            <button class="btn ghost full-width" onclick="openBasketDrawer()">
+              View basket
+            </button>
+          </div>
+
+          <p class="product-small-note">
+            In your order notes you can tell us: baby’s name, date of birth (optional),
+            main colour palette and any special requests.
+          </p>
+        </article>
+      </div>
+
+      <!-- EXTRA INFO -->
+      <section class="product-extra-grid">
+        <article class="product-story-card">
+          <h2>A keepsake for their first room</h2>
+          <p>
+            This hoop is designed to feel gentle and timeless – something that can hang
+            in their nursery from day one and still look beautiful as they grow.
+          </p>
+          <p>
+            We sketch the name and florals by hand before carefully embroidering each element.
+            Tiny details like leaves, stars or dots can be added to match your theme.
+          </p>
+          <ul>
+            <li>Perfect for baby showers, new baby gifts and first birthdays</li>
+            <li>Colours can be tailored to match bedding or decor</li>
+            <li>Each hoop is wrapped in tissue and ready to gift</li>
+          </ul>
+        </article>
+
+        <aside class="product-facts-card">
+          <h3>Processing &amp; delivery</h3>
+          <ul>
+            <li>⏱ Processing time: 7–10 working days</li>
+            <li>🚚 UK delivery: usually 2–3 working days after dispatch</li>
+            <li>🌍 International available on request</li>
+          </ul>
+
+          <h3>Care</h3>
+          <ul>
+            <li>Hang away from direct sunlight to keep colours fresh</li>
+            <li>Dust lightly every now and then</li>
+            <li>Store flat and dry if not on display</li>
+          </ul>
+
+          <h3>Spelling check</h3>
+          <p>
+            We copy the name exactly as you write it. Please double‑check spellings
+            and dates before completing your order.
+          </p>
+        </aside>
+      </section>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <section class="also-like-full">
+        <h2 class="also-like-title">You may also like</h2>
+        <div class="also-like-grid-full">
+          <a href="product-home-plants.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Home &amp; Plants hoop</div>
+            </div>
+            <h3>Home &amp; Plants – 20cm Hoop</h3>
+            <p>Botanical embroidery for plant‑loving parents.</p>
+            <div class="product-tag">NEW</div>
+          </a>
+
+          <a href="product-family-home.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Family home hoop</div>
+            </div>
+            <h3>Family Home Hoop</h3>
+            <p>Celebrate the family surname with a custom hoop.</p>
+            <div class="product-tag">FAMILY</div>
+          </a>
+
+          <a href="product-dua.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Dua / quote hoop</div>
+            </div>
+            <h3>Dua / Quote Hoop</h3>
+            <p>A meaningful stitched phrase to hang beside their door or cot.</p>
+            <div class="product-tag">MEANINGFUL</div>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
+  </footer>
+
+  <script src="assets/cart.js?v=20"></script>
+  <script>
+    const swatchesB = document.querySelectorAll("#colour-swatches-baby .colour-swatch");
+    const selectedB = document.getElementById("selected-colour-baby");
+    swatchesB.forEach(btn => {
+      btn.addEventListener("click", () => {
+        swatchesB.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedB.textContent = btn.dataset.colour || "Custom";
+      });
+    });
+  </script>
+</body>
+</html>
