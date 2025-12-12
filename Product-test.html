@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Areej Handmade – Hand‑Embroidered Home & Plants Hoop</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>EMBROIDERY & GIFTS</span>
+        </div>
+      </a>
+
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">
+          Basket
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section product-page">
+      <!-- Breadcrumb -->
+      <a href="items.html" class="back-link">
+        ← Back to all items
+      </a>
+
+      <!-- PRODUCT LAYOUT -->
+      <div class="product-layout">
+        <!-- LEFT: PRODUCT IMAGE -->
+        <div class="product-photos">
+          <div class="product-main-photo">
+            <!-- Replace this later with a real image -->
+            <img src="assets/example-product.jpg" alt="Hand embroidered hoop – Home & Plants" />
+          </div>
+
+          <div class="product-thumbs">
+            <!-- Optional thumbnails: replace src with real images or remove boxes -->
+            <div class="product-thumb-box">
+              <img src="assets/example-product-detail1.jpg" alt="Close-up embroidery detail" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/example-product-detail2.jpg" alt="Hoop hanging on wall" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/example-product-detail3.jpg" alt="Gift wrapping" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/example-product-detail4.jpg" alt="Stitch texture" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: PRODUCT INFO -->
+        <article class="product-info">
+          <p class="product-eyebrow">HAND‑EMBROIDERED HOOP · MADE TO ORDER</p>
+          <h1 class="product-title">Home & Plants – 20cm Hand‑Embroidered Hoop</h1>
+
+          <p class="product-price">£32.00</p>
+
+          <div class="basket-chip" style="margin-bottom: 0.6rem;">
+            ✓ Handmade in the UK · Packed with care
+          </div>
+
+          <p class="product-summary">
+            A soft, botanical‑themed hoop that brings warmth, calm and a little reminder
+            of home to any space. Each piece is stitched by hand by Areej, so no two
+            hoops are ever exactly the same.
+          </p>
+
+          <!-- COLOUR SECTION -->
+          <p class="colour-label">Available colours</p>
+          <div class="colour-swatches" id="colour-swatches">
+            <button class="colour-swatch active" style="--swatch: #f7d6e8;" data-colour="Blush Pink" aria-label="Blush pink"></button>
+            <button class="colour-swatch" style="--swatch: #d0e6da;" data-colour="Sage Green" aria-label="Sage green"></button>
+            <button class="colour-swatch" style="--swatch: #f6f0d4;" data-colour="Warm Cream" aria-label="Warm cream"></button>
+            <button class="colour-swatch" style="--swatch: #f2c46a;" data-colour="Golden Accent" aria-label="Golden accent"></button>
+          </div>
+          <p class="product-small-note">
+            Selected colour: <span id="selected-colour">Blush Pink</span>.
+            If you’d like a custom colour combination, add it in the notes at checkout.
+          </p>
+
+          <!-- SIZE / DETAILS QUICK BULLETS -->
+          <ul class="product-quick-list">
+            <li>Hoop size: 20cm beech wood embroidery hoop</li>
+            <li>Fabric: premium cotton, backed for a clean finish</li>
+            <li>Stitches: hand‑embroidered with high‑quality thread</li>
+          </ul>
+
+          <!-- ADD TO BASKET -->
+          <div class="product-actions">
+            <button class="btn primary full-width" onclick="addCurrentProductToBasket()">
+              Add to basket
+            </button>
+            <button class="btn ghost full-width" onclick="openBasketDrawer()">
+              View basket
+            </button>
+          </div>
+
+          <p class="product-small-note">
+            All hoops are made to order. Please check the processing and delivery times
+            below before placing your order.
+          </p>
+        </article>
+      </div>
+
+      <!-- LONG DESCRIPTION / STORY / INFO -->
+      <section class="product-extra-grid">
+        <article class="product-story-card">
+          <h2>About this piece</h2>
+          <p>
+            “Home & Plants” is inspired by slow mornings, cosy corners and that one
+            favourite plant that always seems to survive. Each hoop is drawn and
+            embroidered by hand, so your piece will always be slightly unique –
+            like a tiny artwork for your wall.
+          </p>
+          <p>
+            The embroidery is stitched onto a high‑quality cotton fabric and framed
+            in a wooden hoop, ready to hang or rest on a shelf. It’s the perfect size
+            for a hallway, bedroom or above a desk.
+          </p>
+          <ul>
+            <li>Perfect as a house‑warming, birthday or “just because” gift</li>
+            <li>Designed, stitched and packed by a small family business</li>
+            <li>Gift‑wrapping and personalised note available on request</li>
+          </ul>
+        </article>
+
+        <aside class="product-facts-card">
+          <h3>Processing & delivery</h3>
+          <ul>
+            <li>⏱ Processing time: 5–7 working days</li>
+            <li>🚚 UK delivery: 2–3 working days after dispatch</li>
+            <li>🌍 International: time may vary depending on country</li>
+          </ul>
+
+          <h3>Care instructions</h3>
+          <ul>
+            <li>Keep away from direct sunlight to avoid fading</li>
+            <li>Dust gently with a dry, soft cloth</li>
+            <li>Do not wash or soak the hoop</li>
+          </ul>
+
+          <h3>Returns & exchanges</h3>
+          <p>
+            As each hoop is made to order, we can’t accept change‑of‑mind returns.
+            If your item arrives damaged or there is a problem with your order,
+            please contact us within 7 days and we’ll make it right.
+          </p>
+        </aside>
+      </section>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <section class="also-like-full">
+        <h2 class="also-like-title">You may also like</h2>
+        <div class="also-like-grid-full">
+          <!-- Card 1 -->
+          <a href="product-baby-name.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">
+                Baby name hoop – add your own picture here
+              </div>
+            </div>
+            <h3>Personalised Baby Name Hoop</h3>
+            <p>A sweet keepsake hoop with the baby’s name, date and soft floral details.</p>
+            <div class="product-tag">NEW · MADE TO ORDER</div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="product-family-home.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">
+                Family home hoop – add product photo later
+              </div>
+            </div>
+            <h3>Family Home Hoop</h3>
+            <p>Celebrate your home with a custom embroidered family hoop.</p>
+            <div class="product-tag">CUSTOM · FAMILY GIFT</div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="product-dua.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">
+                Embroidered quote / dua hoop – image placeholder
+              </div>
+            </div>
+            <h3>Embroidered Quote / Dua Hoop</h3>
+            <p>A meaningful stitched quote hoop for your wall or workspace.</p>
+            <div class="product-tag">BESTSELLER</div>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- BASKET DRAWER (existing JS hooks should still work) -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary">
+      <!-- Filled by JS -->
+    </div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">
+      Go to basket
+    </button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/cart.js?v=20"></script>
+  <script>
+    // Tiny JS to show selected colour
+    const colourSwatches = document.querySelectorAll('.colour-swatch');
+    const selectedColourSpan = document.getElementById('selected-colour');
+
+    colourSwatches.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        colourSwatches.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const colourName = btn.getAttribute('data-colour') || 'Custom';
+        selectedColourSpan.textContent = colourName;
+      });
+    });
+  </script>
+</body>
+</html>
