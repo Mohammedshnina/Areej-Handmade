@@ -4,671 +4,107 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout | Areej Handmade</title>
- <link rel="stylesheet" href="assets/style.css?v=10" />
-
-  <style>
-    .checkout-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .checkout-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 1.6rem 1.7rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .checkout-card::before {
-      content: "";
-      position: absolute;
-      top: -70px;
-      right: -70px;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(242, 180, 65, 0.35), transparent);
-      opacity: 0.7;
-    }
-
-    .checkout-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .checkout-tagline {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 0.4rem 0 1rem;
-    }
-
-    .checkout-form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .checkout-form-grid .full-width {
-      grid-column: 1 / -1;
-    }
-
-    .checkout-label {
-      font-size: 0.86rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-
-    .checkout-input,
-    .checkout-textarea,
-    .checkout-select {
-      width: 100%;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      padding: 0.55rem 0.7rem;
-      font-family: inherit;
-      font-size: 0.9rem;
-      outline: none;
-      background: #fff;
-    }
-
-    .checkout-textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .checkout-input:focus,
-    .checkout-textarea:focus,
-    .checkout-select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px rgba(242, 180, 65, 0.6);
-    }
-
-    .checkout-summary-list {
-      margin: 0.6rem 0 0;
-      padding: 0;
-      list-style: none;
-      font-size: 0.9rem;
-    }
-
-    .checkout-summary-item {
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(243, 214, 226, 0.8);
-    }
-
-    .checkout-summary-item:last-child {
-      border-bottom: none;
-    }
-
-    .checkout-summary-name {
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-    }
-
-    .checkout-summary-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .checkout-empty {
-      margin-top: 0.7rem;
-      padding: 1rem;
-      border-radius: var(--radius-md);
-      background: var(--bg-soft);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .checkout-summary-footer {
-      margin-top: 1.4rem;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .checkout-summary-totals {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .checkout-summary-totals p {
-      margin: 0.1rem 0;
-    }
-
-    .checkout-summary-totals .total-line {
-      font-weight: 600;
-      margin-top: 0.3rem;
-    }
-
-    .checkout-discount-row {
-      margin-top: 0.9rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-      font-size: 0.86rem;
-    }
-
-    .checkout-discount-input {
-      flex: 1;
-      min-width: 140px;
-    }
-
-    .checkout-discount-help {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
-
-    .checkout-complete {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: var(--radius-md);
-      background: var(--accent-soft);
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-
-    .checkout-complete strong {
-      color: var(--accent-strong);
-    }
-
-    @media (max-width: 900px) {
-      .checkout-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
-      <div class="logo-text">
-        Areej<span>Handmade</span>
-      </div>
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html#hero">Home</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#about">About</a>
-      <a href="items.html">Items</a>
-      <a href="index.html#contact">Contact</a>
-      <button type="button" class="nav-basket-btn" id="openBasket">
-        Basket (<span id="basketCountNav">0</span>)
-      </button>
-    </nav>
   </header>
 
-  <!-- SIDE BASKET DRAWER -->
-  <div class="basket-overlay" id="basketOverlay"></div>
-  <aside class="basket-drawer" id="basketDrawer">
-    <div class="basket-drawer-header">
-      <h2>Your basket</h2>
-      <button type="button" class="basket-close" id="closeBasket">×</button>
-    </div>
-    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
-    <ul id="drawerItems" class="drawer-items"></ul>
-    <p>Total items: <span id="drawerCount">0</span></p>
-    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
-  </aside>
+  <main>
+    <section class="section">
+      <h1 class="section-title">Checkout</h1>
+      <p class="section-subtitle">
+        Fill in your details below. We’ll review your order and contact you to
+        confirm payment and delivery.
+      </p>
 
-  <!-- MAIN CONTENT -->
-  <main class="section">
-    <div class="checkout-layout">
-      <!-- LEFT: FORM -->
-      <section class="checkout-card">
-        <div class="checkout-card-inner">
-          <h1 class="section-title">Checkout</h1>
-          <p class="checkout-tagline">
-            Share your details and how you’d like Areej to contact you. This
-            doesn’t take payment – it collects your order so Areej can confirm
-            everything with you.
-          </p>
+      <div class="basket-page-layout">
+        <div class="basket-page-card">
+          <h2 style="margin-top: 0;">Your details</h2>
 
-          <form id="checkoutForm">
-            <div class="checkout-form-grid">
-              <div>
-                <label class="checkout-label" for="fullName">Full name</label>
-                <input
-                  id="fullName"
-                  class="checkout-input"
-                  type="text"
-                  required
-                  placeholder="e.g. Amina Khan"
-                />
-              </div>
-              <div>
-                <label class="checkout-label" for="email">Email</label>
-                <input
-                  id="email"
-                  class="checkout-input"
-                  type="email"
-                  required
-                  placeholder="e.g. you@example.com"
-                />
-              </div>
-              <div>
-                <label class="checkout-label" for="phone">Phone / WhatsApp</label>
-                <input
-                  id="phone"
-                  class="checkout-input"
-                  type="text"
-                  placeholder="Optional"
-                />
-              </div>
-              <div>
-                <label class="checkout-label" for="contactMethod">
-                  Preferred contact
-                </label>
-                <select id="contactMethod" class="checkout-select">
-                  <option value="email">Email</option>
-                  <option value="whatsapp">WhatsApp</option>
-                  <option value="instagram">Instagram DM</option>
-                </select>
-              </div>
-              <div class="full-width">
-                <label class="checkout-label" for="address">Delivery area / city</label>
-                <input
-                  id="address"
-                  class="checkout-input"
-                  type="text"
-                  placeholder="e.g. London, UK"
-                />
-              </div>
-              <div class="full-width">
-                <label class="checkout-label" for="extraNotes">
-                  Extra info for Areej (timing, occasion, etc.)
-                </label>
-                <textarea
-                  id="extraNotes"
-                  class="checkout-textarea"
-                  placeholder="Tell Areej if this is for a specific date, occasion or if you have any special requests."
-                ></textarea>
-              </div>
+          <form id="checkout-form" class="checkout-form">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" required />
+            </div>
+            <div>
+              <label for="email">Email address</label>
+              <input id="email" type="email" required />
+            </div>
+            <div>
+              <label for="phone">WhatsApp / phone</label>
+              <input id="phone" />
+            </div>
+            <div>
+              <label for="address">Address</label>
+              <textarea id="address" rows="3" required></textarea>
+            </div>
+            <div>
+              <label for="notes">Order notes (colours, names, deadlines)</label>
+              <textarea id="notes" rows="4"></textarea>
             </div>
 
-            <div style="margin-top: 1.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
-              <a href="basket.html" class="btn ghost">Back to basket</a>
-              <button type="submit" class="btn primary">Save details</button>
-              <button type="button" class="btn ghost" id="whatsappOrderBtn">
-                Send order via WhatsApp
-              </button>
-              <button type="button" class="btn ghost" id="emailReceiptBtn">
-                Email me my receipt
-              </button>
+            <div class="checkout-discount-row">
+              <div class="checkout-discount-input">
+                <label for="discount">Discount code (optional)</label>
+                <input
+                  id="discount"
+                  placeholder="e.g. AREEJ10"
+                  oninput="applyDiscount(this)"
+                />
+              </div>
+              <div id="discount-message" class="checkout-discount-help"></div>
             </div>
 
-            <div id="checkoutComplete" class="checkout-complete">
-              <strong>Details saved.</strong> You can now send your order to Areej
-              using the WhatsApp button, or email yourself a copy of your receipt.
-            </div>
+            <button class="btn primary full-width" type="submit">
+              Confirm order
+            </button>
+
+            <div id="checkout-success" class="checkout-success"></div>
           </form>
         </div>
-      </section>
 
-      <!-- RIGHT: ORDER SUMMARY -->
-      <aside class="checkout-card">
-        <div class="checkout-card-inner">
-          <h2>Your pieces</h2>
-          <p class="checkout-tagline">
-            A summary of what you’re asking Areej to make. You can still go
-            back and edit things on the basket page.
-          </p>
-
-          <div id="checkoutEmpty" class="checkout-empty" style="display: none;">
-            Your basket is empty. Go back to the
-            <a href="items.html">items page</a> to add some pieces first.
-          </div>
-
-          <ul id="checkoutList" class="checkout-summary-list"></ul>
-
-          <!-- TOTALS + DISCOUNT -->
-          <div class="checkout-summary-totals" id="checkoutTotals" style="display:none;">
-            <p><strong>Subtotal:</strong> £<span id="subtotalValue">0.00</span></p>
-            <p id="discountRow" style="display:none;">
-              <strong>Discount:</strong> −£<span id="discountValue">0.00</span>
-            </p>
-            <p class="total-line">
-              <strong>Estimated total:</strong> £<span id="totalValue">0.00</span>
-            </p>
-          </div>
-
-          <!-- DISCOUNT CODE INPUT -->
-          <div class="checkout-discount-row">
-            <input
-              id="discountCode"
-              class="checkout-input checkout-discount-input"
-              type="text"
-              placeholder="Discount code (optional)"
-            />
-            <button type="button" class="btn small ghost" id="applyDiscountBtn">
-              Apply code
-            </button>
-          </div>
-          <div class="checkout-discount-help">
-            Try: <code>AREEJ10</code> (10% off) or <code>WELCOME5</code> (£5 off).
-          </div>
-
-          <div class="checkout-summary-footer">
-            <p>
-              <strong>Note about fees:</strong> a small transaction / payment
-              processing fee (for example from Stripe) may be added when you pay.
-              Areej will confirm the final total before you send any money.
-            </p>
-          </div>
+        <div class="basket-page-card">
+          <h2 style="margin-top: 0;">Order summary</h2>
+          <div id="checkout-summary"></div>
         </div>
-      </aside>
-    </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Back to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
   <footer class="footer">
-    © <span id="year"></span> Areej Handmade
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
   </footer>
 
-  <div id="toast" class="toast">Order details saved</div>
-
-  <script src="cart.js"></script>
-  <script>
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // 🔹 price list for each product (change these numbers if you like)
-    const PRODUCT_PRICES = {
-      "Floral hoop (medium)": 25,
-      "Baby name hoop": 28,
-      "Family name frame": 35,
-      "Housewarming piece": 30,
-      "Quran quote hoop": 27,
-      "Mini gift set": 18
-    };
-
-    // 🔹 discount codes: percent or fixed £
-    const DISCOUNT_CODES = {
-      "AREEJ10": { type: "percent", value: 10 }, // 10% off
-      "WELCOME5": { type: "fixed", value: 5 }    // £5 off
-    };
-
-    let appliedDiscountCode = null;
-    let currentBasket = [];
-
-    function computeTotals(items, code) {
-      let subtotal = 0;
-
-      items.forEach((item) => {
-        const price = PRODUCT_PRICES[item.name] || 0;
-        subtotal += price;
-      });
-
-      let discountAmount = 0;
-
-      if (code && DISCOUNT_CODES[code]) {
-        const rule = DISCOUNT_CODES[code];
-        if (rule.type === "percent") {
-          discountAmount = subtotal * (rule.value / 100);
-        } else if (rule.type === "fixed") {
-          discountAmount = rule.value;
-        }
-      }
-
-      if (discountAmount > subtotal) discountAmount = subtotal;
-      const total = subtotal - discountAmount;
-
-      return {
-        subtotal,
-        discountAmount,
-        total
-      };
-    }
-
-    function renderCheckoutSummary() {
-      const items = loadBasket();
-      currentBasket = items || [];
-
-      const list = document.getElementById("checkoutList");
-      const empty = document.getElementById("checkoutEmpty");
-      const totalsBox = document.getElementById("checkoutTotals");
-      const subtotalEl = document.getElementById("subtotalValue");
-      const discountRow = document.getElementById("discountRow");
-      const discountValEl = document.getElementById("discountValue");
-      const totalEl = document.getElementById("totalValue");
-
-      if (!items || items.length === 0) {
-        if (list) list.innerHTML = "";
-        if (empty) empty.style.display = "block";
-        if (totalsBox) totalsBox.style.display = "none";
-        return;
-      }
-
-      if (empty) empty.style.display = "none";
-      if (!list) return;
-      list.innerHTML = "";
-
-      items.forEach((item) => {
-        const li = document.createElement("li");
-        li.className = "checkout-summary-item";
-
-        const name = document.createElement("div");
-        name.className = "checkout-summary-name";
-        const price = PRODUCT_PRICES[item.name] || 0;
-        name.textContent = item.name
-          ? `${item.name} – £${price.toFixed(2)}`
-          : `Custom item – £${price.toFixed(2)}`;
-
-        const meta = document.createElement("div");
-        meta.className = "checkout-summary-meta";
-        const colour = item.color ? `Colour: ${item.color}` : "Colour: not set";
-        const desc = item.description ? `Notes: ${item.description}` : "";
-        meta.textContent = desc ? `${colour} · ${desc}` : colour;
-
-        li.appendChild(name);
-        li.appendChild(meta);
-        list.appendChild(li);
-      });
-
-      // totals
-      const { subtotal, discountAmount, total } = computeTotals(items, appliedDiscountCode);
-
-      if (totalsBox) totalsBox.style.display = "block";
-      if (subtotalEl) subtotalEl.textContent = subtotal.toFixed(2);
-      if (totalEl) totalEl.textContent = total.toFixed(2);
-
-      if (discountRow && discountValEl) {
-        if (discountAmount > 0) {
-          discountRow.style.display = "block";
-          discountValEl.textContent = discountAmount.toFixed(2);
-        } else {
-          discountRow.style.display = "none";
-        }
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderCheckoutSummary();
-
-      const form = document.getElementById("checkoutForm");
-      const completeBox = document.getElementById("checkoutComplete");
-      const discountInput = document.getElementById("discountCode");
-      const discountBtn = document.getElementById("applyDiscountBtn");
-
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          if (completeBox) {
-            completeBox.style.display = "block";
-          }
-          showToast("Order details saved");
-        });
-      }
-
-      // apply discount
-      if (discountBtn && discountInput) {
-        discountBtn.addEventListener("click", () => {
-          const raw = discountInput.value.trim().toUpperCase();
-          if (!raw) {
-            appliedDiscountCode = null;
-            renderCheckoutSummary();
-            showToast("Discount cleared");
-            return;
-          }
-
-          if (!DISCOUNT_CODES[raw]) {
-            appliedDiscountCode = null;
-            renderCheckoutSummary();
-            alert("That discount code is not valid.");
-            return;
-          }
-
-          appliedDiscountCode = raw;
-          renderCheckoutSummary();
-          showToast("Discount applied");
-        });
-      }
-
-      // 🔹 WhatsApp button logic
-      const whatsappBtn = document.getElementById("whatsappOrderBtn");
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener("click", () => {
-          const items = loadBasket();
-          if (!items || items.length === 0) {
-            alert("Your basket is empty. Please add something first.");
-            return;
-          }
-
-          // Form fields
-          const name = document.getElementById("fullName")?.value || "";
-          const email = document.getElementById("email")?.value || "";
-          const phone = document.getElementById("phone")?.value || "";
-          const contactMethod = document.getElementById("contactMethod")?.value || "";
-          const address = document.getElementById("address")?.value || "";
-          const extraNotes = document.getElementById("extraNotes")?.value || "";
-
-          // Items text
-          let itemsText = "";
-          items.forEach((item, index) => {
-            const lineNum = index + 1;
-            const itemName = item.name || "Custom item";
-            const itemColour = item.color || "Not set";
-            const itemNotes = item.description || "";
-            const price = PRODUCT_PRICES[item.name] || 0;
-            itemsText += `${lineNum}. ${itemName} – £${price.toFixed(2)}\n   Colour: ${itemColour}`;
-            if (itemNotes) {
-              itemsText += `\n   Notes: ${itemNotes}`;
-            }
-            itemsText += "\n\n";
-          });
-
-          const { subtotal, discountAmount, total } = computeTotals(
-            items,
-            appliedDiscountCode
-          );
-
-          // Full message
-          let message = "🧵 New Areej Handmade order request\n\n";
-          if (name) message += `Name: ${name}\n`;
-          if (email) message += `Email: ${email}\n`;
-          if (phone) message += `Phone/WhatsApp: ${phone}\n`;
-          if (contactMethod) message += `Preferred contact: ${contactMethod}\n`;
-          if (address) message += `Area / city: ${address}\n`;
-          if (extraNotes) {
-            message += `\nExtra info:\n${extraNotes}\n`;
-          }
-
-          message += `\nItems:\n${itemsText}`;
-          message += `Subtotal: £${subtotal.toFixed(2)}\n`;
-          if (discountAmount > 0) {
-            message += `Discount: -£${discountAmount.toFixed(2)}\n`;
-          }
-          message += `Estimated total (before any payment/Stripe fees): £${total.toFixed(
-            2
-          )}\n`;
-          message += "\n— Sent from the Areej Handmade website";
-
-          // 🔴 CHANGE THIS TO YOUR MUM'S REAL NUMBER
-          // Format: country code + number, NO +, NO spaces, NO leading 0
-          // Example UK: +44 7700 900123  ==>  447700900123
-          const mumNumber = "447915678261";
-
-          const url = "https://wa.me/" + mumNumber + "?text=" + encodeURIComponent(message);
-          window.open(url, "_blank");
-        });
-      }
-
-      // 🔹 Email receipt button logic
-      const emailReceiptBtn = document.getElementById("emailReceiptBtn");
-      if (emailReceiptBtn) {
-        emailReceiptBtn.addEventListener("click", () => {
-          const items = loadBasket();
-          if (!items || items.length === 0) {
-            alert("Your basket is empty. Please add something first.");
-            return;
-          }
-
-          const email = document.getElementById("email")?.value || "";
-          const name = document.getElementById("fullName")?.value || "";
-
-          if (!email) {
-            alert("Please enter your email address first.");
-            return;
-          }
-
-          const { subtotal, discountAmount, total } = computeTotals(
-            items,
-            appliedDiscountCode
-          );
-
-          let itemsText = "";
-          items.forEach((item, index) => {
-            const lineNum = index + 1;
-            const itemName = item.name || "Custom item";
-            const itemColour = item.color || "Not set";
-            const itemNotes = item.description || "";
-            const price = PRODUCT_PRICES[item.name] || 0;
-            itemsText += `${lineNum}. ${itemName} – £${price.toFixed(2)}\n   Colour: ${itemColour}`;
-            if (itemNotes) {
-              itemsText += `\n   Notes: ${itemNotes}`;
-            }
-            itemsText += "\n\n";
-          });
-
-          let message = "";
-          if (name) {
-            message += `Hi ${name},\n\n`;
-          } else {
-            message += `Hi,\n\n`;
-          }
-          message += "Here is your Areej Handmade order summary:\n\n";
-          message += itemsText;
-          message += `Subtotal: £${subtotal.toFixed(2)}\n`;
-          if (discountAmount > 0) {
-            message += `Discount: -£${discountAmount.toFixed(2)}\n`;
-          }
-          message += `Estimated total (before any payment/Stripe fees): £${total.toFixed(2)}\n\n`;
-          message += "Areej will contact you to confirm final price, timing and payment details.\n\n";
-          message += "Thank you for supporting handmade 🧵\nAreej Handmade";
-
-          const subject = "Your Areej Handmade order summary";
-
-          const mailtoUrl =
-            "mailto:" +
-            encodeURIComponent(email) +
-            "?subject=" +
-            encodeURIComponent(subject) +
-            "&body=" +
-            encodeURIComponent(message);
-
-          window.location.href = mailtoUrl;
-        });
-      }
-    });
-  </script>
+  <script src="assets/cart.js?v=20"></script>
 </body>
 </html>
-
-
