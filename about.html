@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
+</head>
+<body>
+  <header class="navbar">
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-soft">
+      <h1 class="section-title">About Areej Handmade</h1>
+      <p class="section-subtitle">
+        A small family‑run embroidery studio creating thoughtful, personalised pieces
+        to celebrate your home, your loved ones and your special moments.
+      </p>
+
+      <div class="product-extra-grid">
+        <article class="product-story-card">
+          <h2>Our story</h2>
+          <p>
+            Areej Handmade started as a quiet evening hobby and slowly grew into a
+            tiny home‑studio. Every hoop is drawn, stitched and finished by hand –
+            no machines, no shortcuts, just patience and a lot of love.
+          </p>
+          <p>
+            We believe that slow, handmade pieces carry a different kind of feeling.
+            They’re not fast fashion: they’re keepsakes that move with you from one
+            home to the next.
+          </p>
+        </article>
+
+        <aside class="product-facts-card">
+          <h3>What we value</h3>
+          <ul>
+            <li>Thoughtful, meaningful gifts over mass‑produced decor</li>
+            <li>Colours that feel soft, warm and welcoming</li>
+            <li>Taking time with each order instead of rushing</li>
+          </ul>
+          <p>
+            Have a custom idea in mind? Email us or message on WhatsApp and we’ll
+            see what we can create together.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
+  </footer>
+
+  <script src="assets/cart.js?v=20"></script>
+</body>
+</html>
