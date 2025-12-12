@@ -4,319 +4,71 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your basket | Areej Handmade</title>
- <link rel="stylesheet" href="assets/style.css?v=10" />
-
-  <style>
-    .basket-page-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .basket-page-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 1.5rem 1.6rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .basket-page-card::before {
-      content: "";
-      position: absolute;
-      top: -70px;
-      right: -70px;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(242, 180, 65, 0.35), transparent);
-      opacity: 0.7;
-    }
-
-    .basket-page-card h1,
-    .basket-page-card h2 {
-      position: relative;
-      z-index: 1;
-    }
-
-    .basket-lines-header,
-    .basket-line {
-      position: relative;
-      z-index: 1;
-    }
-
-    .basket-lines-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr) 90px;
-      gap: 0.8rem;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .basket-line {
-      display: grid;
-      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr) 90px;
-      gap: 0.8rem;
-      align-items: center;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(243, 214, 226, 0.8);
-      font-size: 0.92rem;
-    }
-
-    .basket-line:last-child {
-      border-bottom: none;
-    }
-
-    .basket-line-name {
-      font-weight: 500;
-    }
-
-    .basket-line-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .basket-empty-state {
-      margin-top: 0.8rem;
-      padding: 1rem 1rem;
-      border-radius: var(--radius-md);
-      background: var(--bg-soft);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .basket-summary-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 0.8rem;
-      font-size: 0.9rem;
-    }
-
-    .basket-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: var(--accent-soft);
-      color: var(--accent-strong);
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .basket-summary-note {
-      margin-top: 0.8rem;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .basket-summary-actions {
-      margin-top: 1.2rem;
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .basket-page-tagline {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 0.4rem 0 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .basket-page-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
-      <div class="logo-text">
-        Areej<span>Handmade</span>
-      </div>
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html#hero">Home</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#about">About</a>
-      <a href="items.html">Items</a>
-      <a href="index.html#contact">Contact</a>
-      <button type="button" class="nav-basket-btn" id="openBasket">
-        Basket (<span id="basketCountNav">0</span>)
-      </button>
-    </nav>
   </header>
 
-  <!-- SIDE BASKET DRAWER (same as other pages) -->
-  <div class="basket-overlay" id="basketOverlay"></div>
-  <aside class="basket-drawer" id="basketDrawer">
-    <div class="basket-drawer-header">
-      <h2>Your basket</h2>
-      <button type="button" class="basket-close" id="closeBasket">×</button>
-    </div>
-    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
-    <ul id="drawerItems" class="drawer-items"></ul>
-    <p>Total items: <span id="drawerCount">0</span></p>
-    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
-  </aside>
+  <main>
+    <section class="section">
+      <h1 class="section-title">Your basket</h1>
+      <p class="section-subtitle">
+        Review your items before continuing to checkout. You can remove any product
+        here if you change your mind.
+      </p>
 
-  <!-- MAIN CONTENT -->
-  <main class="section">
-    <div class="basket-page-layout">
-      <!-- LEFT: ITEMS LIST -->
-      <section class="basket-page-card">
-        <h1 class="section-title">Your basket</h1>
-        <p class="basket-page-tagline">
-          Review the handmade pieces you’ve added. You can tweak colours, edit notes
-          or remove items before checkout.
-        </p>
-
-        <div id="basketPageEmpty" class="basket-empty-state" style="display: none;">
-          Your basket is currently empty. Browse the
-          <a href="items.html">items page</a> to add your first piece.
-        </div>
-
-        <div id="basketLinesWrapper" style="display: none;">
+      <div class="basket-page-layout">
+        <div class="basket-page-card">
           <div class="basket-lines-header">
-            <span>Item</span>
-            <span>Details</span>
-            <span>Remove</span>
+            <div>Item</div>
+            <div>Price</div>
+            <div>Actions</div>
           </div>
-          <div id="basketLines"></div>
-        </div>
-      </section>
-
-      <!-- RIGHT: SUMMARY / ACTIONS -->
-      <aside class="basket-page-card">
-        <h2>Summary</h2>
-        <p class="basket-page-tagline">
-          Areej’s pieces are handmade and usually confirmed by message. This page
-          just helps you organise what you’d like.
-        </p>
-
-        <div class="basket-summary-grid">
-          <div>
-            <p><strong>Items in basket</strong></p>
-            <p>
-              <span class="basket-chip">
-                <span id="basketPageCount">0</span> item(s)
-              </span>
-            </p>
-          </div>
-          <div>
-            <p><strong>Pricing</strong></p>
-            <p style="font-size: 0.9rem; color: var(--muted);">
-              Final prices are confirmed individually by Areej.
-            </p>
-          </div>
+          <div id="basket-lines"></div>
         </div>
 
-        <p class="basket-summary-note">
-          At checkout you’ll send your details and preferences. Areej can then
-          message you back (for example via Instagram or WhatsApp) to confirm the
-          order, timing and final price.
-        </p>
-
-        <div class="basket-summary-actions">
-          <a href="items.html" class="btn ghost">Add more items</a>
-          <a id="checkoutBtn" href="checkout.html" class="btn primary">
-            Continue to checkout
-          </a>
+        <div class="basket-page-card">
+          <h2 style="margin-top: 0;">Summary</h2>
+          <div id="basket-totals"></div>
         </div>
-      </aside>
-    </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToCheckoutPage()">Go to checkout</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
   <footer class="footer">
-    © <span id="year"></span> Areej Handmade
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
   </footer>
 
-  <div id="toast" class="toast">Updated basket</div>
-
-  <script src="cart.js"></script>
-  <script>
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    function renderBasketPage() {
-      const items = loadBasket();
-      const wrapper = document.getElementById("basketLinesWrapper");
-      const listEl = document.getElementById("basketLines");
-      const emptyEl = document.getElementById("basketPageEmpty");
-      const countEl = document.getElementById("basketPageCount");
-      const checkoutBtn = document.getElementById("checkoutBtn");
-
-      if (!items || items.length === 0) {
-        if (wrapper) wrapper.style.display = "none";
-        if (emptyEl) emptyEl.style.display = "block";
-        if (countEl) countEl.textContent = "0";
-        if (checkoutBtn) {
-          checkoutBtn.classList.add("ghost");
-          checkoutBtn.classList.remove("primary");
-          checkoutBtn.setAttribute("aria-disabled", "true");
-          checkoutBtn.style.pointerEvents = "none";
-          checkoutBtn.textContent = "Basket is empty";
-        }
-        return;
-      }
-
-      if (wrapper) wrapper.style.display = "block";
-      if (emptyEl) emptyEl.style.display = "none";
-      if (countEl) countEl.textContent = String(items.length);
-
-      if (!listEl) return;
-      listEl.innerHTML = "";
-
-      items.forEach((item, index) => {
-        const line = document.createElement("div");
-        line.className = "basket-line";
-
-        const nameCol = document.createElement("div");
-        nameCol.className = "basket-line-name";
-        nameCol.textContent = item.name || "Custom item";
-
-        const detailsCol = document.createElement("div");
-        detailsCol.className = "basket-line-meta";
-        const color = item.color ? `Colour: ${item.color}` : "Colour: not set";
-        const desc = item.description ? `Notes: ${item.description}` : "";
-        detailsCol.textContent = desc ? `${color} · ${desc}` : color;
-
-        const actionsCol = document.createElement("div");
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "btn small ghost";
-        btn.textContent = "Remove";
-        btn.addEventListener("click", () => {
-          const basket = loadBasket();
-          basket.splice(index, 1);
-          saveBasket(basket);
-          refreshAllBasketUI();
-          renderBasketPage();
-          showToast("Item removed from basket");
-        });
-        actionsCol.appendChild(btn);
-
-        line.appendChild(nameCol);
-        line.appendChild(detailsCol);
-        line.appendChild(actionsCol);
-        listEl.appendChild(line);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderBasketPage();
-    });
-  </script>
+  <script src="assets/cart.js?v=20"></script>
 </body>
 </html>
-
