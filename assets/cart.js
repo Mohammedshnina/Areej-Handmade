@@ -1,328 +1,227 @@
-// Storage key for localStorage
-const STORAGE_KEY = "areejBasket";
+// Simple cart using localStorage
+const CART_KEY = "areejHandmadeCart";
 
-/* ===== Helpers: load / save ===== */
-
-function loadBasket() {
+function loadCart() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
   } catch {
     return [];
   }
 }
 
-function saveBasket(basket) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(basket));
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-/* ===== Global UI refresh ===== */
-
-function refreshAllBasketUI() {
-  updateNavCount();
+function addToCart(item) {
+  const cart = loadCart();
+  cart.push(item);
+  saveCart(cart);
+  showToast("Added to basket");
   renderDrawer();
-  renderBasketPage();
-  renderCheckoutPage();
 }
 
-/* ===== Nav count ===== */
-
-function updateNavCount() {
-  const el = document.getElementById("basketCountNav");
-  if (!el) return;
-  const basket = loadBasket();
-  el.textContent = basket.length;
+function clearCart() {
+  saveCart([]);
+  renderDrawer();
 }
 
-/* ===== Drawer ===== */
+function getCartTotals() {
+  const cart = loadCart();
+  let subtotal = 0;
+  cart.forEach((item) => {
+    subtotal += item.price || 0;
+  });
+  return { subtotal, count: cart.length };
+}
+
+// Drawer functions
+function openBasketDrawer() {
+  document.getElementById("basket-overlay")?.classList.add("open");
+  document.getElementById("basket-drawer")?.classList.add("open");
+  renderDrawer();
+}
+
+function closeBasketDrawer() {
+  document.getElementById("basket-overlay")?.classList.remove("open");
+  document.getElementById("basket-drawer")?.classList.remove("open");
+}
 
 function renderDrawer() {
-  const itemsEl = document.getElementById("drawerItems");
-  const emptyEl = document.getElementById("drawerEmpty");
-  const countEl = document.getElementById("drawerCount");
+  const list = document.getElementById("drawer-items");
+  const summary = document.getElementById("drawer-summary");
+  if (!list || !summary) return;
 
-  if (!itemsEl || !emptyEl || !countEl) return;
+  const cart = loadCart();
+  list.innerHTML = "";
 
-  const basket = loadBasket();
-  itemsEl.innerHTML = "";
-
-  if (basket.length === 0) {
-    emptyEl.style.display = "block";
-  } else {
-    emptyEl.style.display = "none";
-    basket.forEach((item, index) => {
-      const li = document.createElement("li");
-      li.className = "drawer-item-row";
-
-      const nameSpan = document.createElement("span");
-      let label = item.name || "Item";
-      if (item.color) label += ` (${item.color})`;
-      nameSpan.textContent = label;
-
-      const removeBtn = document.createElement("button");
-      removeBtn.type = "button";
-      removeBtn.textContent = "Remove";
-      removeBtn.className = "basket-remove";
-      removeBtn.addEventListener("click", () => {
-        const current = loadBasket();
-        current.splice(index, 1);
-        saveBasket(current);
-        refreshAllBasketUI();
-      });
-
-      li.appendChild(nameSpan);
-      li.appendChild(removeBtn);
-      itemsEl.appendChild(li);
-    });
+  if (cart.length === 0) {
+    list.innerHTML = "<li>Your basket is empty.</li>";
+    summary.innerHTML = "";
+    return;
   }
 
-  countEl.textContent = basket.length;
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} – £${item.price.toFixed(2)}`;
+    list.appendChild(li);
+  });
+
+  const { subtotal, count } = getCartTotals();
+  summary.innerHTML = `
+    <p>Items: ${count}</p>
+    <p><strong>Subtotal: £${subtotal.toFixed(2)}</strong></p>
+  `;
 }
 
-function setupDrawerTriggers() {
-  const openBtn = document.getElementById("openBasket");
-  const closeBtn = document.getElementById("closeBasket");
-  const overlay = document.getElementById("basketOverlay");
-  const drawer = document.getElementById("basketDrawer");
-
-  if (!drawer || !overlay || !openBtn || !closeBtn) return;
-
-  function openDrawer() {
-    drawer.classList.add("open");
-    overlay.classList.add("show");
-    renderDrawer();
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove("open");
-    overlay.classList.remove("show");
-  }
-
-  openBtn.addEventListener("click", openDrawer);
-  closeBtn.addEventListener("click", closeDrawer);
-  overlay.addEventListener("click", closeDrawer);
-}
-
-/* ===== Toast ===== */
-
+// Toast
 function showToast(message) {
   const toast = document.getElementById("toast");
   if (!toast) return;
-
   toast.textContent = message;
   toast.classList.add("show");
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
+  setTimeout(() => toast.classList.remove("show"), 2200);
 }
 
-function checkAddedHashToast() {
-  if (window.location.hash === "#added") {
-    showToast("Item added to basket");
-    history.replaceState(null, "", window.location.pathname);
-  }
+// Page helpers
+function goToBasketPage() {
+  window.location.href = "basket.html";
 }
 
-/* ===== Popup + Add to basket ===== */
-
-function setupAddButtons() {
-  const buttons = document.querySelectorAll(".add-to-basket");
-
-  const overlay = document.getElementById("popupOverlay");
-  const popup = document.getElementById("popup");
-  const colourButtons = document.querySelectorAll(".colour-swatch");
-  const descInput = document.getElementById("popupDesc");
-  const popupCancel = document.getElementById("popupCancel");
-  const popupAdd = document.getElementById("popupAdd");
-  const popupItemName = document.getElementById("popupItemName");
-
-  const popupAvailable =
-    overlay && popup && descInput && popupCancel && popupAdd;
-
-  let pendingItem = null;
-  let selectedColour = null;
-
-  function clearColourSelection() {
-    selectedColour = null;
-    colourButtons.forEach((btn) => btn.classList.remove("active"));
-  }
-
-  function selectColour(btn) {
-    clearColourSelection();
-    selectedColour = btn.getAttribute("data-colour") || "";
-    btn.classList.add("active");
-  }
-
-  function openPopup(name) {
-    if (!popupAvailable) {
-      // Fallback if popup isn't on this page
-      const basket = loadBasket();
-      basket.push({ name });
-      saveBasket(basket);
-      refreshAllBasketUI();
-      showToast("Item added to basket");
-      return;
-    }
-
-    pendingItem = name;
-    if (popupItemName) popupItemName.textContent = name;
-    clearColourSelection();
-    descInput.value = "";
-
-    overlay.classList.add("show");
-    popup.classList.add("show");
-  }
-
-  function closePopup() {
-    if (!popupAvailable) return;
-    overlay.classList.remove("show");
-    popup.classList.remove("show");
-    pendingItem = null;
-    clearColourSelection();
-  }
-
-  if (popupAvailable) {
-    colourButtons.forEach((btn) => {
-      btn.addEventListener("click", () => selectColour(btn));
-    });
-
-    popupCancel.addEventListener("click", closePopup);
-    overlay.addEventListener("click", closePopup);
-
-    popupAdd.addEventListener("click", () => {
-      if (!pendingItem) return;
-
-      const colour = selectedColour || "";
-      const description = descInput.value.trim();
-
-      const basket = loadBasket();
-      basket.push({
-        name: pendingItem,
-        color: colour,
-        description,
-      });
-
-      saveBasket(basket);
-      refreshAllBasketUI();
-      closePopup();
-
-      window.location.href = "items.html#added";
-    });
-  }
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const name = btn.getAttribute("data-name") || "Item";
-      openPopup(name);
-    });
-  });
+function goToCheckoutPage() {
+  window.location.href = "checkout.html";
 }
 
-/* ===== Basket page (basket.html) ===== */
+// If a page uses product buttons with data attributes
+function addFromButton(btn) {
+  const name = btn.getAttribute("data-name");
+  const price = parseFloat(btn.getAttribute("data-price")) || 0;
+  const id = btn.getAttribute("data-id");
+  addToCart({ id, name, price });
+}
 
+// BASKET PAGE RENDER
 function renderBasketPage() {
-  const itemsEl = document.getElementById("basketPageItems");
-  const emptyEl = document.getElementById("basketPageEmpty");
-  const countEl = document.getElementById("basketPageCount");
-  const clearBtn = document.getElementById("clearBasketBtn");
+  const linesContainer = document.getElementById("basket-lines");
+  const totalsContainer = document.getElementById("basket-totals");
+  if (!linesContainer || !totalsContainer) return;
 
-  if (!itemsEl || !emptyEl || !countEl) return;
+  const cart = loadCart();
+  linesContainer.innerHTML = "";
 
-  const basket = loadBasket();
-  itemsEl.innerHTML = "";
-
-  if (basket.length === 0) {
-    emptyEl.style.display = "block";
-  } else {
-    emptyEl.style.display = "none";
-    basket.forEach((item, index) => {
-      const li = document.createElement("li");
-      li.className = "basket-item-row";
-
-      const nameSpan = document.createElement("span");
-      let label = item.name || "Item";
-      if (item.color) label += ` (${item.color})`;
-      nameSpan.textContent = label;
-
-      const removeBtn = document.createElement("button");
-      removeBtn.type = "button";
-      removeBtn.textContent = "Remove";
-      removeBtn.className = "basket-remove";
-      removeBtn.addEventListener("click", () => {
-        const current = loadBasket();
-        current.splice(index, 1);
-        saveBasket(current);
-        refreshAllBasketUI();
-      });
-
-      li.appendChild(nameSpan);
-      li.appendChild(removeBtn);
-      itemsEl.appendChild(li);
-    });
+  if (cart.length === 0) {
+    linesContainer.innerHTML = `
+      <div class="basket-empty-state">
+        Your basket is empty. Browse our items to add something special.
+      </div>
+    `;
+    totalsContainer.innerHTML = "";
+    return;
   }
 
-  countEl.textContent = basket.length;
-
-  if (clearBtn) {
-    clearBtn.onclick = () => {
-      saveBasket([]);
-      refreshAllBasketUI();
-    };
-  }
-}
-
-/* ===== Checkout page (checkout.html) ===== */
-
-function renderCheckoutPage() {
-  const itemsEl = document.getElementById("checkoutItems");
-  const emptyEl = document.getElementById("checkoutEmpty");
-  const countEl = document.getElementById("checkoutCount");
-
-  if (!itemsEl || !emptyEl || !countEl) return;
-
-  const basket = loadBasket();
-  itemsEl.innerHTML = "";
-
-  if (basket.length === 0) {
-    emptyEl.style.display = "block";
-  } else {
-    emptyEl.style.display = "none";
-    basket.forEach((item) => {
-      const li = document.createElement("li");
-      li.className = "basket-item-row";
-
-      const nameSpan = document.createElement("span");
-      let label = item.name || "Item";
-      if (item.color) label += ` (${item.color})`;
-      nameSpan.textContent = label;
-
-      li.appendChild(nameSpan);
-      itemsEl.appendChild(li);
-    });
-  }
-
-  countEl.textContent = basket.length;
-}
-
-function setupCheckoutForm() {
-  const form = document.getElementById("checkoutForm");
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    window.location.href = "order-success.html";
+  cart.forEach((item, index) => {
+    const line = document.createElement("div");
+    line.className = "basket-line";
+    line.innerHTML = `
+      <div>
+        <div class="basket-line-name">${item.name}</div>
+        <div class="basket-line-meta">ID: ${item.id || "n/a"}</div>
+      </div>
+      <div class="basket-line-meta">£${item.price.toFixed(2)}</div>
+      <div>
+        <button class="btn small ghost" onclick="removeFromCart(${index})">Remove</button>
+      </div>
+    `;
+    linesContainer.appendChild(line);
   });
+
+  const { subtotal, count } = getCartTotals();
+  const fee = subtotal * 0.03; // e.g. transaction fee 3%
+  const total = subtotal + fee;
+
+  totalsContainer.innerHTML = `
+    <div class="checkout-summary-totals">
+      <p>Items: ${count}</p>
+      <p>Subtotal: £${subtotal.toFixed(2)}</p>
+      <p>Estimated transaction fee: £${fee.toFixed(2)}</p>
+      <p class="total-line">Estimated total: £${total.toFixed(2)}</p>
+    </div>
+    <p class="basket-summary-note">
+      Transaction fees are estimates only. The final amount will be confirmed at checkout.
+    </p>
+    <button class="btn primary full-width" onclick="goToCheckoutPage()">Proceed to checkout</button>
+  `;
 }
 
-/* ===== Init ===== */
+function removeFromCart(index) {
+  const cart = loadCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  renderBasketPage();
+  renderDrawer();
+}
 
+// CHECKOUT PAGE
+function renderCheckoutSummary() {
+  const summaryEl = document.getElementById("checkout-summary");
+  if (!summaryEl) return;
+  const { subtotal, count } = getCartTotals();
+  if (count === 0) {
+    summaryEl.innerHTML = "<p>Your basket is empty.</p>";
+    return;
+  }
+  const fee = subtotal * 0.03;
+  const total = subtotal + fee;
+
+  summaryEl.innerHTML = `
+    <div class="checkout-summary-totals">
+      <p>Items: ${count}</p>
+      <p>Subtotal: £${subtotal.toFixed(2)}</p>
+      <p>Estimated transaction fee: £${fee.toFixed(2)}</p>
+      <p class="total-line">Total: £${total.toFixed(2)}</p>
+    </div>
+  `;
+}
+
+function applyDiscount(codeInput) {
+  const code = codeInput.value.trim().toUpperCase();
+  const msg = document.getElementById("discount-message");
+  if (!msg) return;
+
+  if (code === "AREEJ10") {
+    msg.textContent = "Discount applied: 10% off will be reflected when you confirm the order.";
+  } else if (code === "") {
+    msg.textContent = "";
+  } else {
+    msg.textContent = "This code is not valid. Try AREJ10 or leave blank.";
+  }
+}
+
+function submitCheckoutForm(event) {
+  event.preventDefault();
+  const successBox = document.getElementById("checkout-success");
+  if (successBox) {
+    successBox.style.display = "block";
+    successBox.textContent =
+      "Thank you! Your order has been submitted. We will contact you shortly with payment and delivery details.";
+  }
+  clearCart();
+  renderCheckoutSummary();
+}
+
+// Init per page
 document.addEventListener("DOMContentLoaded", () => {
-  setupDrawerTriggers();
-  setupAddButtons();
-  setupCheckoutForm();
-  refreshAllBasketUI();
-  checkAddedHashToast();
-});
+  // update drawer if present
+  renderDrawer();
 
+  if (document.getElementById("basket-lines")) {
+    renderBasketPage();
+  }
+  if (document.getElementById("checkout-summary")) {
+    renderCheckoutSummary();
+    const form = document.getElementById("checkout-form");
+    if (form) {
+      form.addEventListener("submit", submitCheckoutForm);
+    }
+  }
+});
