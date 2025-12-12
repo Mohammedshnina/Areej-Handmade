@@ -3,263 +3,151 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Areej Handmade | Handcrafted with love</title>
-  <link rel="stylesheet" href="assets/style.css?v=10" />
+  <title>Areej Handmade | Hand‑embroidered gifts</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
-      <div class="logo-text">
-        Areej<span>Handmade</span>
-      </div>
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
     </div>
-    <nav>
-  <a href="#hero">Home</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#about">About</a>
-  <a href="items.html">Items</a>
-  <a href="#contact">Contact</a>
-  <button type="button" class="nav-basket-btn" id="openBasket">
-    Basket (<span id="basketCountNav">0</span>)
-  </button>
-</nav>
-
   </header>
 
-  <!-- BASKET OVERLAY + DRAWER -->
-  <div class="basket-overlay" id="basketOverlay"></div>
-
-  <aside class="basket-drawer" id="basketDrawer">
-    <div class="basket-drawer-header">
-      <h2>Your basket</h2>
-      <button type="button" class="basket-close" id="closeBasket">×</button>
-    </div>
-
-    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
-    <ul id="drawerItems" class="drawer-items"></ul>
-
-    <p class="basket-summary">
-      Total items: <span id="drawerCount">0</span>
-    </p>
-
-    <a href="basket.html" class="btn primary drawer-go-btn">
-      Go to basket page
-    </a>
-  </aside>
-
   <main>
-    <!-- HERO -->
-    <section id="hero" class="section hero">
-      <div class="hero-text">
-        <p class="tagline">Hand‑stitched • Hand‑crafted • Heart‑made</p>
-        <h1>Beautiful handmade pieces for your home & gifts</h1>
-        <p class="hero-subtitle">
-          Areej creates unique handcrafted items – each piece carefully made, never mass‑produced.
-          Perfect for gifts, decor, or something special just for you.
-        </p>
-        <div class="hero-actions">
-          <a href="#gallery" class="btn primary">View featured pieces</a>
-          <a href="#contact" class="btn ghost">Order / custom request</a>
+    <section class="section" id="hero">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="hero-tagline">Hand‑embroidered, made to order</div>
+          <h1 class="hero-title">Soft, thoughtful hoops for the corners you love most.</h1>
+          <p class="hero-subtitle">
+            Areej stitches each hoop by hand from our family home. Perfect for nurseries,
+            hallways, cosy reading corners and heartfelt gifts.
+          </p>
+          <div class="hero-actions">
+            <a href="items.html" class="btn primary">Browse all items</a>
+            <a href="about.html" class="btn ghost">About Areej Handmade</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-image-card">
-        <div class="hero-placeholder">
-          A photo or collage of Areej’s handmade work will go here.<br>
-          You can replace this box with a real image later.
+        <div class="hero-visual">
+          Add a photograph here later showing 2–3 hoops together,
+          or a styled shelf with plants and your embroidery.
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-   <section class="section section-soft" id="gallery">
-  <h2 class="section-title">Featured pieces</h2>
-  <p class="section-subtitle">
-    A small selection of Areej’s most popular handmade pieces. Tap “View details”
-    to read the full story behind each one, or use “Quick add” to drop it into
-    your basket.
-  </p>
-
-  <div class="gallery-grid">
-    <!-- Floral hoop -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Floral hoop image<br>(replace with real photo later)
-        </div>
-      </div>
-      <h3>Floral hoop (medium)</h3>
-      <p>Hand‑embroidered floral hoop for walls, shelves and gift boxes.</p>
-      <p class="product-tag">Floral · Gift · Home decor</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Floral hoop (medium)">
-          Quick add
-        </button>
-      </div>
-    </article>
-
-    <!-- Baby name hoop -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Baby name hoop image<br>(replace later)
-        </div>
-      </div>
-      <h3>Baby name hoop</h3>
-      <p>Personalised hoop with baby’s name, designed for calm nurseries.</p>
-      <p class="product-tag">Baby · Nursery · Gift</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product-baby.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Baby name hoop">
-          Quick add
-        </button>
-      </div>
-    </article>
-
-    <!-- Family name frame -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Family name frame image<br>(replace later)
-        </div>
-      </div>
-      <h3>Family name frame</h3>
-      <p>Framed embroidery with your family name and special dates.</p>
-      <p class="product-tag">Family · Home decor</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product-family.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Family name frame">
-          Quick add
-        </button>
-      </div>
-    </article>
-
-    <!-- Housewarming piece -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Housewarming piece image<br>(replace later)
-        </div>
-      </div>
-      <h3>Housewarming piece</h3>
-      <p>“Welcome home” embroidery for new houses and fresh starts.</p>
-      <p class="product-tag">New home · Gift</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product-housewarming.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Housewarming piece">
-          Quick add
-        </button>
-      </div>
-    </article>
-
-    <!-- Quran quote hoop -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Quran quote hoop image<br>(replace later)
-        </div>
-      </div>
-      <h3>Quran quote hoop</h3>
-      <p>Elegant hoop featuring a Quran verse of your choice.</p>
-      <p class="product-tag">Islamic decor · Gift</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product-quran.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Quran quote hoop">
-          Quick add
-        </button>
-      </div>
-    </article>
-
-    <!-- Mini gift set -->
-    <article class="product-card">
-      <div class="product-card-image">
-        <div class="product-card-image-placeholder">
-          Mini gift set image<br>(replace later)
-        </div>
-      </div>
-      <h3>Mini gift set</h3>
-      <p>Mini hoop and card combo, ready as a small thank‑you gift.</p>
-      <p class="product-tag">Mini · Gift set</p>
-      <div class="product-card-actions">
-        <a class="btn small ghost" href="product-mini.html">View details</a>
-        <button class="btn small primary add-to-basket"
-                data-name="Mini gift set">
-          Quick add
-        </button>
-      </div>
-    </article>
-  </div>
-</section>
-
-
-    <!-- ABOUT -->
-    <section id="about" class="section section-soft">
-      <h2 class="section-title">About Areej Handmade</h2>
+    <section class="section section-soft">
+      <h2 class="section-title">Featured pieces</h2>
       <p class="section-subtitle">
-        A short story about your mum, why she started this, and what makes her work special.
+        A small selection of the designs our customers love most. You can customise
+        colours, wording and size on the product pages.
       </p>
 
-      <div class="about-grid">
-        <div>
-          <p>
-            Areej Handmade is a small, home‑grown brand focused on thoughtful, carefully
-            made pieces. Every stitch is done by hand, with time and care.
-          </p>
-          <p>
-            This space is for you to tell Areej’s story – when she started, what she loves
-            making, and how people can support her work.
-          </p>
-        </div>
-        <div class="about-highlight">
-          <h3>Values</h3>
-          <ul>
-            <li>Handcrafted, not mass‑produced.</li>
-            <li>Attention to detail in every piece.</li>
-            <li>Custom, personal designs made with care.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <div class="gallery-grid">
+        <!-- Home & Plants -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Home & Plants hoop image placeholder
+            </div>
+          </div>
+          <h3>Home & Plants – 20cm Hoop</h3>
+          <p>Botanical embroidery inspired by cosy corners and plant shelves.</p>
+          <div class="product-tag">NEW · HAND EMBROIDERED</div>
+          <div class="product-card-actions">
+            <a href="product-home-plants.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="home-plants-20"
+              data-name="Home & Plants – 20cm Hoop"
+              data-price="32"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+          </div>
+        </article>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2 class="section-title">Get in touch</h2>
-      <p class="section-subtitle">
-        Use this section to explain how people can order: WhatsApp, Instagram, email, etc.
-      </p>
+        <!-- Baby name -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Baby name hoop image placeholder
+            </div>
+          </div>
+          <h3>Personalised Baby Name Hoop</h3>
+          <p>A keepsake hoop for new arrivals, with their name and gentle florals.</p>
+          <div class="product-tag">GIFT · CUSTOM</div>
+          <div class="product-card-actions">
+            <a href="product-baby-name.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="baby-name-20"
+              data-name="Baby Name Hoop"
+              data-price="35"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+          </div>
+        </article>
 
-      <div class="contact-card">
-        <p>
-          You can replace this text with real contact details, for example:
-        </p>
-        <ul>
-          <li>Instagram: <strong>@areej.handmade</strong> (example)</li>
-          <li>Email: <strong>areej@example.com</strong></li>
-          <li>WhatsApp for orders and custom requests</li>
-        </ul>
+        <!-- Family home -->
+        <article class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">
+              Family home hoop placeholder
+            </div>
+          </div>
+          <h3>Family Home Hoop</h3>
+          <p>Celebrate your family name and home in a floral embroidered hoop.</p>
+          <div class="product-tag">FAMILY · CUSTOM</div>
+          <div class="product-card-actions">
+            <a href="product-family-home.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="family-home-25"
+              data-name="Family Home Hoop"
+              data-price="40"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
+  <!-- Drawer + toast shared across pages -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
   <footer class="footer">
-    © <span id="year"></span> Areej Handmade
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
   </footer>
 
-  <!-- JS -->
-  <script src="cart.js"></script>
-  <script>
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-  </script>
+  <script src="assets/cart.js?v=20"></script>
 </body>
 </html>
-
-
-
