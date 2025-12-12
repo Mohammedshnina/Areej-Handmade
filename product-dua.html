@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dua / Quote Hoop | Areej Handmade</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
+</head>
+<body>
+  <header class="navbar">
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section product-page">
+      <a href="items.html" class="back-link">← Back to all items</a>
+
+      <div class="product-layout">
+        <!-- LEFT -->
+        <div class="product-photos">
+          <div class="product-main-photo">
+            <img src="assets/dua-main.jpg" alt="Dua or quote embroidered hoop" />
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb-box">
+              <img src="assets/dua-detail1.jpg" alt="Text detail" />
+            </div">
+            <div class="product-thumb-box">
+              <img src="assets/dua-detail2.jpg" alt="Floral border" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/dua-detail3.jpg" alt="Hoop in home" />
+            </div>
+            <div class="product-thumb-box">
+              <img src="assets/dua-detail4.jpg" alt="Gift packaging" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <article class="product-info">
+          <p class="product-eyebrow">DUA / QUOTE · 20CM</p>
+          <h1 class="product-title">Dua / Quote Hoop</h1>
+          <p class="product-price">£30.00</p>
+
+          <div class="basket-chip" style="margin-bottom: 0.6rem;">
+            ✓ Choose your favourite line, dua or phrase
+          </div>
+
+          <p class="product-summary">
+            A hand‑stitched hoop featuring a short dua, phrase or quote that means
+            something to you. Hang it by the door, in your kitchen or on a shelf as
+            a daily reminder.
+          </p>
+
+          <p class="colour-label">Floral style</p>
+          <div class="colour-swatches" id="colour-swatches-dua">
+            <button class="colour-swatch active" style="--swatch: #f28bb4;" data-colour="Pink florals"></button>
+            <button class="colour-swatch" style="--swatch: #9fd0c2;" data-colour="Green leaves"></button>
+            <button class="colour-swatch" style="--swatch: #f2c46a;" data-colour="Gold details"></button>
+            <button class="colour-swatch" style="--swatch: #e3d5ff;" data-colour="Lilac mix"></button>
+          </div>
+          <p class="product-small-note">
+            Selected style: <span id="selected-colour-dua">Pink florals</span>.  
+            You can describe your exact idea in the notes at checkout.
+          </p>
+
+          <ul class="product-quick-list">
+            <li>20cm hoop with hand‑stitched lettering</li>
+            <li>Up to ~6 words for shorter phrases to keep it readable</li>
+            <li>Choice of floral or leafy border to frame your text</li>
+          </ul>
+
+          <div class="product-actions">
+            <button
+              class="btn primary full-width"
+              data-id="dua-quote-20"
+              data-name="Dua / Quote Hoop"
+              data-price="30"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
+            </button>
+            <button class="btn ghost full-width" onclick="openBasketDrawer()">
+              View basket
+            </button>
+          </div>
+
+          <p class="product-small-note">
+            Please write your chosen dua / quote exactly as you’d like it stitched,
+            and mention if you prefer English, Arabic or both (where possible).
+          </p>
+        </article>
+      </div>
+
+      <!-- EXTRA INFO -->
+      <section class="product-extra-grid">
+        <article class="product-story-card">
+          <h2>A daily reminder, stitched slowly</h2>
+          <p>
+            These hoops are made for the phrases you want to see every day – a dua
+            you say often, a reminder to stay grateful, or a line that grounds you
+            when life gets busy.
+          </p>
+          <p>
+            We keep the layout clean and legible so the words stay clear. The florals
+            and leaves are stitched around the text, not over it, to keep the message
+            easy to read from a distance.
+          </p>
+          <ul>
+            <li>Lovely as a gift for friends, parents or newlyweds</li>
+            <li>Works well near doorways, desks or prayer corners</li>
+            <li>Every hoop is one‑of‑a‑kind and stitched by hand</li>
+          </ul>
+        </article>
+
+        <aside class="product-facts-card">
+          <h3>Processing &amp; delivery</h3>
+          <ul>
+            <li>⏱ Processing: 5–7 working days</li>
+            <li>🚚 UK shipping: 2–3 working days after dispatch</li>
+            <li>📨 Need it sooner? Message us before ordering.</li>
+          </ul>
+
+          <h3>Text length guide</h3>
+          <ul>
+            <li>Short sayings and duas read best (up to one or two lines)</li>
+            <li>Longer texts can be simplified or split – we can help with ideas</li>
+          </ul>
+
+          <h3>Returns</h3>
+          <p>
+            Custom text items are non‑refundable unless there is a mistake on our
+            side. If anything arrives damaged, please get in touch within 7 days.
+          </p>
+        </aside>
+      </section>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <section class="also-like-full">
+        <h2 class="also-like-title">You may also like</h2>
+        <div class="also-like-grid-full">
+          <a href="product-home-plants.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Home &amp; Plants hoop</div>
+            </div>
+            <h3>Home &amp; Plants – 20cm Hoop</h3>
+            <p>Botanical hoop that pairs nicely with quote pieces.</p>
+            <div class="product-tag">BOTANICAL</div>
+          </a>
+
+          <a href="product-family-home.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Family home hoop</div>
+            </div>
+            <h3>Family Home Hoop</h3>
+            <p>Display your family name alongside your chosen dua.</p>
+            <div class="product-tag">FAMILY</div>
+          </a>
+
+          <a href="product-baby-name.html" class="product-card">
+            <div class="product-card-image">
+              <div class="product-card-image-placeholder">Baby name hoop</div>
+            </div>
+            <h3>Personalised Baby Name Hoop</h3>
+            <p>A meaningful set when combined with a nursery dua hoop.</p>
+            <div class="product-tag">BABY</div>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
+  </footer>
+
+  <script src="assets/cart.js?v=20"></script>
+  <script>
+    const swatchesD = document.querySelectorAll("#colour-swatches-dua .colour-swatch");
+    const selectedD = document.getElementById("selected-colour-dua");
+    swatchesD.forEach(btn => {
+      btn.addEventListener("click", () => {
+        swatchesD.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedD.textContent = btn.dataset.colour || "Custom";
+      });
+    });
+  </script>
+</body>
+</html>
