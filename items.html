@@ -3,177 +3,133 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Items | Areej Handmade</title>
-  <link rel="stylesheet" href="assets/style.css?v=10" />
-
+  <title>Areej Handmade | All items</title>
+  <link rel="stylesheet" href="assets/style.css?v=20" />
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img">
-      <div class="logo-text">
-        Areej<span>Handmade</span>
-      </div>
+    <div>
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <div class="logo-text">
+          AREEJ HANDMADE
+          <span>Embroidery & gifts</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html">Shop</a>
+        <a href="about.html">About</a>
+        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html#hero">Home</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#about">About</a>
-      <a href="items.html">Items</a>
-      <a href="index.html#contact">Contact</a>
-      <button type="button" class="nav-basket-btn" id="openBasket">
-        Basket (<span id="basketCountNav">0</span>)
-      </button>
-    </nav>
   </header>
-
-  <!-- BASKET OVERLAY + DRAWER -->
-  <div class="basket-overlay" id="basketOverlay"></div>
-  <aside class="basket-drawer" id="basketDrawer">
-    <div class="basket-drawer-header">
-      <h2>Your basket</h2>
-      <button type="button" class="basket-close" id="closeBasket">×</button>
-    </div>
-    <p id="drawerEmpty" class="drawer-empty">Your basket is empty.</p>
-    <ul id="drawerItems" class="drawer-items"></ul>
-    <p class="basket-summary">
-      Total items: <span id="drawerCount">0</span>
-    </p>
-    <a href="basket.html" class="btn primary drawer-go-btn">Go to basket page</a>
-  </aside>
 
   <main>
     <section class="section">
-      <h1 class="section-title">All items</h1>
+      <h1 class="section-title">Shop all items</h1>
       <p class="section-subtitle">
-        Browse a selection of Areej’s hand‑embroidered pieces. Use the search
-        below to quickly find what you’re looking for.
+        Browse all of our current designs. You can customise colour palettes and
+        text on each product page, or contact us for something completely bespoke.
       </p>
 
-      <!-- SEARCH BAR -->
-      <div class="items-search-bar">
-        <div class="items-search-icon"></div>
-        <input
-          id="itemSearch"
-          class="items-search-input"
-          type="text"
-          placeholder="Search by name, type, occasion..."
-        />
+      <div class="items-toolbar">
+        <div class="items-search">
+          <!-- simple search, just visual for now -->
+          <input type="text" placeholder="Search by name or occasion (e.g. baby, home, gift)" />
+        </div>
       </div>
 
-      <!-- CARDS GRID -->
       <div class="gallery-grid">
-        <!-- 1. Floral hoop -->
+        <!-- Reuse same 4 products for now -->
         <article class="product-card">
           <div class="product-card-image">
             <div class="product-card-image-placeholder">
-              Floral hoop image<br>(replace with real photo)
+              Home & Plants hoop
             </div>
           </div>
-          <h3>Floral hoop (medium)</h3>
-          <p>Hand‑embroidered floral hoop, perfect for walls and gift boxes.</p>
-          <p class="product-tag">Floral · Gift · Home decor</p>
+          <h3>Home & Plants – 20cm Hoop</h3>
+          <p>Botanical embroidery inspired by cosy corners and plant shelves.</p>
+          <div class="product-tag">NEW</div>
           <div class="product-card-actions">
-            <a class="btn small ghost" href="product.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Floral hoop (medium)">
-              Quick add
+            <a href="product-home-plants.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="home-plants-20"
+              data-name="Home & Plants – 20cm Hoop"
+              data-price="32"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
             </button>
           </div>
         </article>
 
-        <!-- 2. Baby name hoop -->
         <article class="product-card">
           <div class="product-card-image">
             <div class="product-card-image-placeholder">
-              Baby name hoop image<br>(replace later)
+              Baby name hoop
             </div>
           </div>
-          <h3>Baby name hoop</h3>
-          <p>Personalised baby name hoop, ideal for nurseries and baby gifts.</p>
-          <p class="product-tag">Baby · Nursery · Gift</p>
+          <h3>Personalised Baby Name Hoop</h3>
+          <p>Custom baby name, soft colours and delicate florals.</p>
+          <div class="product-tag">GIFT</div>
           <div class="product-card-actions">
-            <a class="btn small ghost" href="product-baby.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Baby name hoop">
-              Quick add
+            <a href="product-baby-name.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="baby-name-20"
+              data-name="Baby Name Hoop"
+              data-price="35"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
             </button>
           </div>
         </article>
 
-        <!-- 3. Family name frame -->
         <article class="product-card">
           <div class="product-card-image">
             <div class="product-card-image-placeholder">
-              Family name frame image<br>(replace later)
+              Family home hoop
             </div>
           </div>
-          <h3>Family name frame</h3>
-          <p>Framed embroidery with your family name and established date.</p>
-          <p class="product-tag">Family · Home · Frame</p>
+          <h3>Family Home Hoop</h3>
+          <p>Family surname with house or floral illustration.</p>
+          <div class="product-tag">FAMILY</div>
           <div class="product-card-actions">
-            <a class="btn small ghost" href="product-family.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Family name frame">
-              Quick add
+            <a href="product-family-home.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="family-home-25"
+              data-name="Family Home Hoop"
+              data-price="40"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
             </button>
           </div>
         </article>
 
-        <!-- 4. Housewarming piece -->
         <article class="product-card">
           <div class="product-card-image">
             <div class="product-card-image-placeholder">
-              Housewarming piece image<br>(replace later)
+              Dua / quote hoop
             </div>
           </div>
-          <h3>Housewarming piece</h3>
-          <p>“Welcome home” style embroidered piece for new houses.</p>
-          <p class="product-tag">New home · Gift</p>
+          <h3>Dua / Quote Hoop</h3>
+          <p>Meaningful words, framed with soft florals or leafy details.</p>
+          <div class="product-tag">BESTSELLER</div>
           <div class="product-card-actions">
-            <a class="btn small ghost" href="product-housewarming.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Housewarming piece">
-              Quick add
-            </button>
-          </div>
-        </article>
-
-        <!-- 5. Quran quote hoop -->
-        <article class="product-card">
-          <div class="product-card-image">
-            <div class="product-card-image-placeholder">
-              Quran quote hoop image<br>(replace later)
-            </div>
-          </div>
-          <h3>Quran quote hoop</h3>
-          <p>Elegant hoop featuring a Quran verse of your choice.</p>
-          <p class="product-tag">Islamic decor · Gift</p>
-          <div class="product-card-actions">
-            <a class="btn small ghost" href="product-quran.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Quran quote hoop">
-              Quick add
-            </button>
-          </div>
-        </article>
-
-        <!-- 6. Mini gift set -->
-        <article class="product-card">
-          <div class="product-card-image">
-            <div class="product-card-image-placeholder">
-              Mini gift set image<br>(replace later)
-            </div>
-          </div>
-          <h3>Mini gift set</h3>
-          <p>Mini hoop and card combo, ready to give as a small thank‑you gift.</p>
-          <p class="product-tag">Mini · Gift set</p>
-          <div class="product-card-actions">
-            <a class="btn small ghost" href="product-mini.html">View details</a>
-            <button class="btn small primary add-to-basket"
-                    data-name="Mini gift set">
-              Quick add
+            <a href="product-dua.html" class="btn small">View details</a>
+            <button
+              class="btn small ghost"
+              data-id="dua-quote-20"
+              data-name="Dua / Quote Hoop"
+              data-price="30"
+              onclick="addFromButton(this)"
+            >
+              Add to basket
             </button>
           </div>
         </article>
@@ -181,87 +137,24 @@
     </section>
   </main>
 
+  <!-- Drawer + toast -->
+  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside class="basket-drawer" id="basket-drawer">
+    <div class="basket-drawer-header">
+      <h2>Your basket</h2>
+      <button class="basket-close" onclick="closeBasketDrawer()">×</button>
+    </div>
+    <ul class="drawer-items" id="drawer-items"></ul>
+    <div id="drawer-summary" class="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
   <footer class="footer">
-    © <span id="year"></span> Areej Handmade
+    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
   </footer>
 
-  <!-- POPUP (optional quick-add details) -->
-  <div class="item-popup-overlay" id="popupOverlay"></div>
-
-  <div class="item-popup" id="popup">
-    <div class="item-popup-grid">
-      <div class="popup-image-col">
-        <div class="popup-image-frame">
-          <div class="popup-main-image">
-            Main item image<br>
-            (replace with real photo later)
-          </div>
-          <div class="popup-thumb-row">
-            <div class="popup-thumb-box"></div>
-            <div class="popup-thumb-box"></div>
-            <div class="popup-thumb-box"></div>
-            <div class="popup-thumb-box"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="popup-content-col">
-        <h2>Customise your piece</h2>
-        <p class="popup-item-name" id="popupItemName">Item name</p>
-
-        <p class="colour-label">Colour:</p>
-        <div class="colour-swatches">
-          <button type="button" class="colour-swatch"
-                  data-colour="Black" aria-label="Black"
-                  style="--swatch:#111111;"></button>
-          <button type="button" class="colour-swatch"
-                  data-colour="White" aria-label="White"
-                  style="--swatch:#f7f7f7;"></button>
-          <button type="button" class="colour-swatch"
-                  data-colour="Cream" aria-label="Cream"
-                  style="--swatch:#f3e4cc;"></button>
-          <button type="button" class="colour-swatch"
-                  data-colour="Gold" aria-label="Gold"
-                  style="--swatch:#d8a840;"></button>
-          <button type="button" class="colour-swatch"
-                  data-colour="Pink" aria-label="Pink"
-                  style="--swatch:#e9a0b7;"></button>
-        </div>
-
-        <label>Description / notes (optional):</label>
-        <textarea id="popupDesc"
-          placeholder="Anything special to mention about this piece..."></textarea>
-
-        <div class="popup-buttons">
-          <button class="btn ghost" id="popupCancel">Cancel</button>
-          <button class="btn primary" id="popupAdd">Add to basket</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="toast" class="toast">Added successfully!</div>
-
-  <script src="cart.js"></script>
-  <script>
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // search filter
-    document.addEventListener("DOMContentLoaded", () => {
-      const input = document.getElementById("itemSearch");
-      const cards = document.querySelectorAll(".product-card");
-      if (!input) return;
-
-      input.addEventListener("input", () => {
-        const q = input.value.toLowerCase();
-        cards.forEach((card) => {
-          const text = card.innerText.toLowerCase();
-          card.style.display = text.includes(q) ? "" : "none";
-        });
-      });
-    });
-  </script>
+  <script src="assets/cart.js?v=20"></script>
 </body>
 </html>
-
