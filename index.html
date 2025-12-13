@@ -4,150 +4,316 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Areej Handmade | Hand‑embroidered gifts</title>
-  <link rel="stylesheet" href="assets/style.css?v=20" />
+  <link rel="stylesheet" href="assets/style.css?v=21" />
 </head>
 <body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar" style="
+    background:#ffe7f3;
+    border-bottom:1px solid rgba(242,196,106,0.4);
+    font-size:0.78rem;
+    text-align:center;
+    padding:0.35rem 0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--text-soft);
+  ">
+    Hand‑embroidered in the UK · Free UK shipping over £60 · Custom orders available
+  </div>
+
+  <!-- NAVBAR -->
   <header class="navbar">
     <div>
       <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="Areej Handmade logo" class="logo-img" />
+        <img src="assets/logo.png" class="logo-img" alt="Areej Handmade" />
         <div class="logo-text">
           AREEJ HANDMADE
-          <span>Embroidery & gifts</span>
+          <span>Embroidery & Gifts</span>
         </div>
       </a>
+
       <nav>
-        <a href="#hero">Home</a>
-        <a href="items.html">Shop</a>
-        <a href="about.html">About</a>
-        <button class="nav-basket-btn" onclick="openBasketDrawer()">Basket</button>
+        <a href="index.html#hero">Home</a>
+        <a href="items.html#baby">Baby</a>
+        <a href="items.html#home">Home & Plants</a>
+        <a href="items.html#family">Family</a>
+        <a href="items.html#dua">Duas & Quotes</a>
+        <a href="items.html">All Products</a>
+
+        <button class="nav-basket-btn" type="button" onclick="openBasketDrawer()">
+          Basket
+        </button>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section" id="hero">
+
+    <!-- HERO -->
+    <section id="hero" class="section">
       <div class="hero-layout">
+
         <div class="hero-text">
-          <div class="hero-tagline">Hand‑embroidered, made to order</div>
-          <h1 class="hero-title">Soft, thoughtful hoops for the corners you love most.</h1>
+          <div class="hero-tagline">HANDMADE ART</div>
+
+          <h1 class="hero-title">
+            Hand‑embroidered hoops<br />
+            made with love in pink & gold.
+          </h1>
+
           <p class="hero-subtitle">
-            Areej stitches each hoop by hand from our family home. Perfect for nurseries,
-            hallways, cosy reading corners and heartfelt gifts.
+            Areej Handmade creates personalised embroidered hoops for babies, home décor,
+            families, nurseries and gifts. Every piece is drawn, stitched and finished by hand.
           </p>
+
           <div class="hero-actions">
-            <a href="items.html" class="btn primary">Browse all items</a>
-            <a href="about.html" class="btn ghost">About Areej Handmade</a>
+            <button class="btn primary" onclick="window.location.href='items.html'">
+              Browse Products
+            </button>
+            <button class="btn ghost" onclick="window.location.href='#bestsellers'">
+              Best Sellers
+            </button>
+          </div>
+
+          <p style="margin-top:0.9rem; font-size:0.86rem; color:var(--text-soft);">
+            Custom-made · 5–10 day processing · Secure checkout
+          </p>
+        </div>
+
+        <!-- HERO IMAGE HOLDER -->
+        <div class="hero-visual">
+          <div style="
+            width:100%;
+            max-width:360px;
+            aspect-ratio:4/5;
+            border-radius:26px;
+            background:radial-gradient(circle at top,#ffeaf5,#fffdfd 60%,#fff4de);
+            border:1px solid var(--border-soft);
+            box-shadow:var(--shadow-md);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:1.4rem;
+          ">
+            <p style="font-size:0.9rem; color:var(--text-soft); max-width:220px;">
+              Replace this placeholder with a real hero image later.
+            </p>
           </div>
         </div>
-        <div class="hero-visual">
-          Add a photograph here later showing 2–3 hoops together,
-          or a styled shelf with plants and your embroidery.
+
+      </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section class="section">
+      <div class="section-soft" style="padding:1.3rem;">
+        <div style="
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+          gap:1.3rem;
+        ">
+          <div>
+            <h3 style="margin:0 0 0.2rem;">HANDMADE</h3>
+            <p style="margin:0;">Each hoop is drawn, stitched and finished by hand.</p>
+          </div>
+
+          <div>
+            <h3 style="margin:0 0 0.2rem;">DELIVERY</h3>
+            <p style="margin:0;">UK delivery & international options available.</p>
+          </div>
+
+          <div>
+            <h3 style="margin:0 0 0.2rem;">SECURE PAYMENT</h3>
+            <p style="margin:0;">Pay safely with card, Apple Pay or local methods.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-soft">
-      <h2 class="section-title">Featured pieces</h2>
+    <!-- BESTSELLERS -->
+    <section id="bestsellers" class="section">
+      <h2 class="section-title">Best Sellers</h2>
       <p class="section-subtitle">
-        A small selection of the designs our customers love most. You can customise
-        colours, wording and size on the product pages.
+        Our most loved embroidered hoops. Click to view details, colours and custom options.
       </p>
 
       <div class="gallery-grid">
-        <!-- Home & Plants -->
-        <article class="product-card">
+
+        <!-- CARD EXAMPLE 1 -->
+        <a href="product-home-plants.html" class="product-card">
           <div class="product-card-image">
-            <div class="product-card-image-placeholder">
-              Home & Plants hoop image placeholder
-            </div>
+            <div class="product-card-image-placeholder">Home & Plants Hoop</div>
           </div>
-          <h3>Home & Plants – 20cm Hoop</h3>
-          <p>Botanical embroidery inspired by cosy corners and plant shelves.</p>
-          <div class="product-tag">NEW · HAND EMBROIDERED</div>
+          <h3>Home & Plants – 20cm</h3>
+          <p>A botanical hoop for living rooms, shelves and plant corners.</p>
+          <div class="product-tag">BOTANICAL • BEST SELLER</div>
           <div class="product-card-actions">
-            <a href="product-home-plants.html" class="btn small">View details</a>
-            <button
-              class="btn small ghost"
+            <button class="btn small primary"
               data-id="home-plants-20"
-              data-name="Home & Plants – 20cm Hoop"
+              data-name="Home & Plants – 20cm"
               data-price="32"
-              onclick="addFromButton(this)"
-            >
-              Add to basket
+              onclick="addFromButton(this)">
+              Add to Basket
             </button>
           </div>
-        </article>
+        </a>
 
-        <!-- Baby name -->
-        <article class="product-card">
+        <!-- CARD 2 -->
+        <a href="product-baby-name.html" class="product-card">
           <div class="product-card-image">
-            <div class="product-card-image-placeholder">
-              Baby name hoop image placeholder
-            </div>
+            <div class="product-card-image-placeholder">Baby Name Hoop</div>
           </div>
-          <h3>Personalised Baby Name Hoop</h3>
-          <p>A keepsake hoop for new arrivals, with their name and gentle florals.</p>
-          <div class="product-tag">GIFT · CUSTOM</div>
+          <h3>Personalised Baby Name</h3>
+          <p>A beautiful newborn gift with name, date and florals.</p>
+          <div class="product-tag">BABY • CUSTOM</div>
           <div class="product-card-actions">
-            <a href="product-baby-name.html" class="btn small">View details</a>
-            <button
-              class="btn small ghost"
+            <button class="btn small primary"
               data-id="baby-name-20"
               data-name="Baby Name Hoop"
               data-price="35"
-              onclick="addFromButton(this)"
-            >
-              Add to basket
+              onclick="addFromButton(this)">
+              Add to Basket
             </button>
           </div>
-        </article>
+        </a>
 
-        <!-- Family home -->
-        <article class="product-card">
+        <!-- CARD 3 -->
+        <a href="product-family-home.html" class="product-card">
           <div class="product-card-image">
-            <div class="product-card-image-placeholder">
-              Family home hoop placeholder
-            </div>
+            <div class="product-card-image-placeholder">Family Hoop</div>
           </div>
           <h3>Family Home Hoop</h3>
-          <p>Celebrate your family name and home in a floral embroidered hoop.</p>
-          <div class="product-tag">FAMILY · CUSTOM</div>
+          <p>Family surname, florals and gold touches — perfect for entrances.</p>
+          <div class="product-tag">FAMILY • MADE TO ORDER</div>
           <div class="product-card-actions">
-            <a href="product-family-home.html" class="btn small">View details</a>
-            <button
-              class="btn small ghost"
+            <button class="btn small primary"
               data-id="family-home-25"
               data-name="Family Home Hoop"
               data-price="40"
-              onclick="addFromButton(this)"
-            >
-              Add to basket
+              onclick="addFromButton(this)">
+              Add to Basket
             </button>
           </div>
-        </article>
+        </a>
+
+        <!-- CARD 4 -->
+        <a href="product-dua.html" class="product-card">
+          <div class="product-card-image">
+            <div class="product-card-image-placeholder">Dua / Quote Hoop</div>
+          </div>
+          <h3>Dua / Quote Hoop</h3>
+          <p>Short duas or meaningful quotes, hand‑embroidered.</p>
+          <div class="product-tag">QUOTE • DAILY</div>
+          <div class="product-card-actions">
+            <button class="btn small primary"
+              data-id="dua-quote-20"
+              data-name="Dua / Quote Hoop"
+              data-price="30"
+              onclick="addFromButton(this)">
+              Add to Basket
+            </button>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="text-align:center; margin-top:1.6rem;">
+        <button class="btn ghost" onclick="window.location.href='items.html'">
+          View All Products
+        </button>
       </div>
     </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="section">
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-subtitle">Find exactly the type of hoop you're looking for.</p>
+
+      <div class="gallery-grid">
+        <a href="items.html#baby" class="product-card">
+          <div class="product-card-image"><div class="product-card-image-placeholder">Baby Hoops</div></div>
+          <h3>Baby & Nursery</h3>
+          <p>Perfect for newborns, rooms and gifting.</p>
+          <div class="product-tag">BABY</div>
+        </a>
+
+        <a href="items.html#home" class="product-card">
+          <div class="product-card-image"><div class="product-card-image-placeholder">Home Hoops</div></div>
+          <h3>Home & Plants</h3>
+          <p>Botanical and decorative home pieces.</p>
+          <div class="product-tag">HOME</div>
+        </a>
+
+        <a href="items.html#family" class="product-card">
+          <div class="product-card-image"><div class="product-card-image-placeholder">Family Hoops</div></div>
+          <h3>Family & Names</h3>
+          <p>Custom surname hoops with florals.</p>
+          <div class="product-tag">FAMILY</div>
+        </a>
+
+        <a href="items.html#dua" class="product-card">
+          <div class="product-card-image"><div class="product-card-image-placeholder">Dua Hoops</div></div>
+          <h3>Duas & Quotes</h3>
+          <p>Meaningful words stitched with love.</p>
+          <div class="product-tag">QUOTES</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- STORY / HOW IT WORKS -->
+    <section class="section">
+      <div class="section-soft">
+        <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:1.8rem;">
+          
+          <article>
+            <h2 class="section-title">How it Works</h2>
+            <p class="section-subtitle">
+              Each hoop is created slowly and carefully — from sketch, to stitching, to finishing.
+            </p>
+            <ol style="padding-left:1.2rem; font-size:0.93rem; color:var(--text-soft);">
+              <li>You choose the design and custom details.</li>
+              <li>We sketch, select threads and embroider by hand.</li>
+              <li>The hoop is finished neatly with backing and labels.</li>
+              <li>Packed beautifully and shipped to you.</li>
+            </ol>
+          </article>
+
+          <aside>
+            <h3>About Areej Handmade</h3>
+            <p style="color:var(--text-soft);">
+              Areej Handmade was born from a love of embroidery, home décor and meaningful gifts.
+              Every hoop is created at home with patience, tea and plenty of pink thread.
+            </p>
+            <button class="btn ghost" style="margin-top:0.5rem;" onclick="window.location.href='about.html'">
+              Learn More
+            </button>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Drawer + toast shared across pages -->
-  <div class="basket-overlay" id="basket-overlay" onclick="closeBasketDrawer()"></div>
-  <aside class="basket-drawer" id="basket-drawer">
+  <!-- BASKET DRAWER -->
+  <div id="basket-overlay" class="basket-overlay" onclick="closeBasketDrawer()"></div>
+  <aside id="basket-drawer" class="basket-drawer">
     <div class="basket-drawer-header">
-      <h2>Your basket</h2>
+      <h2>Your Basket</h2>
       <button class="basket-close" onclick="closeBasketDrawer()">×</button>
     </div>
-    <ul class="drawer-items" id="drawer-items"></ul>
-    <div id="drawer-summary" class="drawer-summary"></div>
-    <button class="btn primary full-width" onclick="goToBasketPage()">Go to basket</button>
+    <ul id="drawer-items" class="drawer-items"></ul>
+    <div id="drawer-summary"></div>
+    <button class="btn primary full-width" onclick="goToBasketPage()">View Basket</button>
   </aside>
 
-  <div class="toast" id="toast"></div>
+  <div id="toast" class="toast"></div>
 
   <footer class="footer">
-    <p>Areej Handmade · Hand‑embroidered gifts from our home to yours.</p>
+    Areej Handmade · Hand‑embroidered hoops in pink & gold.
   </footer>
 
-  <script src="assets/cart.js?v=20"></script>
+  <script src="assets/cart.js?v=21"></script>
 </body>
 </html>
